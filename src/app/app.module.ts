@@ -13,7 +13,7 @@ import {RouterModule} from "@angular/router";
     AppComponent,
     ListMovieComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
