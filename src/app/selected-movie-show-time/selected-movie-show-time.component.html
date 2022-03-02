@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="st_calen_asc_tecket_time_select">
                                                 <ul >
-                                                    <li *ngFor="let movieTime of listMovies">	<span>
+                                                    <li  *ngFor="let movieTime of listMovies" >	<span>
 															<h4>{{movieTime.price}} VND</h4>
 															<input type="hidden" id="showTime" value="{{this.convertTime(movieTime.startTime)}}">
 															</span>
