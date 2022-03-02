@@ -1,0 +1,30 @@
+<div class="container align-items-center" style="display: block">
+    <h2 class="text-center">Thống kê phim</h2>
+    <table class="table table-striped table-bordered table-responsive text-center">
+        <thead class="thead-dark">
+        <tr>
+            <th>Tên phim</th>
+            <th>Số lượng vé bán được</th>
+            <th>Tổng tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="topListMovie == null">
+            <td colspan="3">Hiện chưa thống kê bộ phim nào.</td>
+        </tr>
+        <tr *ngFor="let movie of topListMovie | paginate: {itemsPerPage: 1, currentPage: currentPage, totalItems: totalPages}">
+            <td>{{movie.name | titlecase}}</td>
+            <td>{{movie.quantity}}</td>
+            <td>{{movie.price}}VNĐ</td>
+        </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="text-right"
+                         (pageChange)="currentPage = $event"
+                         previousLabel="Trước"
+                         nextLabel="Sau"
+                         [autoHide]="true">
+    </pagination-controls>
+</div>
+
+
