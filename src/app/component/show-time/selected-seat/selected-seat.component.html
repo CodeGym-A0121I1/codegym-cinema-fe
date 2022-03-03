@@ -1,1 +1,76 @@
-<p>selected-seat works!</p>
+<div class="st_bt_top_header_wrapper float_left">
+    <div class="container container_seat">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="st_bt_top_back_btn st_bt_top_back_btn_seatl float_left"><a href="BookingFilm.html"><i
+                        class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở về</a>
+                </div>
+                <div class="cc_ps_quantily_info cc_ps_quantily_info_tecket">
+                    <p>Chọn vé</p>
+                    <div class="select_number">
+                        <button onclick="changeQty(1); return false;" class="increase"><i class="fa fa-plus"></i>
+                        </button>
+                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control"/>
+                        <button onclick="changeQty(0); return false;" class="decrease"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <input type="hidden" name="product_id"/>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
+                    <h3>{{movieShow.movie.name}} - {{ movieShow.movie.duration}}</h3>
+                    <h4>{{movieShow.dateStart }} - {{movieShow.timeSelected}} </h4>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="st_bt_top_close_btn st_bt_top_close_btn2 float_left"><a href="#"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="st_seatlay_btn float_left"><a  (click)="takeInformationSeat()">Tiếp tục </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- st top header Start -->
+<!-- st seat Layout Start -->
+<div class="st_seatlayout_main_wrapper float_left">
+    <div class="container container_seat">
+        <div class="st_seat_lay_heading float_left">
+            <h3>Rạp CGV</h3>
+        </div>
+        <div class="st_seat_full_container">
+            <div class="st_seat_lay_economy_wrapper float_left">
+                <div class="screen">
+                    <img src="../../assets/images/content/screen.png">
+                </div>
+
+            </div>
+            <div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
+                <div class="st_seat_lay_economy_heading float_left">
+                    <h3>Đường đi</h3>
+                </div>
+                <div class="st_seat_lay_row float_left"
+                     *ngFor='let in of counter(movieShow.theater.totalRow) ;let i = index'>
+                    <ul>
+                        <li class="st_seat_heading_row">{{listLocalSeat[i]}}</li>
+                    </ul>
+
+                    <ul *ngFor='let in of counter(movieShow.theater.totalCol) ;let y = index'
+                        [ngClass]="(y==5 || y==18)?'st_eco_second_row':''">
+                        <li class="{{checkSeatBooked(nameSeat.value)}}" >
+                            <span [hidden]="checkSeatBooked(nameSeat.value)!=''">{{movieShow.price}} VND</span>
+                            <input  type="checkbox" id="{{listLocalSeat[i]}}{{y+1}}" name="cb" #nameSeat
+                                    value="{{listLocalSeat[i]}}{{y+1}}"
+                                    (click)="take(nameSeat.value)" >
+                            <label for="{{listLocalSeat[i]}}{{y+1}}"></label>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
