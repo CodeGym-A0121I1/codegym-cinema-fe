@@ -1,1 +1,207 @@
-<p>create-movie works!</p>
+<!--<div class="container">-->
+<!--    <form class="form-group" [formGroup]="formMovie" (ngSubmit)="createMovie()">-->
+<!--        <h2>Thêm mới phim</h2>-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <div><img [src]="url" *ngIf="url"  class="img-thumbnail" style="width: 200px"></div>-->
+<!--                <div class="col-sm-7">-->
+<!--                </div>-->
+<!--                <input type="file" id="img" name="img" accept="image/*" (change)="selectFile($event)" formControlName="poster">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <label class="col-2 col-form-label">Tên phim</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="text" class="form-control" formControlName="name">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <label class="col-2 col-form-label">Từ ngày</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="datetime-local" class="form-control" formControlName="openingDay">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <label class=" col-2 col-form-label">Đến ngày</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="datetime-local" class="form-control" formControlName="endDay">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="col-sm-12 row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <label class="col-2 col-form-label">Diễn viên</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-sm-8">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <input type="text" class="form-control" formControlName="actorList">&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="col-sm-12 row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <label class=" col-2 col-form-label">Hãng phim</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-sm-8">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <input type="text" class="form-control" formControlName="producerList">&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="col-sm-12 row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <label class="col-2 col-form-label">Đạo diễn</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-sm-8">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <input type="text" class="form-control" formControlName="directorList">&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <label class="col-2 col-form-label">Thời lượng</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="number" class="form-control" formControlName="duration">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <label class="col-2 col-form-label">Phiên bản</label>-->
+<!--                <div class=" form-check form-check-inline">-->
+<!--                    <input class="form-check-input" type="radio"-->
+<!--                           value="_2D" formControlName="type">-->
+<!--                    <label class="form-check-label" >2D</label>-->
+<!--                </div>-->
+<!--                <div class="form-check form-check-inline">-->
+<!--                    <input class="form-check-input" type="radio"-->
+<!--                           value="_3D" formControlName="type">-->
+<!--                    <label class="form-check-label">3D</label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <label class="col-2 col-form-label">Trailer</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <input type="text" class="form-control" formControlName="trailer">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="col-sm-12 row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <label class="col-2 col-form-label">Thể loại</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="1" formControlName="genreList">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Hành động</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="2" formControlName="genreList">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Viễn tưởng</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Hoạt hình</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Võ thuật</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option1">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Hài hước</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Chiến tranh</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Kinh dị</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Kinh điển</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option1">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Lãng mạn</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Kiếm hiệp</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Phiêu lưu</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Tâm lý</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Tình cảm</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <div class="form-check form-check-inline">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <input class="form-check-input" type="checkbox" value="option3">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <label class="form-check-label">Âm nhạc</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="col-sm-12 row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <label class="col-2 col-form-label">Phòng chiếu</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-sm-2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <select class="custom-select">&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <option value="pc001">PC001</option>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <option value="pc002">PC002</option>&ndash;&gt;-->
+<!--        &lt;!&ndash;                        <option value="pc003">PC003</option>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    </select>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="col-sm-12 row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <label class="col-2 col-form-label">Lịch chiếu</label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-sm-2">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <input type="text" class="form-control" formControlName="showTimeList">&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-sm-2" id="showtime">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <button class="btn btn-primary">Thêm giờ chiếu</button>&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <div class="col-sm-12 row">&ndash;&gt;-->
+<!--        &lt;!&ndash;                <label class="col-2 col-form-label" id="hidden"></label>&ndash;&gt;-->
+<!--        &lt;!&ndash;                <div class="col-sm-8">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    <input class="form-control">&ndash;&gt;-->
+<!--        &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="form-group">-->
+<!--            <div class="col-sm-12 row">-->
+<!--                <label class="col-2 col-form-label">Nội dung</label>-->
+<!--                <div class="col-sm-8">-->
+<!--                    <textarea type="text" class="form-control" formControlName="content"></textarea>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div align="center">-->
+<!--            <button routerLink="/movie" type="button" class="btn btn-secondary">Quay lại</button>-->
+<!--            <button type="submit" class="btn btn-primary">Thêm mới</button>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+
+
+
