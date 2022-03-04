@@ -17,19 +17,6 @@
     cursor: pointer;
 }
 
-#inline {
-    width: 100%;
-    display: flex;
-}
-
-.one, .two {
-    margin: 10px;
-}
-.two{
-    width: 137px;
-    margin-left: 20%;
-}
-
 .media-login{
     width: 500px;
 }
