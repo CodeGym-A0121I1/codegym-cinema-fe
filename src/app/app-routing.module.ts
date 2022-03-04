@@ -7,7 +7,7 @@ import {SelectedSeatComponent} from "./selected-seat/selected-seat.component";
 
 const appRoutes: Routes = [
   { path: "movie", component: ListMovieComponent  },
-  { path: "selectedMovie", component: SelectedMovieShowTimeComponent  },
+  { path: "selectedMovie/:id", component: SelectedMovieShowTimeComponent  },
   { path: "selectedSeat", component: SelectedSeatComponent  }
 ];
 
