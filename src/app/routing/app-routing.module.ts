@@ -11,7 +11,7 @@ import {SelectedSeatComponent} from "../component/show-time/selected-seat/select
 const appRoutes: Routes = [
     {path: "movie", component: ListMovieComponent},
     {path: "forbidden", component: ForbiddenComponent},
-    { path: "selectedMovie", component: SelectedMovieShowTimeComponent  },
+    { path: "selectedMovie/:id", component: SelectedMovieShowTimeComponent  },
     { path: "selectedSeat", component: SelectedSeatComponent  }
 ];
 

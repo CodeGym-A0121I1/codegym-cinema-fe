@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {MovieDTO} from "../../../dto/showtime/MovieDTO";
 import {ShowTimeService} from "../../../service/show-time.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-selected-movie-show-time',
@@ -16,11 +17,11 @@ export class SelectedMovieShowTimeComponent implements OnInit {
   startDate?: Date;
   startTime?: string;
   movieDTOTG!: any;
-  constructor( private showTimeSevice: ShowTimeService) {
+  constructor( private showTimeSevice: ShowTimeService,private activeRoute:ActivatedRoute) {
   }
 
   @Output() movieDTo: EventEmitter<MovieDTO> = new EventEmitter();
-  ngOnInit(): void { this.showTimeSevice.getAllShowTimeByMovieId("Movie1").subscribe(data => {
+  ngOnInit(): void { this.showTimeSevice.getAllShowTimeByMovieId(this.activeRoute.snapshot.params["id"]).subscribe(data => {
 
     const start = new Date(data[0].startDate);
     const end = new Date(data[0].movie.endDay);
