@@ -1,0 +1,27 @@
+.login {
+    border: 1px;
+    transition-duration: 0.4s;
+    background-color: #aba6a6;
+}
+
+.login:hover {
+    background-color: #f73e00;
+    color: white;
+}
+
+
+/*.button-submit:hover {*/
+/*    background: #ff6644;*/
+/*    color: #fff;*/
+/*    border: 1px solid #ff4444;*/
+/*    -webkit-transition: all 0.5s;*/
+/*    -o-transition: all 0.5s;*/
+/*    -ms-transition: all 0.5s;*/
+/*    -moz-transition: all 0.5s;*/
+/*    transition: all 0.5s;*/
+/*}*/
+
+.cursor-pointer {
+    cursor: pointer;
+}
+

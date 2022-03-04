@@ -649,7 +649,7 @@ nice Select active
     });
 	
 	
-			//show hide login form js
+			//show hide home form js
 	$('#search_button').on("click", function(e) {
 		$('#search_open').slideToggle();
 		e.stopPropagation(); 
