@@ -18,7 +18,7 @@
             </div>
             <div class="clearfix"></div>
             <ul class="dl-menu">
-              <li class="parent"><a href="#">Trang chủ</a></li>
+              <li class="parent"><a routerLink="/movie">Trang chủ</a></li>
               <li class="parent"><a href="#">Lịch chiếu</a>
               </li>
               <li class="parent"><a href="#">Phim</a>
@@ -44,7 +44,8 @@
       <div class="prs_top_login_btn_wrapper">
         <div class="prs_animate_btn1">
           <ul>
-            <li><a href="#" class="button button--tamaya" data-text="sign up" data-toggle="modal" data-target="#myModal"><span>Sign up</span></a>
+            <li><a href="#" class="button button--tamaya" data-text="sign up" data-toggle="modal"
+                   data-target="#myModal"><span>Đăng nhập</span></a>
             </li>
           </ul>
         </div>
@@ -52,13 +53,12 @@
       <div class="product-heading">
         <div class="con">
           <select>
-            <option>All Categories</option>
-            <option>Movie</option>
-            <option>Video</option>
-            <option>Music</option>
-            <option>TV-Show</option>
+            <option *ngFor="let genre of genreList" [value]="genre.id">aaaa</option>
+            <option [value]="0">Tất cả</option>
+            <option [value]="1">Tất cả 2</option>
+            <option [value]="2">Tất cả 3</option>
           </select>
-          <input type="text" placeholder="Search Movie , Video , Music">
+          <input type="text" placeholder="Search Movie">
           <button type="submit"><i class="flaticon-tool"></i>
           </button>
         </div>

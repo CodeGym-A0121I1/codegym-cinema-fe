@@ -1,11 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import { initializeApp } from "firebase/app";
+import {initializeApp} from "firebase/app";
 
 
 export const environment = {
-  production: false,
+  production: true,
   firebaseConfig: {
     apiKey: "AIzaSyC--yCMixAY8XXtgfVkSywXBMpwUQ45dcg",
     authDomain: "codegym-cinema.firebaseapp.com",
@@ -13,7 +13,8 @@ export const environment = {
     storageBucket: "codegym-cinema.appspot.com",
     messagingSenderId: "971870759010",
     appId: "1:971870759010:web:ae2b1ba6c9f5e5ccc1c93b"
-  }
+  },
+  apiBaseUrl: "http://localhost:8080/api"
 };
 
 // Initialize Firebase
