@@ -16,6 +16,10 @@ import {ShowTimeModule} from "./component/show-time/show-time.module";
 import {TicketModule} from "./component/ticket/ticket.module";
 import {UserModule} from "./component/user/user.module";
 import {ForbiddenComponent} from "./component/display/forbidden/forbidden.component";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+
 
 @NgModule({
     declarations: [
@@ -38,6 +42,9 @@ import {ForbiddenComponent} from "./component/display/forbidden/forbidden.compon
         UserModule,
         BrowserAnimationsModule,
         MatDialogModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+
     ],
     bootstrap: [AppComponent]
 })

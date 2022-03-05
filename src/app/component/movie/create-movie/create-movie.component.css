@@ -1,38 +1,38 @@
-/*body*/
-/*.form-group .col-form-label:after {*/
-/*    color: #dd0000;*/
-/*    content: "(*)";*/
+body
+.form-group .col-form-label:after {
+    color: #dd0000;
+    content: "(*)";
 
 
-/*}*/
+}
 
-/*.form-control {*/
-/*    margin-left: -60px;*/
-/*    margin-right: 20px;*/
+.form-control {
+    margin-left: -60px;
+    margin-right: 20px;
 
-/*}*/
+}
 
-/*.col-2 {*/
-/*    margin-left: -60px;*/
+.col-2 {
+    margin-left: -60px;
 
-/*}*/
+}
 
-/*#showtime {*/
-/*    margin-left: -60px;*/
-/*}*/
+#showtime {
+    margin-left: -60px;
+}
 
-/*.custom-select {*/
-/*    margin-left: -60px;*/
-/*}*/
+.custom-select {
+    margin-left: -60px;
+}
 
-/*.col-form-label {*/
-/*    margin-left: 120px;*/
-/*}*/
+.col-form-label {
+    margin-left: 120px;
+}
 
-/*#hidden {*/
-/*    visibility: hidden;*/
-/*}*/
+#hidden {
+    visibility: hidden;
+}
 
-/*.btn-secondary {*/
-/*    margin: 10px 50px 10px -40px*/
-/*}*/
+.btn-secondary {
+    margin: 10px 50px 10px -40px
+}
