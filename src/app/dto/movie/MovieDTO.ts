@@ -2,7 +2,7 @@ import {ActorDTO} from "./ActorDTO";
 import {DirectorDTO} from "./DirectorDTO";
 import {ShowTimeDTO} from "./ShowTimeDTO";
 import {TheaterDTO} from "./TheaterDTO";
-import {GenreDTO} from "./GenreDTO";
+import {Genre} from "../../model/movie/Genre";
 import {ProducerDTO} from "./ProducerDTO";
 
 export interface MovieDTO {
@@ -15,7 +15,7 @@ export interface MovieDTO {
     duration: number,
     content: string,
     type: string,
-    genreList :Array<GenreDTO>,
+    genreList :Array<Genre>,
     producerList:Array<ProducerDTO>
     actorList: Array<ActorDTO>,
     directorList: Array<DirectorDTO>,

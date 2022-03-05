@@ -4,6 +4,8 @@ import {MovieService} from "../../../service/movie.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {finalize} from "rxjs/operators";
+import {Genre} from "../../../model/movie/Genre";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
     selector: 'app-create-movie',
@@ -12,63 +14,93 @@ import {finalize} from "rxjs/operators";
 })
 export class CreateMovieComponent implements OnInit {
 
-    url: string | any;
     selectedFile: File | any;
-  private showTimeList: any;
-
+    url: string = "";
+    genreList: Genre[] | any;
+    indexGenreList: number[] = [];
 
     constructor(
         private router: Router,
         private movieService: MovieService,
         private angularFireStorage: AngularFireStorage,
-        private formBuilder: FormBuilder
+        private matSnackBar: MatSnackBar,
     ) {
     }
 
 
-
     ngOnInit(): void {
+        this.movieService.getAllGenre().subscribe(
+            (data) => {
+                this.genreList = data;
+                // console.log(data)
+            }
+        );
+        // tiếp tục lấy list của các thằng còn lại....
     }
 
     formMovie = new FormGroup({
-      name: new FormControl('', Validators.required,),
-      poster: new FormControl(''),
-      trailer: new FormControl('', [Validators.required]),
-      openingDay: new FormControl('', Validators.required),
-      endDay: new FormControl('', Validators.required),
-      duration: new FormControl('', [Validators.required]),
-      content: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
-      // genreList: new FormControl('', [Validators.required]),
-      // actorList: new FormArray([
-      //     new FormControl(),
-      //     new FormControl()
-      // ]),
-      // directorList : new FormArray([
-      //     new FormControl(),
-      //     new FormControl()
-      // ]),
-      //   showTimeList:new FormArray([])
-      //   ])
+        name: new FormControl('', Validators.required,),
+        poster: new FormControl(''),
+        trailer: new FormControl('', [Validators.required]),
+        openingDay: new FormControl('', Validators.required),
+        endDay: new FormControl('', Validators.required),
+        duration: new FormControl('', [Validators.required]),
+        content: new FormControl('', [Validators.required]),
+        type: new FormControl('', [Validators.required]),
+        genreList: new FormArray([]),
+        // actorList: new FormArray([
+        //     new FormControl(),
+        //     new FormControl()
+        // ]),
+        // directorList : new FormArray([
+        //     new FormControl(),
+        //     new FormControl()
+        // ]),
+        //   showTimeList:new FormArray([])
+        //   ])
 
 
-      // theaterList : new FormArray([
-      //     new FormControl(),
-      //     new FormControl()
+        // theaterList : new FormArray([
+        //     new FormControl(),
+        //     new FormControl()
     });
 
 
-
     createMovie() {
+        this.formMovie.value.poster = this.url;
+        // this.formMovie.value.genreList = this.genreListRequest;
         console.log(this.formMovie.value);
         // if (!this.formMovie.invalid) {
-        this.movieService.createMovie(this.formMovie.value).subscribe((data) => {
-            console.log(data)
-            // this.router.navigateByUrl("");
-        });
+        // this.movieService.createMovie(this.formMovie.value).subscribe(
+        //     (data) => {
+        //         if (data) {
+        //             this.matSnackBar.open("Thêm mới phim " + this.formMovie.value.name + " thành công", "Đóng", {
+        //                 panelClass: ['mat-toolbar', 'mat-primary'],
+        //                 duration: 5000
+        //             });
+        //             // this.router.navigateByUrl("");
+        //         }
+        //     }
+        // );
     }
 
     // }
+
+
+    // onAddSpecialRequest(genre: Genre, i: number) {
+    //     this.indexGenreList.push(i);
+    //     for (let j = 0; j < this.indexGenreList.length; j++) {
+    //         if (i)
+    //     }
+
+    //     this.formMovie.value.genreList.push(new FormControl(genre).value);
+    //
+    // }
+    //
+    // onRemoveSpecialRequest(genre: Genre) {
+    //     this.formMovie.value.genreList.removeAt();
+    // }
+
 
     selectFile(event: any) {
         const path = new Date().toString();
@@ -78,16 +110,10 @@ export class CreateMovieComponent implements OnInit {
                 this.angularFireStorage.ref(path).getDownloadURL().subscribe(
                     (data) => {
                         this.url = data;
-                        console.log(this.url)
                     }
                 )
             })
-        ).subscribe(
-            () => {},
-            (error) => {
-              console.log(error)},
-        );
+        ).subscribe();
     }
-
 
 }

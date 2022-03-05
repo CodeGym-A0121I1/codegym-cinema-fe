@@ -1,4 +1,4 @@
-export interface GenreDTO {
+export interface Genre {
     id:number,
     name:string
 }

@@ -3,10 +3,10 @@
         <h2>Thêm mới phim</h2>
         <div class="form-group">
             <div class="col-sm-12 row">
-                <div><img [src]="url" *ngIf="url"  class="img-thumbnail" style="width: 200px"></div>
+                <div><img *ngIf="url" [src]="url" class="img-thumbnail" style="width: 200px"></div>
                 <div class="col-sm-7">
                 </div>
-                <input type="file" id="img" name="img"  (change)="selectFile($event)" formControlName="poster">
+                <input type="file" id="img" name="img" (change)="selectFile($event)" formControlName="poster">
             </div>
         </div>
         <div class="form-group">
@@ -71,7 +71,7 @@
                 <div class=" form-check form-check-inline">
                     <input class="form-check-input" type="radio"
                            value="_2D" formControlName="type">
-                    <label class="form-check-label" >2D</label>
+                    <label class="form-check-label">2D</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio"
@@ -88,22 +88,27 @@
                 </div>
             </div>
         </div>
-        <!--        <div class="form-group">-->
-        <!--            <div class="col-sm-12 row">-->
-        <!--                <label class="col-2 col-form-label">Thể loại</label>-->
-        <!--                <div class="col-2">-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="1" formControlName="genreList">-->
-        <!--                        <label class="form-check-label">Hành động</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="2" formControlName="genreList">-->
-        <!--                        <label class="form-check-label">Viễn tưởng</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Hoạt hình</label>-->
-        <!--                    </div>-->
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Thể loại</label>
+                <div class="col-2">
+<!--                    <div class="form-check form-check-inline" *ngFor="let genre of genreList; let i = index" formArrayName="genreList">-->
+<!--                        <input class="form-check-input" type="checkbox" (click)="   ">-->
+<!--                        <input class="form-check-input" type="checkbox" (click)="onAddSpecialRequest(genre, i)">-->
+
+                        <!--                        <input class="form-check-input" type="checkbox" (click)="onRemoveSpecialRequest(genre)">-->
+<!--                        <label class="form-check-label">{{genre.name}}</label>-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--                            <div class="form-check form-check-inline">-->
+        <!--                                <input class="form-check-input" type="checkbox" value="option3">-->
+        <!--                                <label class="form-check-label">Hoạt hình</label>-->
+        <!--                            </div>-->
         <!--                    <div class="form-check form-check-inline">-->
         <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
         <!--                        <label class="form-check-label">Võ thuật</label>-->
@@ -169,25 +174,25 @@
         <!--                </div>-->
         <!--            </div>-->
         <!--        </div>-->
-<!--                <div class="form-group">-->
-<!--                    <div class="col-sm-12 row" formArrayName="startTime">-->
-<!--                        <label class="col-2 col-form-label">Lịch chiếu</label>-->
-<!--                        <div class="col-sm-2">-->
-<!--                            <input type="text" class="form-control" formControlName="startTime">-->
-<!--                        </div>-->
-<!--                        <div class="col-sm-2" id="showtime">-->
-<!--                            <button class="btn btn-primary" (click)="addTime()">Thêm giờ chiếu</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <div class="col-sm-12 row" formArrayName="startTime">-->
-<!--                        <label class="col-2 col-form-label" id="hidden"></label>-->
-<!--                        <div class="col-sm-8">-->
-<!--                            <input class="form-control" formControlName="showTimeList">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+        <!--                <div class="form-group">-->
+        <!--                    <div class="col-sm-12 row" formArrayName="startTime">-->
+        <!--                        <label class="col-2 col-form-label">Lịch chiếu</label>-->
+        <!--                        <div class="col-sm-2">-->
+        <!--                            <input type="text" class="form-control" formControlName="startTime">-->
+        <!--                        </div>-->
+        <!--                        <div class="col-sm-2" id="showtime">-->
+        <!--                            <button class="btn btn-primary" (click)="addTime()">Thêm giờ chiếu</button>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--                <div class="form-group">-->
+        <!--                    <div class="col-sm-12 row" formArrayName="startTime">-->
+        <!--                        <label class="col-2 col-form-label" id="hidden"></label>-->
+        <!--                        <div class="col-sm-8">-->
+        <!--                            <input class="form-control" formControlName="showTimeList">-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
         <div class="form-group">
             <div class="col-sm-12 row">
                 <label class="col-2 col-form-label">Nội dung</label>

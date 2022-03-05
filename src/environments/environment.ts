@@ -7,12 +7,21 @@ import { initializeApp } from "firebase/app";
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyC--yCMixAY8XXtgfVkSywXBMpwUQ45dcg",
-    authDomain: "codegym-cinema.firebaseapp.com",
-    projectId: "codegym-cinema",
-    storageBucket: "codegym-cinema.appspot.com",
-    messagingSenderId: "971870759010",
-    appId: "1:971870759010:web:ae2b1ba6c9f5e5ccc1c93b"
+  //   apiKey: "AIzaSyC--yCMixAY8XXtgfVkSywXBMpwUQ45dcg",
+  //   authDomain: "codegym-cinema.firebaseapp.com",
+  //   projectId: "codegym-cinema",
+  //   storageBucket: "codegym-cinema.appspot.com",
+  //   messagingSenderId: "971870759010",
+  //   appId: "1:971870759010:web:ae2b1ba6c9f5e5ccc1c93b"
+  // }
+    apiKey: "AIzaSyAsOBFJz5ynJI9WTk7jK4pwoVZixCM2qh8",
+    authDomain: "room-meeting-management.firebaseapp.com",
+    projectId: "room-meeting-management",
+    databaseURL: "https://room-meeting-management-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    storageBucket: "room-meeting-management.appspot.com",
+    messagingSenderId: "554191587700",
+    appId: "1:554191587700:web:1424f77b6006266f988421",
+    measurementId: "G-7NX4GLDW0K"
   }
 };
 
