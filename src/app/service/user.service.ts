@@ -18,7 +18,7 @@ export class UserService {
     }
 
     public generateOtp(username: string): Observable<Boolean> {
-        return this.httpClient.get<Boolean>(this.API_USER + "/account/generate/" + username, {headers: this.requestHeader});
+        return this.httpClient.get<Boolean>(this.API_USER + "/account/generate-otp/" + username, {headers: this.requestHeader});
     }
 
     public forgotPassword(forgotPassword: ForgotPassword): Observable<Boolean> {
