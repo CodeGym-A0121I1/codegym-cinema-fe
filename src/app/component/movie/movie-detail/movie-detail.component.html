@@ -1,1 +1,153 @@
-<p>movie-detail works!</p>
+<button (click)="test()">Mua vé</button>
+
+
+
+<!-- preloader Start -->
+<div id="preloader">
+    <div id="status">
+        <img src="assets/images/header/horoscope.gif" id="preloader_image" alt="loader">
+    </div>
+</div>
+<div class="prs_title_main_sec_wrapper">
+    <div class="prs_title_img_overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_title_heading_wrapper">
+                    <h2>{{movieid.name}}</h2>
+                    <ul>
+                        <li><a href="#">Trang Chủ</a>
+                        </li>
+                        <li>&nbsp;&nbsp; >&nbsp;&nbsp; Phim</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- prs title wrapper End -->
+<!-- prs ms trailer wrapper Start -->
+<div class="prs_ms_trailer_vid_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>PHIM </h2>
+                </div>
+            </div>
+            <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
+                <div class="prs_ms_trailer_vid_wrapper">
+                    <div class="prs_ms_trailer_vid_icon_wrapper">
+                        <ul>
+                            <li><a  rel='external'
+                                    href='https://www.youtube.com/watch?v=T1cugr4N-dY' title='title'><i
+                                    class="flaticon-play-button"></i></a>
+                            </li>
+                        </ul>
+                        <h2>Xem đoạn giới thiệu</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
+                <div class="prs_ms_trailer_slider_main_wrapper">
+                    <div class="prs_ms_trailer_slider_left_wrapper">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="prs_ms_trailer_slider_left_img_wrapper">
+                                    <div class="col-sm-6 mt-2" *ngIf="movieid?.poster">
+                                        <img [src]="movieid?.poster" style="width: 700px;height: 565px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prs_ms_trailer_slider_right_wrapper">
+                        <h2>{{movieid.name}}</h2>
+                        <h5><span>Diễn viên chính -</span>
+                            <p *ngIf="movieid.actorList.length == 0">Không cập nhật diễn viên chính</p>
+                            <p style="display: inline" *ngFor="let actor of movieid?.actorList">
+                                {{actor.name}} ,
+                            </p>
+                        </h5>
+                        <ul>
+                            <li>Khởi chiếu - <span>{{movieid.openingDay}}</span>
+                            </li>
+                            <li>Loại phim - <span>{{movieid.type}}</span>
+                            </li>
+                            <li>Đạo diễn - <span>
+                                 <p *ngIf="movieid.directorList.length == 0">Không cập nhật diễn viên chính</p>
+                            <p style="display: inline" *ngFor="let director of movieid?.directorList">
+                                {{director.name}} ,
+                            </p>
+                            </span>
+                            </li>
+                            <li>Thời lượng - <span>{{movieid.duration}}</span>
+                            </li>
+                        </ul>
+                        <br>
+                        <button type="button" class="btn btn-danger bt-content">Đặt Vé</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="prs_syn_main_section_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="prs_syn_cont_wrapper">
+                    <h3>Tóm tắt</h3>
+                    <h4><span>Thể loại -</span>
+                        <p *ngIf="movieid.genreList.length == 0">Không tồn tại thể loại</p>
+                        <p style="display: inline" *ngFor="let genre of movieid?.genreList">
+                            {{genre.name}} ,
+                        </p>
+                    </h4>
+                    <p>{{movieid.content}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="prs_syn_img_wrapper">
+                    <img [src]="movieid?.poster" style="width: 500px;height: 565px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="prs_ms_crew_main_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="prs_heading_section_wrapper">
+                    <h2>Lịch chiếu phim</h2>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"></div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="prs_ms_crew_left_cont_wrapper">
+                    <ul>
+
+
+                        <table class="table widthtable ">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Ngày chiếu</th>
+                                <th scope="col">Giờ chiếu</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let showtime of showmovieid">
+                                <td>{{showtime.startDate}}</td>
+                                <td>{{showtime.startTime}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

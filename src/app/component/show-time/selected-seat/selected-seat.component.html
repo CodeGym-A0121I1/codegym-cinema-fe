@@ -1,4 +1,4 @@
-<div class="st_bt_top_header_wrapper float_left">
+<div class="st_bt_top_header_wrapper float_left" *ngIf="!isDisplay">
     <div class="container container_seat">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -34,7 +34,7 @@
 </div>
 <!-- st top header Start -->
 <!-- st seat Layout Start -->
-<div class="st_seatlayout_main_wrapper float_left">
+<div class="st_seatlayout_main_wrapper float_left" *ngIf="!isDisplay">
     <div class="container container_seat">
         <div class="st_seat_lay_heading float_left">
             <h3>Rạp CGV</h3>
@@ -74,3 +74,6 @@
         </div>
     </div>
 </div>
+
+<app-create-booking *ngIf="isDisplay" [seatMovieDTO]="movieSeatDTO" ></app-create-booking>
+

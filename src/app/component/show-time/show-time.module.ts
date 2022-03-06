@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SelectedMovieShowTimeComponent} from './selected-movie-show-time/selected-movie-show-time.component';
 import {SelectedSeatComponent} from './selected-seat/selected-seat.component';
 import {ShowTimeRoutingModule} from "../../routing/show-time-routing.module";
+import {BookingModule} from "../booking/booking.module";
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import {ShowTimeRoutingModule} from "../../routing/show-time-routing.module";
     ],
     imports: [
         CommonModule,
-        ShowTimeRoutingModule
+        ShowTimeRoutingModule,
+        BookingModule
     ]
 })
 export class ShowTimeModule {

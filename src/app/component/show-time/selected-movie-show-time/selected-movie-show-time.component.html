@@ -7,7 +7,9 @@
                 <!--                </li>-->
                 <li class="nav-item"  *ngFor="let item of listDates; let in= index "  >
                     <a data-toggle="tab" href="#menu{{item.getTime()}}" (click)="takeData(item)"> <span>{{item |date:'ccc'}}</span>
-                        <br>{{item.getDate()}}&nbsp;-{{item.getMonth()|date:'MM'}}</a>
+                        <!--                        <br>{{item.getDate()}}&nbsp;-{{item.getMonth()|date:'MM'}}</a>-->
+                        <!--                        <br>{{item.getMonth()+1}}</a>-->
+                        <br>{{item.getDate()-1}}-{{item.getMonth()+1}}</a>
                 </li>
 
             </ul>
@@ -34,6 +36,10 @@
                                                 </div>
                                                 <div class="st_calen_asc_heart_cont">
                                                     <h3>Rạp cgv: </h3>
+                                                    <p *ngFor="let movieTime of listMovies">
+                                                        <a (click)="takeTime(this.convertTime(movieTime.startTime))" id="{{movieTime.id}}">{{this.convertTime(movieTime.startTime)}}</a>
+
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -74,5 +80,4 @@
         </div>
     </div>
 </div>
-
 <app-selected-seat [movieShow]="movieDTOTG" *ngIf="isDisplay"></app-selected-seat>

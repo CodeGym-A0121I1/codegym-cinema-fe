@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {SelectedSeatComponent} from "../component/show-time/selected-seat/selected-seat.component";
 
-const routes: Routes = [
-
-];
+const routes: Routes = [];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class UserRoutingModule{}
+export class UserRoutingModule {
+}

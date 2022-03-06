@@ -3,6 +3,7 @@ import {ShowTimeService} from "../../../service/show-time.service";
 import {MovieDTO} from "../../../dto/showtime/MovieDTO";
 import {Seat} from "../../../model/Seat";
 import {SeatMovieDTO} from "../../../dto/showtime/SeatMovieDTO";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-selected-seat',
@@ -11,15 +12,14 @@ import {SeatMovieDTO} from "../../../dto/showtime/SeatMovieDTO";
 })
 export class SelectedSeatComponent implements OnInit {
 
-  constructor(private showservice: ShowTimeService) {
+  constructor(private showservice: ShowTimeService, private authservice:AuthService) {
   }
-
-
   @Input() movieShow!: MovieDTO;
   listSeatBooks: Array<Seat>=[];
   listLocalSeat: Array<string> = ['A', 'B', 'C', 'D', 'E'];
   listseatUserBooked: string[] = [];
   movieSeatDTO!:SeatMovieDTO;
+  isDisplay:boolean=false;
 
   ngOnInit(): void {
     this.showservice.getAllSeatBookedByTheaterId(this.movieShow.theater.id).subscribe(data => {
@@ -76,8 +76,9 @@ export class SelectedSeatComponent implements OnInit {
       price:this.movieShow.price,
       listSeat:this.listseatUserBooked
     }
+    this.isDisplay=true;
+    // console.log(this.movieSeatDTO);
 
-    console.log(this.movieSeatDTO);
   }
 
 }
