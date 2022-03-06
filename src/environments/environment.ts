@@ -10,6 +10,7 @@ export const environment = {
     apiKey: "AIzaSyC--yCMixAY8XXtgfVkSywXBMpwUQ45dcg",
     authDomain: "codegym-cinema.firebaseapp.com",
     projectId: "codegym-cinema",
+    databaseURL: "https://codegym-cinema-default-rtdb.asia-southeast1.firebasedatabase.app/",
     storageBucket: "codegym-cinema.appspot.com",
     messagingSenderId: "971870759010",
     appId: "1:971870759010:web:ae2b1ba6c9f5e5ccc1c93b"
