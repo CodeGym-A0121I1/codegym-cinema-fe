@@ -1,1 +1,139 @@
-<p>detail-booking works!</p>
+<div id="preloader">
+    <div id="status">
+        <img src="images/header/horoscope.gif" id="preloader_image" alt="loader">
+    </div>
+</div>
+<!-- color picker start -->
+<!-- st top header Start -->
+<div class="st_bt_top_header_wrapper float_left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                <div class="st_bt_top_back_btn float_left"><a href="index.html"><i
+                        class="fas fa-long-arrow-alt-left"></i> &nbsp;Trở lại</a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="st_bt_top_center_heading float_left">
+                    <!--                    <h3>{{bookingid.name}}</h3>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- st top header Start -->
+<!-- st dtts section Start -->
+<div class="st_dtts_wrapper float_left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                <div class="st_dtts_left_main_wrapper float_left">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="st_dtts_ineer_box float_left">
+                                <ul>
+                                    <li><span class="dtts1">Phòng </span> <span
+                                            class="dtts2">{{bookingid.showTime.id}}</span>
+                                    </li>
+                                    <li><span class="dtts1">Mã đặt vé</span> <span class="dtts2">{{bookingid.id}}</span>
+                                    </li>
+                                    <li><span class="dtts1">Ngày chiếu</span> <span
+                                            class="dtts2">{{bookingid.date}}</span>
+                                    </li>
+                                    <li><span class="dtts1">Giờ chiếu</span> <span
+                                            class="dtts2">{{bookingid.time}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="st_cherity_section float_left">
+                                <div class="st_cherity_img float_left">
+                                    <!--                                    <div class="col-sm-6 mt-2" *ngIf="bookingid?.poster">-->
+                                    <!--                                        <img [src]="movieid?.poster" style="width: 700px;height: 565px">-->
+                                    <!--                                    </div>-->
+                                    <img src="../../../assets/images/index_II/bot-2.jpg" alt="img">
+                                </div>
+                                <div class="st_cherity_img_cont float_left">
+                                    <div class="box">
+                                        <p class="cc_pc_color1">
+                                            <!--                                            <input type="checkbox" id="c201" name="cb">-->
+                                            <label><span>Vui lòng </span>đến lấy vé trước thời gian chiếu phim 30 phút.
+                                                Sau giờ đó vé sẽ tự động hủy</label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="st_dtts_ineer_box float_left">
+                                    <h3>Thông tin tài khoản đặt vé</h3><br>
+                                    <ul>
+                                        <li><span class="dtts1">Họ tên</span> <span
+                                                class="dtts2">{{bookingid.user.fullName}}</span>
+                                        </li>
+                                        <li><span class="dtts1">Email</span> <span
+                                                class="dtts2">{{bookingid.user.email}}</span>
+                                        </li>
+                                        <li><span class="dtts1">CMND</span> <span
+                                                class="dtts2">{{bookingid.user.idCard}}</span>
+                                        </li>
+                                        <li><span class="dtts1">Số điện thoại</span> <span
+                                                class="dtts2">{{bookingid.user.phoneNumber}}</span>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-md-12"><br>
+                            <div class="st_cherity_btn float_left"><br>
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="flaticon-tickets"></i> &nbsp;Hủy đặt</a>
+                                    </li>
+                                    <li><a (click)="create()">
+                                        <i class="flaticon-tickets"></i> &nbsp;Thanh toán</a>
+                                    </li>
+                                    <li>
+                                        <!--                                        <a *ngIf="!create1" (click)="thanhtoan()">-->
+                                        <!--                                            <i class="flaticon-tickets"> </i> &nbsp;Thanh toán</a>-->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="st_dtts_bs_wrapper float_left">
+                            <div class="st_dtts_bs_heading float_left">
+                                <p>Chỗ ngồi</p>
+                            </div>
+                            <div class="st_dtts_sb_ul float_left">
+                                <ul style="display: inline">
+                                    <li *ngFor="let seat of listseatUserBooked">{{seat}}
+                                        <br> <span>giá. 466/97đ</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="st_dtts_sb_h2 float_left">
+                                <h3>Tổng thu <span>860.780đ</span></h3>
+                                <h4>Trạng thái hiện tại <span>Chưa thanh toán</span></h4>
+                                <h5>Số tiền phải trả<span>860.809đ</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>{{bookingid.user.fullName}}</p>
+<!--<app-paypal [pricedetail]=priceFake></app-paypal>-->
+
+<!--<ul  >-->
+<!--    <li>-->
+<!--        <br> <span>giá. {{ticket.price}}</span>-->
+<!--    </li>-->
+<!--</ul>-->
