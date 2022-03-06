@@ -148,9 +148,6 @@ export class LoginComponent implements OnInit {
     }
 
     forgotPassword() {
-        // gửi request username về be rồi nhận mã đăng nhập từ mail (set time cho mã = 60s)
-        // sử dụng dialog + cho đồng hồ đếm ngược 60s mã hết hạn
-        // Chức năng chưa hoàn thiện
         this.matDialog.open(ForgotPasswordComponent);
     }
 
