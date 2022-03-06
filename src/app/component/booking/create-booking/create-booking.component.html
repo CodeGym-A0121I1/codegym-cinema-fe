@@ -14,7 +14,6 @@
         </div>
     </div>
 </div>
-
 <div class="st_dtts_wrapper float_left">
 
     <div class="container">
@@ -78,10 +77,12 @@
                                     <li>
                                         <a href="#"><i class="flaticon-tickets"></i> Hủy đặt</a>
                                     </li>
-                                    <li><a (click)="create()">
+                                    <li><a *ngIf="test" (click)="create()">
                                         <i class="flaticon-tickets"></i> &nbsp;Xác nhận đặt vé</a>
                                     </li>
                                     <li>
+                                    <li><a *ngIf="!test" (click)="thanhtoan()">
+                                        <i class="flaticon-tickets"></i> &nbsp;Thanh Toán</a>
                                     </li>
                                 </ul>
                             </div>

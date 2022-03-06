@@ -75,25 +75,28 @@ export class CreateBookingComponent implements OnInit {
         )
     }
 
+    test: boolean = true;
 
     create() {
-        this.formBooking.value.user.id = this.authservice.getIdUser();
-        this.formBooking.value.date = this.seatMovieDTO.dateStart;
-        this.formBooking.value.time = this.seatMovieDTO.timeStart;
-        this.formBooking.value.paid = false;
-        this.formBooking.value.totalPrice = this.totalmoney;
-        this.formBooking.value.showTime.id = "ST1";
-        console.log("gia ri form booking");
-        console.log(this.formBooking.value);
-        this.bookingservice.createBooking(this.formBooking.value).subscribe(
-            () => {
-                console.log("Create vboookling thành công");
-                // this.router.navigateByUrl('/detail-booking/' + this.bookingid.id);
-            })
-        console.log(this.formBooking);
+        this.test = false;
     }
 
     thanhtoan() {
+        console.log("giờ ");
+        console.log(this.formBooking.value.time.slice(0, -3));
+        this.formBooking.value.user.id = this.authservice.getIdUser();
+        this.formBooking.value.date = this.seatMovieDTO.dateStart;
+        this.formBooking.value.time = this.seatMovieDTO.timeStart.slice(0, -3);
+        this.formBooking.value.paid = false;
+        this.formBooking.value.totalPrice = this.totalmoney;
+        this.formBooking.value.showTime.id = "ST1";
+        console.log(this.formBooking.value);
+            this.bookingservice.createBooking(this.formBooking.value).subscribe(
+                (data) => {
+                    this.bookingid = data;
+                    console.log(data);
+                }
+            );
 
     }
 }

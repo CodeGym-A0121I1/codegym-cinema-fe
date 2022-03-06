@@ -18,12 +18,9 @@ import {UserModule} from "./component/user/user.module";
 import {ForbiddenComponent} from "./component/display/forbidden/forbidden.component";
 import {enableProdMode} from '@angular/core';
 import {environment} from "../environments/environment";
-import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 if (environment.production) {
     enableProdMode();
 }
-
-// platformBrowserDynamic().bootstrapModule(AppModule);
 @NgModule({
     declarations: [
         AppComponent,
@@ -49,5 +46,4 @@ if (environment.production) {
     bootstrap: [AppComponent]
 })
 export class AppModule {
-
 }

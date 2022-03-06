@@ -21,7 +21,7 @@ export class BookingService {
         return this.httpClient.get(this.UPR_API_DETAIL_BOOKING + '/' + idBooking);
     }
 
-    createBooking(booking: FormGroup) {
+    createBooking(booking: Object) {
         return this.httpClient.post(this.UPR_API_CREATE_BOOKING, booking);
     }
 }
