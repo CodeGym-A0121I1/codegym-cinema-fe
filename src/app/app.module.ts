@@ -19,6 +19,8 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {environment} from "../environments/environment";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
@@ -41,10 +43,12 @@ import {NgxPaginationModule} from "ngx-pagination";
         UserModule,
         BrowserAnimationsModule,
         MatDialogModule,
+        HttpClientModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFirestoreModule.enablePersistence(),
         NgxPaginationModule,
         MatSnackBarModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFirestoreModule,
     ],
     bootstrap: [AppComponent]
 })

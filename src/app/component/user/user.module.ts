@@ -6,6 +6,7 @@ import {ChangePasswordUserComponent} from './change-password-user/change-passwor
 import {ListEmployeeComponent} from './list-employee/list-employee.component';
 import {UpdateEmployeeComponent} from './update-employee/update-employee.component';
 import {UserRoutingModule} from "../../routing/user-routing.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import {UserRoutingModule} from "../../routing/user-routing.module";
     ],
     imports: [
         CommonModule,
-        UserRoutingModule
+        UserRoutingModule,
+        ReactiveFormsModule
     ]
 })
 export class UserModule {
