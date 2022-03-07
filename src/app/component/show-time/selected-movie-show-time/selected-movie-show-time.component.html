@@ -7,7 +7,9 @@
                 <!--                </li>-->
                 <li class="nav-item"  *ngFor="let item of listDates; let in= index "  >
                     <a data-toggle="tab" href="#menu{{item.getTime()}}" (click)="takeData(item)"> <span>{{item |date:'ccc'}}</span>
-                        <br>{{item.getDate()}}&nbsp;-{{item.getMonth()|date:'MM'}}</a>
+<!--                        <br>{{item.getDate()}}&nbsp;-{{item.getMonth()|date:'MM'}}</a>-->
+<!--                        <br>{{item.getMonth()+1}}</a>-->
+                        <br>{{item.getDate()-1}}-{{item.getMonth()+1}}</a>
                 </li>
 
             </ul>

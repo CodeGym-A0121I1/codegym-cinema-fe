@@ -12,17 +12,18 @@ import {ActivatedRoute} from "@angular/router";
 export class SelectedMovieShowTimeComponent implements OnInit {
   listMovies: Array<ShowTime> = [];
   listDates: Array<Date> = [];
-  countDate: number = 0;
-  isDisplay = false;
-  startDate?: Date;
+  countDate: number = 0;  startDate?: Date;
   startTime?: string;
+  isDisplay = false;
+
   movieDTOTG!: any;
   constructor( private showTimeSevice: ShowTimeService,private activeRoute:ActivatedRoute) {
   }
 
   @Output() movieDTo: EventEmitter<MovieDTO> = new EventEmitter();
   ngOnInit(): void { this.showTimeSevice.getAllShowTimeByMovieId(this.activeRoute.snapshot.params["id"]).subscribe(data => {
-
+    console.log(data[0].startDate);
+    console.log(data[0].movie.endDay);
     const start = new Date(data[0].startDate);
     const end = new Date(data[0].movie.endDay);
     this.listMovies = data;
@@ -55,16 +56,19 @@ export class SelectedMovieShowTimeComponent implements OnInit {
 
   takeTime(s: string) {
     this.startTime = s;
+    let itemDate=this.startDate;
+    itemDate?.setDate(itemDate?.getDate()-1)
     const movieDTOTG1: MovieDTO = {
       movie: this.listMovies[0].movie,
       timeSelected: this.startTime,
-      dateStart: this.startDate,
+      dateStart: itemDate,
       price:this.listMovies[0].price,
       theater:this.listMovies[0].theater
     };
     this.movieDTOTG = movieDTOTG1;
     this.movieDTo.emit(movieDTOTG1);
     this.isDisplay = true
+
   }
 
 }
