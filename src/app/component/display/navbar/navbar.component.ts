@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../service/auth.service";
-import {MovieService} from "../../../service/movie.service";
-import {Genre} from "../../../model/movie/Genre";
 
 @Component({
     selector: 'app-navbar',
@@ -10,23 +8,14 @@ import {Genre} from "../../../model/movie/Genre";
 })
 export class NavbarComponent implements OnInit {
 
-    genreList: Array<Genre> = [];
-
-    constructor(public authService: AuthService,
-                private movieService: MovieService
-    ) {
+    constructor(public authService: AuthService) {
     }
 
     ngOnInit(): void {
         if (localStorage.getItem("token") !== null) {
             this.authService.assignSessionStorageWithLocalStorage();
         }
-        this.movieService.getAllGenre().subscribe(
-            data => {
-                console.log(data)
-                this.genreList = data
-            }
-        )
+
     }
 
     public isLoggedIn() {
