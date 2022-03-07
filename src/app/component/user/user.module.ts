@@ -6,6 +6,9 @@ import {ChangePasswordUserComponent} from './change-password-user/change-passwor
 import {ListEmployeeComponent} from './list-employee/list-employee.component';
 import {UpdateEmployeeComponent} from './update-employee/update-employee.component';
 import {UserRoutingModule} from "../../routing/user-routing.module";
+import { ListMemberComponent } from './list-member/list-member.component';
+import { UpdateMemberComponent } from './update-member/update-member.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -13,11 +16,14 @@ import {UserRoutingModule} from "../../routing/user-routing.module";
         DetailUserComponent,
         ChangePasswordUserComponent,
         ListEmployeeComponent,
-        UpdateEmployeeComponent
+        UpdateEmployeeComponent,
+        ListMemberComponent,
+        UpdateMemberComponent
     ],
     imports: [
         CommonModule,
-        UserRoutingModule
+        UserRoutingModule,
+        ReactiveFormsModule
     ]
 })
 export class UserModule {
