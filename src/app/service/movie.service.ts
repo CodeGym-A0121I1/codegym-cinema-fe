@@ -10,7 +10,7 @@ import {Genre} from "../model/movie/Genre";
 })
 export class MovieService {
 
-  private readonly API_MOVIE = environment.apiBaseUrl + "/movie";
+  private readonly API_MOVIE = "http://localhost:8080/api/movie";
 
   constructor(
       private http: HttpClient
