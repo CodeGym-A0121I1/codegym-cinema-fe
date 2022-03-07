@@ -123,17 +123,17 @@ export class LoginComponent implements OnInit {
                     this.isLoginValid = false;
                     switch (error.error.status) {
                         case "Username not exists":
-                            this.errorUsername = "Tài khoản của bạn không tồn tại";
+                            this.errorUsername = "Tài khoản hoặc mật khẩu sai";
                             this.errorPassword = "";
                             break;
                         case "Account locked":
                             this.errorUsername = "Tài khoản của bạn đã bị khóa";
                             this.errorPassword = "";
                             break;
-                        case "Wrong password":
-                            this.errorPassword = "Mật khẩu sai";
-                            this.errorUsername = "";
-                            break;
+                        // case "Wrong password":
+                        //     this.errorPassword = "Mật khẩu sai";
+                        //     this.errorUsername = "";
+                        //     break;
                         default:
                             this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {
                                 panelClass: ['mat-toolbar', 'mat-primary'],
