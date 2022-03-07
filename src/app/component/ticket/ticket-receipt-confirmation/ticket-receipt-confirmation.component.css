@@ -1,5 +1,5 @@
 .margin {
-    margin: 5px 20px 10px 0px;
+    margin: 5px 10px 10px 0px;
 }
 
 .img {
@@ -11,23 +11,3 @@
         width: 400px
     }
 }
-
-@media only screen and (min-width: 1200px){
-    .img {
-        width: 500px
-    }
-    h1 {
-        font-size: 48px;
-    }
-    h2{
-        font-size: 32px;
-    }
-    th{
-        font-size: 24px;
-        padding: 20px;
-    }
-    td{
-        font-size: 24px;
-    }
-}
-

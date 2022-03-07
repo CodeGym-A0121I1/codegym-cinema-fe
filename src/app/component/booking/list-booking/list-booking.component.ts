@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BookingService} from "../../../service/booking.service";
 import {Booking} from "../../../model/booking/Booking";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
     selector: 'app-list-booking',
@@ -12,7 +13,8 @@ export class ListBookingComponent implements OnInit {
     p: number | any;
     checkPagination = true;
 
-    constructor(private bookingService: BookingService) {
+    constructor(private bookingService: BookingService,
+                private fb: FormBuilder) {
     }
 
     ngOnInit(): void {
@@ -23,6 +25,10 @@ export class ListBookingComponent implements OnInit {
             }
         );
     }
+
+    searchForm = this.fb.group({
+        search: ['', Validators.maxLength(100)],
+    });
 
     searchBooking(search: string) {
         this.bookingService.getBySearch(search).subscribe(
