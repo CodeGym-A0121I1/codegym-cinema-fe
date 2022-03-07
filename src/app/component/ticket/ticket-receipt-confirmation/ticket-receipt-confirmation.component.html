@@ -7,8 +7,10 @@
     <hr>
     <table class="container">
         <tr>
-            <td><img src="https://image.tmdb.org/t/p/original/gHPtCmMeDqjaGqnMrWGDmD3nKd2.jpg"
-                     class="img-circle img"></td>
+            <td>
+                <img src="{{booking.showTime.movie.poster}}"
+                     class="img-circle img">
+            </td>
             <td>
                 <div class="margin">
                     <h2>{{booking.showTime.movie.name}}</h2>
@@ -30,7 +32,8 @@
                         <tr>
                             <th scope="col">Giá</th>
                             <td scope="col">
-                                <span *ngFor="let ticket of ticketList">{{ticket.seat.name}} : {{ticket.price | currency: "VND"}}<br></span>
+                                <span *ngFor="let ticket of ticketList">{{ticket.seat.name}}
+                                    : {{ticket.price | currency: "VND"}}<br></span>
                             </td>
                         </tr>
                         <tr>
@@ -59,7 +62,8 @@
                         </tr>
                     </table>
                     <br>
-                    <button *ngIf="!checkStatus" type="button" class="btn text-light" style="background: #26B99A; color: white;"
+                    <button *ngIf="!checkStatus" type="button" class="btn text-light"
+                            style="background: #26B99A; color: white;"
                             (click)="ticketReceipt(booking.id)">Xác nhận nhận vé
                     </button>
                 </div>

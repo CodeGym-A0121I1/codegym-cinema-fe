@@ -34,7 +34,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="even pointer" *ngFor="let booking of bookingList | paginate :{itemsPerPage:2 ,currentPage : p}">
+            <tr class="even pointer" *ngFor="let booking of bookingList | paginate :{itemsPerPage:10 ,currentPage : p}">
                 <th>{{booking.id}}</th>
                 <td>{{booking.user.id}}</td>
                 <td>{{booking.user.fullName}}</td>
