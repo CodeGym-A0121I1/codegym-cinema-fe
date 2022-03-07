@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {Movie} from "../model/movie/Movie";
@@ -23,5 +23,9 @@ export class MovieService {
 
   getAllGenre(): Observable<Array<Genre>> {
     return this.http.get<Array<Genre>>(this.API_MOVIE + "/genre");
+  }
+
+  findAllByNameAndGenre(name: string, genre: number): Observable<Array<Movie>> {
+    return this.http.get<Array<Movie>>(this.API_MOVIE, {params: new HttpParams().set('name', name).set('genre', genre)})
   }
 }
