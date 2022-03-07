@@ -1,11 +1,11 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import {initializeApp} from "firebase/app";
+import { initializeApp } from "firebase/app";
 
 
 export const environment = {
-  production: true,
+  production: false,
   firebaseConfig: {
     apiKey: "AIzaSyAsOBFJz5ynJI9WTk7jK4pwoVZixCM2qh8",
     authDomain: "room-meeting-management.firebaseapp.com",
@@ -14,9 +14,7 @@ export const environment = {
     storageBucket: "room-meeting-management.appspot.com",
     messagingSenderId: "554191587700",
     appId: "1:554191587700:web:1424f77b6006266f988421",
-    measurementId: "G-7NX4GLDW0K"
-  },
-  apiBaseUrl: "http://localhost:8080/api"
+    measurementId: "G-7NX4GLDW0K"  }
 };
 
 // Initialize Firebase
