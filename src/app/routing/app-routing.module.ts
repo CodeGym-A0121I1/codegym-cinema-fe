@@ -7,6 +7,7 @@ import {ForbiddenComponent} from "../component/display/forbidden/forbidden.compo
 const appRoutes: Routes = [
     {path: "movie", component: ListMovieComponent},
     {path: "forbidden", component: ForbiddenComponent}
+
 ];
 
 @NgModule({

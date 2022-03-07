@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../../../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
         FormsModule,
+        MatSelectModule,
     ]
 })
 export class MovieModule {

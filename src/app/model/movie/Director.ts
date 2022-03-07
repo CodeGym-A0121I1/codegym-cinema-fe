@@ -1,4 +1,4 @@
-export interface ActorDTO {
+export interface Director {
     id:number,
     name:string
 }

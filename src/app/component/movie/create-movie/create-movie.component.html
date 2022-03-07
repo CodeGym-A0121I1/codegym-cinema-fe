@@ -3,209 +3,221 @@
         <h2>Thêm mới phim</h2>
         <div class="form-group">
             <div class="col-sm-12 row">
-                <div><img *ngIf="url" [src]="url" class="img-thumbnail" style="width: 200px"></div>
-                <div class="col-sm-7">
+                <div class="col-sm-6">
                 </div>
-                <input type="file" id="img" name="img" (change)="selectFile($event)" formControlName="poster">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Tên phim</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" formControlName="name">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Từ ngày</label>
-                <div class="col-sm-8">
-                    <input type="datetime-local" class="form-control" formControlName="openingDay">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class=" col-2 col-form-label">Đến ngày</label>
-                <div class="col-sm-8">
-                    <input type="datetime-local" class="form-control" formControlName="endDay">
-                </div>
-            </div>
-        </div>
-        <!--        <div class="form-group">-->
-        <!--            <div class="col-sm-12 row">-->
-        <!--                <label class="col-2 col-form-label">Diễn viên</label>-->
-        <!--                <div class="col-sm-8">-->
-        <!--                    <input type="text" class="form-control" formControlName="actorList">-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--        <div class="form-group">-->
-        <!--            <div class="col-sm-12 row">-->
-        <!--                <label class=" col-2 col-form-label">Hãng phim</label>-->
-        <!--                <div class="col-sm-8">-->
-        <!--                    <input type="text" class="form-control" formControlName="producerList">-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--        <div class="form-group">-->
-        <!--            <div class="col-sm-12 row">-->
-        <!--                <label class="col-2 col-form-label">Đạo diễn</label>-->
-        <!--                <div class="col-sm-8">-->
-        <!--                    <input type="text" class="form-control" formControlName="directorList">-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Thời lượng</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" formControlName="duration">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Phiên bản</label>
-                <div class=" form-check form-check-inline">
-                    <input class="form-check-input" type="radio"
-                           value="_2D" formControlName="type">
-                    <label class="form-check-label">2D</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio"
-                           value="_3D" formControlName="type">
-                    <label class="form-check-label">3D</label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Trailer</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" formControlName="trailer">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Thể loại</label>
-                <div class="col-2">
-<!--                    <div class="form-check form-check-inline" *ngFor="let genre of genreList; let i = index" formArrayName="genreList">-->
-<!--                        <input class="form-check-input" type="checkbox" (click)="   ">-->
-<!--                        <input class="form-check-input" type="checkbox" (click)="onAddSpecialRequest(genre, i)">-->
 
-                        <!--                        <input class="form-check-input" type="checkbox" (click)="onRemoveSpecialRequest(genre)">-->
-<!--                        <label class="form-check-label">{{genre.name}}</label>-->
+                <div class="col-sm-6">
+                    <div><img *ngIf="url" [src]="url" class="img-thumbnail" style="width: 200px"></div>
+                    <input type="file" id="img" name="img" (change)="selectFile($event)" formControlName="poster">
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('poster')?.hasError('required')  && formMovie.get('poster')?.touched">
+                        Chưa chọn ảnh.
+                    </label>
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Tên phim</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" formControlName="name">
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('name')?.hasError('required')  && formMovie.get('name')?.touched">
+                            Chưa nhập tên phim.
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Từ ngày</label>
+                    <div class="col-sm-8">
+                        <input type="datetime-local" class="form-control" formControlName="openingDay">
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('openingDay')?.hasError('required')  && formMovie.get('openingDay')?.touched">
+                            Chưa nhập ngày.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class=" col-2 col-form-label">Đến ngày</label>
+                    <div class="col-sm-8">
+                        <input type="datetime-local" class="form-control" formControlName="endDay">
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('endDay')?.hasError('required')  && formMovie.get('endDay')?.touched">
+                            Chưa nhập ngày.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Diễn viên</label>
+                    <div class="col-sm-8">
+                        <mat-select class="custom-select">
+                            <mat-option *ngFor="let actor of actorList"><input type="checkbox" formArrayName="actorList"
+                                                                               (change)="onCheckboxChangeActor($event,actor)"/>
+                                <label class="form-check-label">{{actor.name}}</label></mat-option>
+                        </mat-select>
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('actorList')?.hasError('required')  && formMovie.get('actorList')?.touched">
+                            Chưa chọn diễn viên.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class=" col-2 col-form-label">Hãng phim</label>
+                    <div class="col-sm-8">
+                        <mat-select class="custom-select">
+                            <mat-option *ngFor="let producer of producerList"><input type="checkbox"
+                                                                                     formArrayName="producerList"
+                                                                                     (change)="onCheckboxChangeProducer($event,producer)"/>
+                                <label class="form-check-label">{{producer.name}}</label></mat-option>
+                        </mat-select>
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('producerList')?.hasError('required')  && formMovie.get('producerList')?.touched">
+                            Chưa chọn hãng phim.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Đạo diễn</label>
+                    <div class="col-sm-8">
+                        <mat-select class="custom-select">
+                            <mat-option *ngFor="let director of directorList"><input type="checkbox"
+                                                                                     formArrayName="directorList"
+                                                                                     (change)="onCheckboxChangeDirector($event,director)"/>
+                                <label class="form-check-label">{{director.name}}</label></mat-option>
+                        </mat-select>
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('directorList')?.hasError('required')  && formMovie.get('directorList')?.touched">
+                            Chưa chọn đạo diễn.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Thời lượng</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" formControlName="duration">
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('duration')?.hasError('required')  && formMovie.get('duration')?.touched">
+                            Chưa nhập thời lượng phim.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Phiên bản</label>
+                    <div class=" form-check form-check-inline">
+                        <input class="form-check-input" type="radio"
+                               value="_2D" formControlName="type">
+                        <label class="form-check-label">2D</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio"
+                               value="_3D" formControlName="type">
+                        <label class="form-check-label">3D</label>
+                    </div>
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('type')?.hasError('required')  && formMovie.get('type')?.touched">
+                        Chưa chọn phiên bản.
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Trailer</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" formControlName="trailer">
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('trailer')?.hasError('required')  && formMovie.get('trailer')?.touched">
+                            Chưa nhập trailer phim.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Thể loại</label>
+
+                    <div *ngFor="let genre of genreList">
+                        <div class="col-4">
+                            <input type="checkbox" formArrayName="genreList"
+                                   (change)="onCheckboxChangeGenre($event,genre)"/>
+                            <label class="form-check-label">{{genre.name}}</label>
+                            <label class="form-text text-danger"
+                                   *ngIf="formMovie.get('genreList')?.hasError('required')  && formMovie.get('genreList')?.touched">
+                                Chưa chọn thể loại phim.
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-
-
-        <!--                            <div class="form-check form-check-inline">-->
-        <!--                                <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                                <label class="form-check-label">Hoạt hình</label>-->
-        <!--                            </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Võ thuật</label>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--                <div class="col-2">-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option1">-->
-        <!--                        <label class="form-check-label">Hài hước</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option2">-->
-        <!--                        <label class="form-check-label">Chiến tranh</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Kinh dị</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Kinh điển</label>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--                <div class="col-2">-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option1">-->
-        <!--                        <label class="form-check-label">Lãng mạn</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option2">-->
-        <!--                        <label class="form-check-label">Kiếm hiệp</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Phiêu lưu</label>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--                <div class="col-2">-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Tâm lý</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Tình cảm</label>-->
-        <!--                    </div>-->
-        <!--                    <div class="form-check form-check-inline">-->
-        <!--                        <input class="form-check-input" type="checkbox" value="option3">-->
-        <!--                        <label class="form-check-label">Âm nhạc</label>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--        <div class="form-group">-->
-        <!--            <div class="col-sm-12 row">-->
-        <!--                <label class="col-2 col-form-label">Phòng chiếu</label>-->
-        <!--                <div class="col-sm-2">-->
-        <!--                    <select class="custom-select">-->
-        <!--                        <option value="pc001">PC001</option>-->
-        <!--                        <option value="pc002">PC002</option>-->
-        <!--                        <option value="pc003">PC003</option>-->
-        <!--                    </select>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--                <div class="form-group">-->
-        <!--                    <div class="col-sm-12 row" formArrayName="startTime">-->
-        <!--                        <label class="col-2 col-form-label">Lịch chiếu</label>-->
-        <!--                        <div class="col-sm-2">-->
-        <!--                            <input type="text" class="form-control" formControlName="startTime">-->
-        <!--                        </div>-->
-        <!--                        <div class="col-sm-2" id="showtime">-->
-        <!--                            <button class="btn btn-primary" (click)="addTime()">Thêm giờ chiếu</button>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--                <div class="form-group">-->
-        <!--                    <div class="col-sm-12 row" formArrayName="startTime">-->
-        <!--                        <label class="col-2 col-form-label" id="hidden"></label>-->
-        <!--                        <div class="col-sm-8">-->
-        <!--                            <input class="form-control" formControlName="showTimeList">-->
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Nội dung</label>
-                <div class="col-sm-8">
-                    <textarea type="text" class="form-control" formControlName="content"></textarea>
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Phòng chiếu</label>
+                    <div class="col-sm-8">
+                        <mat-select class="custom-select" formControlName="theaterList">
+                            <mat-option *ngFor="let theater of theaterDTOList"
+                                        [value]="theater">{{theater.name}}</mat-option>
+                        </mat-select>
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('theaterList')?.hasError('required')  && formMovie.get('theaterList')?.touched">
+                            Chưa chọn phòng chiếu phim.
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div align="center">
-            <button routerLink="/movie" type="button" class="btn btn-secondary">Quay lại</button>
-            <button type="submit" class="btn btn-primary">Thêm mới</button>
-        </div>
+            <!--                        <div class="form-group">-->
+            <!--                            <div class="col-sm-12 row" formArrayName="startTime">-->
+            <!--                                <label class="col-2 col-form-label">Lịch chiếu</label>-->
+            <!--                                <div class="col-sm-2">-->
+            <!--                                    <input type="text" class="form-control" #element>-->
+            <!--                                </div>-->
+            <!--                                <div class="col-sm-2" id="showtime">-->
+            <!--                                    <button class="btn btn-primary" (click)="addTime(element)">Thêm giờ chiếu</button>-->
+            <!--                                </div>-->
+
+            <!--                            </div>-->
+            <!--                            <p> {{startTimeList}}</p>-->
+            <!--                        </div>-->
+            <!--                        <div class="form-group">-->
+            <!--                            <div class="col-sm-12 row" formArrayName="startTime">-->
+            <!--                                <label class="col-2 col-form-label" id="hidden"></label>-->
+            <!--                                <div class="col-sm-8">-->
+            <!--                                    <input class="form-control" formControlName="showTimeList">-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Nội dung</label>
+                    <div class="col-sm-8">
+                        <textarea type="text" class="form-control" formControlName="content"></textarea>
+                        <label class="form-text text-danger"
+                               *ngIf="formMovie.get('content')?.hasError('required')  && formMovie.get('content')?.touched">
+                            Chưa nhập nội dung phim.
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div align="center">
+                <button routerLink="/movie" type="button" class="btn btn-secondary">Quay lại</button>
+                <button type="submit" class="btn btn-primary">Thêm mới</button>
+            </div>
     </form>
+
 </div>
 
 

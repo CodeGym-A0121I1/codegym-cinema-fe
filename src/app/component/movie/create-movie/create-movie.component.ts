@@ -2,10 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MovieService} from "../../../service/movie.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {finalize} from "rxjs/operators";
 import {Genre} from "../../../model/movie/Genre";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {TheaterDTO} from "../../../dto/movie/TheaterDTO";
+import {Actor} from "../../../model/movie/Actor";
+import {Director} from "../../../model/movie/Director";
+import {Producer} from "../../../model/movie/Producer";
 
 @Component({
     selector: 'app-create-movie',
@@ -17,7 +21,11 @@ export class CreateMovieComponent implements OnInit {
     selectedFile: File | any;
     url: string = "";
     genreList: Genre[] | any;
-    indexGenreList: number[] = [];
+    theaterDTOList: TheaterDTO[] | any;
+    startTimeList: any;
+    actorList: Actor[] | any;
+    producerList: Producer[] | any;
+    directorList: Director[] | any;
 
     constructor(
         private router: Router,
@@ -32,75 +40,68 @@ export class CreateMovieComponent implements OnInit {
         this.movieService.getAllGenre().subscribe(
             (data) => {
                 this.genreList = data;
-                // console.log(data)
+                this.movieService.getAllTheaterDTO().subscribe(
+                    (data) => {
+                        this.theaterDTOList = data;
+                        this.movieService.getAllActor().subscribe(
+                            (data) => {
+                                this.actorList = data;
+                                this.movieService.getAllDirector().subscribe(
+                                    (data) => {
+                                        this.directorList = data;
+                                        this.movieService.getAllProducer().subscribe(
+                                            (data) => {
+                                                this.producerList = data;
+                                            }
+                                        );
+                                    }
+                                );
+                            }
+                        );
+                    }
+                );
             }
         );
-        // tiếp tục lấy list của các thằng còn lại....
     }
 
+
     formMovie = new FormGroup({
-        name: new FormControl('', Validators.required,),
-        poster: new FormControl(''),
+        name: new FormControl('',[Validators.required]),
+        poster: new FormControl('',[Validators.required]),
         trailer: new FormControl('', [Validators.required]),
-        openingDay: new FormControl('', Validators.required),
-        endDay: new FormControl('', Validators.required),
+        openingDay: new FormControl('', [Validators.required]),
+        endDay: new FormControl('',[Validators.required]),
         duration: new FormControl('', [Validators.required]),
         content: new FormControl('', [Validators.required]),
         type: new FormControl('', [Validators.required]),
-        genreList: new FormArray([]),
-        // actorList: new FormArray([
-        //     new FormControl(),
-        //     new FormControl()
-        // ]),
-        // directorList : new FormArray([
-        //     new FormControl(),
-        //     new FormControl()
-        // ]),
-        //   showTimeList:new FormArray([])
-        //   ])
+        genreList: new FormArray([],[Validators.required]),
+        actorList: new FormArray([],[Validators.required]),
+        directorList : new FormArray([],[Validators.required]),
+        producerList : new FormArray([],[Validators.required]),
+        // showTimeList: new FormArray([]),
+        theaterList: new FormControl('',[Validators.required]),
 
-
-        // theaterList : new FormArray([
-        //     new FormControl(),
-        //     new FormControl()
     });
 
 
     createMovie() {
-        this.formMovie.value.poster = this.url;
-        // this.formMovie.value.genreList = this.genreListRequest;
-        console.log(this.formMovie.value);
-        // if (!this.formMovie.invalid) {
-        // this.movieService.createMovie(this.formMovie.value).subscribe(
-        //     (data) => {
-        //         if (data) {
-        //             this.matSnackBar.open("Thêm mới phim " + this.formMovie.value.name + " thành công", "Đóng", {
-        //                 panelClass: ['mat-toolbar', 'mat-primary'],
-        //                 duration: 5000
-        //             });
-        //             // this.router.navigateByUrl("");
-        //         }
-        //     }
-        // );
+        if (!this.formMovie.invalid) {
+            this.formMovie.value.poster = this.url;
+            console.log(this.formMovie.value);
+            this.movieService.createMovie(this.formMovie.value).subscribe(
+                (data) => {
+                    if (data) {
+                        this.matSnackBar.open("Thêm mới phim " + this.formMovie.value.name + " thành công", "Đóng", {
+                            panelClass: ['mat-toolbar', 'mat-primary'],
+                            duration: 5000
+                        });
+                        // this.router.navigateByUrl("");
+                    }
+                }
+            );
+            this.formMovie.reset();
+        }
     }
-
-    // }
-
-
-    // onAddSpecialRequest(genre: Genre, i: number) {
-    //     this.indexGenreList.push(i);
-    //     for (let j = 0; j < this.indexGenreList.length; j++) {
-    //         if (i)
-    //     }
-
-    //     this.formMovie.value.genreList.push(new FormControl(genre).value);
-    //
-    // }
-    //
-    // onRemoveSpecialRequest(genre: Genre) {
-    //     this.formMovie.value.genreList.removeAt();
-    // }
-
 
     selectFile(event: any) {
         const path = new Date().toString();
@@ -116,4 +117,51 @@ export class CreateMovieComponent implements OnInit {
         ).subscribe();
     }
 
+    onCheckboxChangeGenre(event: any, genre: any) {
+        const genreList = (this.formMovie.controls.genreList as FormArray);
+        if (event.target.checked) {
+            genreList.push(new FormControl(genre));
+        } else {
+            const index = genreList.controls
+                .findIndex(x => x.value === genre);
+            genreList.removeAt(index);
+        }
+    }
+
+    onCheckboxChangeActor(event: any, actor: any) {
+        const actorList = (this.formMovie.controls.actorList as FormArray);
+        if (event.target.checked) {
+            actorList.push(new FormControl(actor));
+        } else {
+            const index = actorList.controls
+                .findIndex(x => x.value === actor);
+            actorList.removeAt(index);
+        }
+    }
+    onCheckboxChangeDirector(event: any, director: any) {
+        const directorList = (this.formMovie.controls.directorList as FormArray);
+        if (event.target.checked) {
+            directorList.push(new FormControl(director));
+        } else {
+            const index = directorList.controls
+                .findIndex(x => x.value === director);
+            directorList.removeAt(index);
+        }
+    }
+    onCheckboxChangeProducer(event: any, producer: any) {
+        const producerList = (this.formMovie.controls.producerList as FormArray);
+        if (event.target.checked) {
+            producerList.push(new FormControl(producer));
+        } else {
+            const index = producerList.controls
+                .findIndex(x => x.value === producer);
+            producerList.removeAt(index);
+        }
+    }
+
+    // addTime(element: HTMLInputElement) {
+    //     const showTimeList = (this.formMovie.controls.showTimeList as FormArray);
+    //     showTimeList.push(new FormControl(element.value));
+    //     this.startTimeList = this.formMovie.value.startTimeList;
+    // }
 }
