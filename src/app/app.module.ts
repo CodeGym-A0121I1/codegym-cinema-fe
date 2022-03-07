@@ -18,6 +18,8 @@ import {ForbiddenComponent} from "./component/display/forbidden/forbidden.compon
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {environment} from "../environments/environment";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
     declarations: [
@@ -39,6 +41,8 @@ import {environment} from "../environments/environment";
         UserModule,
         BrowserAnimationsModule,
         MatDialogModule,
+        NgxPaginationModule,
+        MatSnackBarModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
     ],
