@@ -15,6 +15,8 @@ import {ShowTimeModule} from "./component/show-time/show-time.module";
 import {TicketModule} from "./component/ticket/ticket.module";
 import {UserModule} from "./component/user/user.module";
 import {ForbiddenComponent} from "./component/display/forbidden/forbidden.component";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
     declarations: [
@@ -36,6 +38,8 @@ import {ForbiddenComponent} from "./component/display/forbidden/forbidden.compon
         UserModule,
         BrowserAnimationsModule,
         MatDialogModule,
+        NgxPaginationModule,
+        MatSnackBarModule,
     ],
     bootstrap: [AppComponent]
 })

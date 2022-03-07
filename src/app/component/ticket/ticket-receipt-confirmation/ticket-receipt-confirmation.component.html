@@ -1,1 +1,69 @@
-<p>ticket-receipt-confirmation works!</p>
+<div *ngIf="!booking" class="container text-center alert-danger" style="margin-top: 25%">Hiện không có dữ liệu nào phù
+    hợp!
+</div>
+<div *ngIf="booking" class="container" style="margin: 10% 20% 0% 20%">
+    <h1 *ngIf="!checkStatus">Xác nhận đặt vé</h1>
+    <h1 *ngIf="checkStatus">Thông tin đặt vé</h1>
+    <hr>
+    <table class="container">
+        <tr>
+            <td><img src="https://image.tmdb.org/t/p/original/gHPtCmMeDqjaGqnMrWGDmD3nKd2.jpg"
+                     class="img-circle img"></td>
+            <td>
+                <div class="margin">
+                    <h2>{{booking.showTime.movie.name}}</h2>
+                    <table class="table table-hover">
+                        <tr>
+                            <th scope="col">Ngày chiếu</th>
+                            <td scope="col">{{booking.showTime.startDate}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Giờ chiếu</th>
+                            <td scope="col">{{booking.showTime.startTime}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Ghế</th>
+                            <td scope="col">
+                                <span *ngFor="let ticket of ticketList">{{ticket.seat.name}}<br></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Giá</th>
+                            <td scope="col">
+                                <span *ngFor="let ticket of ticketList">{{ticket.seat.name}} : {{ticket.price | currency: "VND"}}<br></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Tổng cộng</th>
+                            <td scope="col">{{totalMoney | currency: "VND"}}</td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <h2>Thông tin thành viên</h2>
+                    <table class="table table-hover">
+                        <tr>
+                            <th scope="col-4">Mã thành viên</th>
+                            <td scope="col-3">{{booking.user.id}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">CMND</th>
+                            <td scope="col">{{booking.user.idCard}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col-4">Họ tên</th>
+                            <td scope="col-3">{{booking.user.fullName}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Số điện thoại</th>
+                            <td scope="col">{{booking.user.phoneNumber}}</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button *ngIf="!checkStatus" type="button" class="btn text-light" style="background: #26B99A; font-size: 24px"
+                            (click)="ticketReceipt(booking.id)">Xác nhận nhận vé
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
