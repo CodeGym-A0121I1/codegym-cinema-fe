@@ -5,6 +5,7 @@ import {ListBookingComponent} from './list-booking/list-booking.component';
 import {BookingRoutingModule} from "../../routing/booking-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {PaypalComponent } from './paypal/paypal.component';
+import {NgxPayPalModule} from "ngx-paypal";
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import {PaypalComponent } from './paypal/paypal.component';
     imports: [
         CommonModule,
         BookingRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxPayPalModule
     ]
 })
 export class BookingModule {
