@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {SelectedSeatComponent} from "../component/show-time/selected-seat/selected-seat.component";
 
 const routes: Routes = [];
 

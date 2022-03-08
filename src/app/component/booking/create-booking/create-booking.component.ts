@@ -91,12 +91,12 @@ export class CreateBookingComponent implements OnInit {
         this.formBooking.value.totalPrice = this.totalmoney;
         this.formBooking.value.showTime.id = "ST1";
         console.log(this.formBooking.value);
-            this.bookingservice.createBooking(this.formBooking.value).subscribe(
-                (data) => {
-                    this.bookingid = data;
-                    console.log(data);
-                }
-            );
-
+        this.bookingservice.createBooking(this.formBooking.value).subscribe(
+            (data) => {
+                this.bookingid = data;
+                console.log(data);
+            }
+        );
+        this.router.navigateByUrl("/paypal");
     }
 }

@@ -16,11 +16,8 @@ import {ShowTimeModule} from "./component/show-time/show-time.module";
 import {TicketModule} from "./component/ticket/ticket.module";
 import {UserModule} from "./component/user/user.module";
 import {ForbiddenComponent} from "./component/display/forbidden/forbidden.component";
-import {enableProdMode} from '@angular/core';
-import {environment} from "../environments/environment";
-if (environment.production) {
-    enableProdMode();
-}
+import {NgxPayPalModule} from 'ngx-paypal';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -42,6 +39,7 @@ if (environment.production) {
         UserModule,
         BrowserAnimationsModule,
         MatDialogModule,
+        NgxPayPalModule,
     ],
     bootstrap: [AppComponent]
 })
