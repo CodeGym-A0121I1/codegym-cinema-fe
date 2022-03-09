@@ -6,8 +6,9 @@ import {CreateMovieComponent} from './create-movie/create-movie.component';
 import {EditMovieComponent} from './edit-movie/edit-movie.component';
 import {MovieDetailComponent} from './movie-detail/movie-detail.component';
 import {MovieRoutingModule} from "../../routing/movie-routing.module";
-import { StatisticMovieComponent } from './statistic-movie/statistic-movie.component';
+import {StatisticMovieComponent} from './statistic-movie/statistic-movie.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import {ListMovieComponent} from "./list-movie/list-movie.component";
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import {NgxPaginationModule} from "ngx-pagination";
         EditMovieComponent,
         MovieDetailComponent,
         StatisticMovieComponent,
+        ListMovieComponent
     ],
     imports: [
         CommonModule,

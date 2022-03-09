@@ -4,6 +4,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {LoginComponent} from "../login/login.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup} from "@angular/forms";
+
 @Component({
     selector: 'app-forgot-password',
     templateUrl: './forgot-password.component.html',
@@ -83,8 +84,12 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     changePassword() {
+        let username = this.formForgotPassword.value.username;
+        let password = this.formForgotPassword.value.newPassword;
+        let otp = this.formForgotPassword.value.otp;
+
         if (this.formForgotPassword.valid) {
-            this.userService.forgotPassword(this.formForgotPassword.value).subscribe(
+            this.userService.forgotPassword(username, password, otp).subscribe(
                 (data) => {
                     if (data) {
                         this.matDialogRef.close();
