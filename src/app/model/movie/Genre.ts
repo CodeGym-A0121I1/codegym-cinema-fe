@@ -1,3 +1,4 @@
-export interface Actor {
-    id: string,
-    name: string}
+export interface Genre {
+    id: number,
+    name: string
+}

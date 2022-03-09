@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
         if (localStorage.getItem("token") !== null) {
             this.authService.assignSessionStorageWithLocalStorage();
         }
+
     }
 
     public isLoggedIn() {

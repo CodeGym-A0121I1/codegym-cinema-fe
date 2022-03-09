@@ -9,19 +9,21 @@
     color: white;
 }
 
-
-/*.button-submit:hover {*/
-/*    background: #ff6644;*/
-/*    color: #fff;*/
-/*    border: 1px solid #ff4444;*/
-/*    -webkit-transition: all 0.5s;*/
-/*    -o-transition: all 0.5s;*/
-/*    -ms-transition: all 0.5s;*/
-/*    -moz-transition: all 0.5s;*/
-/*    transition: all 0.5s;*/
-/*}*/
+.forgot-password:hover{
+    color: #00A8FF;
+}
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.media-login{
+    width: 500px;
+}
+
+@media screen and (max-width: 530px) {
+    .media-login {
+        width: 80%;
+    }
 }
 

@@ -1,4 +1,5 @@
-
 export interface Actor {
-    id: string,
-    name: string}
+    id: number,
+    name: string,
+    image: string
+}
