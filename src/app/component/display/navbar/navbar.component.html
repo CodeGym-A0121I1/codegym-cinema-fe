@@ -1,70 +1,60 @@
 <!-- prs navigation Start -->
 <div class="prs_navigation_main_wrapper">
-  <div class="container-fluid">
+    <div class="container-fluid">
 
-    <div class="prs_navi_left_main_wrapper">
-      <div class="prs_logo_main_wrapper">
-        <a href="../../../../index.html">
-          <img src="../../../../assets/images/header/logo.png" alt="logo" />
-        </a>
-      </div>
-      <div class="prs_menu_main_wrapper">
-        <nav class="navbar navbar-default p-0">
-          <div id="dl-menu" class="xv-menuwrapper responsive-menu">
-            <button class="dl-trigger">
-              <img src="../../../../assets/images/header/bars.png" alt="bar_png">
-            </button>
-            <div class="prs_mobail_searchbar_wrapper" id="search_button">	<i class="fa fa-search"></i>
+        <div class="prs_navi_left_main_wrapper">
+            <div class="prs_logo_main_wrapper">
+                <a href="index.html">
+                    <img src="assets/images/header/logo.png" alt="logo"/>
+                </a>
             </div>
-            <div class="clearfix"></div>
-            <ul class="dl-menu">
-              <li class="parent"><a href="#">Trang chủ</a></li>
-              <li class="parent"><a href="#">Lịch chiếu</a>
-              </li>
-              <li class="parent"><a href="#">Phim</a>
-                <ul class="lg-submenu" style="z-index: 10">
-                  <li><a href="#">Phim đang chiếu</a></li>
-                  <li><a href="#">Phim sắp chiếu</a></li>
-                </ul>
-              </li>
-              <li class="parent"><a href="#">Liên hệ</a>
-              </li>
-            </ul>
-          </div>
-          <!-- /dl-menuwrapper -->
-        </nav>
-      </div>
-    </div>
-    <div class="prs_navi_right_main_wrapper">
-      <div class="prs_slidebar_wrapper">
-        <button class="second-nav-toggler" type="button" style="color: white">
-          {{authService.getFullName()}}
-        </button>
-      </div>
-      <div class="prs_top_login_btn_wrapper">
-        <div class="prs_animate_btn1">
-          <ul>
-            <li><a *ngIf="! isLoggedIn()" [routerLink]="['/login']" class="button button--tamaya" data-text="Đăng nhập"><span>Đăng nhập</span></a>
-            <a *ngIf="isLoggedIn()" [routerLink]="['/login']" class="button button--tamaya" data-text="Đăng xuất" (click)="logout()" ><span>Đăng xuất</span></a>
-            </li>
-          </ul>
+            <div class="prs_menu_main_wrapper">
+                <nav class="navbar navbar-default p-0">
+                    <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+                        <button class="dl-trigger">
+                            <img src="assets/images/header/bars.png" alt="bar_png">
+                        </button>
+                        <div class="prs_mobail_searchbar_wrapper" id="search_button"><i class="fa fa-search"></i>
+                        </div>
+                        <div class="clearfix"></div>
+                        <ul class="dl-menu">
+                            <li class="parent"><a routerLink="/movie">Trang chủ</a></li>
+                            <li class="parent"><a href="#">Lịch chiếu</a>
+                            </li>
+                            <li class="parent"><a href="#">Phim</a>
+                                <ul class="lg-submenu" style="z-index: 10">
+                                    <li><a href="#">Phim đang chiếu</a></li>
+                                    <li><a href="#">Phim sắp chiếu</a></li>
+                                </ul>
+                            </li>
+                            <li class="parent"><a href="#">Liên hệ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /dl-menuwrapper -->
+                </nav>
+            </div>
         </div>
-      </div>
-      <div class="product-heading">
-        <div class="con">
-          <select>
-            <option>All Categories</option>
-            <option>Movie</option>
-            <option>Video</option>
-            <option>Music</option>
-            <option>TV-Show</option>
-          </select>
-          <input type="text" placeholder="Search Movie , Video , Music">
-          <button type="submit"><i class="flaticon-tool"></i>
-          </button>
+        <div class="prs_navi_right_main_wrapper">
+            <div class="prs_top_login_btn_wrapper" style="margin-left: 5px">
+                <div class="prs_animate_btn1">
+                    <ul>
+                        <li><a *ngIf="! isLoggedIn()" [routerLink]="['/login']" class="button button--tamaya"
+                               data-text="Đăng nhập"><span>Đăng nhập</span></a>
+                            <a *ngIf="isLoggedIn()" [routerLink]="['/login']" class="button button--tamaya"
+                               data-text="Đăng xuất"
+                               (click)="logout()"><span>Đăng xuất</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="prs_slidebar_wrapper" style="margin-right: 5px">
+                <button class="second-nav-toggler" type="button" style="color: white; width: auto">
+                    {{authService.getFullName()}}
+                </button>
+            </div>
+
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- prs navigation End -->

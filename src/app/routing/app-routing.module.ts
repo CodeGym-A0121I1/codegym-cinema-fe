@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {ListMovieComponent} from "../component/display/list-movie/list-movie.component";
+import {ListMovieComponent} from "../component/movie/list-movie/list-movie.component";
 import {ForbiddenComponent} from "../component/display/forbidden/forbidden.component";
 
 const appRoutes: Routes = [
