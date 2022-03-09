@@ -3,6 +3,7 @@ import {ShowTime} from "../../../model/booking/ShowTime";
 import {MovieDTO} from "../../../dto/showtime/MovieDTO";
 import {ShowTimeService} from "../../../service/show-time.service";
 import {ActivatedRoute} from "@angular/router";
+import {Time} from "@angular/common";
 
 @Component({
   selector: 'app-selected-movie-show-time',
@@ -13,7 +14,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
   listMovies: Array<ShowTime> = [];
   listDates: Array<Date> = [];
   countDate: number = 0;  startDate?: Date;
-  startTime?: string;
+  startTime?: Time;
   isDisplay = false;
 
   movieDTOTG!: any;
@@ -54,7 +55,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
     this.startDate = item;
   }
 
-  takeTime(s: string) {
+  takeTime(s: Time) {
     this.startTime = s;
     let itemDate=this.startDate;
     itemDate?.setDate(itemDate?.getDate()-1)
