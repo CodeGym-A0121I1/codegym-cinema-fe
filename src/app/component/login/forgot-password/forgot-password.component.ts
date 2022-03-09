@@ -84,12 +84,8 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     changePassword() {
-        let username = this.formForgotPassword.value.username;
-        let password = this.formForgotPassword.value.newPassword;
-        let otp = this.formForgotPassword.value.otp;
-
         if (this.formForgotPassword.valid) {
-            this.userService.forgotPassword(username, password, otp).subscribe(
+            this.userService.forgotPassword(this.formForgotPassword.value).subscribe(
                 (data) => {
                     if (data) {
                         this.matDialogRef.close();

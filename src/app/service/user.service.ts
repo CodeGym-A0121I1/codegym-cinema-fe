@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {StatisticUserDTO} from "../dto/statistic/StatisticUserDTO";
+import {ForgotPassword} from "../dto/user/ForgotPassword";
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,8 @@ export class UserService {
     return this.httpClient.get<Boolean>(this.API_USER + "/account/generate/" + username, {headers: this.requestHeader});
   }
 
-  public forgotPassword(username: string, newPassword: string, otp: string): Observable<Boolean> {
-    return this.httpClient.get<Boolean>(this.API_USER + "/account/forgot-password/" + username + "/" + newPassword + "/" + otp, {headers: this.requestHeader});
+  public forgotPassword(forgotPassword: ForgotPassword): Observable<Boolean> {
+    return this.httpClient.post<Boolean>(this.API_USER + "/account/forgot-password", forgotPassword, {headers: this.requestHeader});
   }
 
   public statisticTopMemberByTotalPrice(): Observable<StatisticUserDTO[]> {
