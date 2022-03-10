@@ -37,10 +37,12 @@ export class LoginComponent implements OnInit {
                 private matDialog: MatDialog) {
     }
 
+
     formLogin = new FormGroup({
         username: new FormControl("", Validators.required),
         password: new FormControl("", Validators.required)
     });
+
 
     ngOnInit(): void {
         if (this.authService.getToken() !== null) {
@@ -48,9 +50,11 @@ export class LoginComponent implements OnInit {
         }
     }
 
+
     public loginWithGoogle() {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
             (data) => {
+                console.log(data)
                 this.token.token = data.idToken;
                 this.loginService.loginWithGoogle(this.token).subscribe(
                     (authoricationResponse) => {
