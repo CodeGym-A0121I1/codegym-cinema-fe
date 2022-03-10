@@ -3,6 +3,8 @@
         <div class="st_calender_tabs">
 
             <ul class="nav nav-tabs">
+
+                <li *ngIf="errors"><h2 style="color: white">Không có lịch chiếu cho phim này</h2></li>
                 <!--                <li class="active"> <a data-toggle="tab" href="#home"><span>WED</span> <br> 19</a>-->
                 <!--                </li>-->
                 <li class="nav-item" *ngFor="let item of listDates; let in= index "
@@ -15,11 +17,10 @@
         </div>
     </div>
 </div>
-<p style="align-content: center">Phim : {{listMovies[0]?.movie?.name}}</p>
-
+<!--<p style="align-content: center">Phim : {{listMovies[0]?.movie?.name}}</p>-->
 <div class="st_slider_index_sidebar_main_wrapper st_slider_index_sidebar_main_wrapper_booking float_left"
      *ngIf="!isDisplay">
-    <div class="container">
+    <div class="container" *ngIf="!errors">
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="st_indx_slider_main_container float_left">
@@ -37,6 +38,8 @@
                                                 </div>
                                                 <div class="st_calen_asc_tecket_time_select">
                                                     <ul>
+                                                        <li *ngIf="errors"> Không có lịch chiếu cho phim này</li>
+
                                                         <li *ngFor="let movieTime of listMovies">	<span>
 															<h4>{{movieTime.price}} VND</h4>
                                                             <!--															<input type="hidden" id="showTime" value="{{this.convertTime(movieTime.startTime)}}">-->
@@ -62,11 +65,11 @@
                                                 </div>
                                                 <div class="st_calen_asc_heart_cont">
                                                     <h3>{{listMovies[0].movie?.name}}</h3>
-
                                                 </div>
                                             </div>
                                             <div class="st_calen_asc_tecket_time_select">
                                                 <ul>
+                                                    <li *ngIf="errors"> Không có lịch chiếu cho phim này</li>
                                                     <li *ngFor="let movieTime of listMovies">	<span>
 															<h4>{{movieTime.price}} VND</h4>
 															<input type="hidden" id="showTime"

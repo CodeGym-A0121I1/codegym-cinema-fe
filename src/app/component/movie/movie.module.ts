@@ -17,6 +17,9 @@ import {ListMovieComponent} from "./list-movie/list-movie.component";
         MovieDetailComponent,
         ListMovieComponent
     ],
+    exports: [
+        CreateMovieComponent
+    ],
     imports: [
         CommonModule,
         MovieRoutingModule

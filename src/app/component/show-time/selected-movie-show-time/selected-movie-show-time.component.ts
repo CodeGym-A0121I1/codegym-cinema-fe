@@ -18,7 +18,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
     startDate?: Date;
     startTime?: Time;
     isDisplay = false;
-
+errors:boolean=false;
     movieDTOTG!: any;
 
     constructor(private showTimeSevice: ShowTimeService, private activeRoute: ActivatedRoute, private matSnackBar: MatSnackBar,) {
@@ -44,7 +44,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
             }
             this.countDate = this.listDates.length;
         }, error => {
-            this.matSnackBar.open("không tìm thấy lịch chiếu của phim này", "OK", {duration: 3000})
+            this.errors=true;
         });
     }
 

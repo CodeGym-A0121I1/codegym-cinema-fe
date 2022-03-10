@@ -20,6 +20,7 @@ export class SelectedSeatComponent implements OnInit {
   listLocalSeat: Array<string> = ['A', 'B', 'C', 'D', 'E'];
   listseatUserBooked: string[] = [];
   movieSeatDTO!:SeatMovieDTO;
+  isDisplay:boolean=false;
 
   ngOnInit(): void {
     this.showservice.getAllSeatBookedByTheaterId(this.movieShow.theater.id).subscribe(data => {
@@ -80,4 +81,7 @@ export class SelectedSeatComponent implements OnInit {
     console.log(this.movieSeatDTO);
   }
 
+  displayShowTime() {
+    this.isDisplay=true;
+  }
 }
