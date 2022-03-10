@@ -14,6 +14,8 @@ import {DeleteMovieComponent} from "../delete-movie/delete-movie.component";
 export class ListMoviesAdminComponent implements OnInit {
 
   movieList: Movie[] | any;
+  checkPagination = true;
+  p: number| any;
 
   constructor(private movieService: MovieService,
               private matDialog: MatDialog) { }
@@ -21,7 +23,10 @@ export class ListMoviesAdminComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getAll().subscribe(
         (data:any) => {
-          this.movieList = data
+          this.movieList = data;
+          if (data.length < 5){
+            this.checkPagination = false;
+          }
         }
     )
   }

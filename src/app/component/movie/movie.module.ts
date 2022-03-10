@@ -11,6 +11,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {ListMovieComponent} from "./list-movie/list-movie.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import {MatButtonModule} from "@angular/material/button";
         NgxPaginationModule,
         MatDialogModule,
         MatButtonModule,
+        MatGridListModule,
     ]
 })
 export class MovieModule {
