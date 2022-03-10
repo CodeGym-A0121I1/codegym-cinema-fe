@@ -4,6 +4,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {LoginComponent} from "../login/login.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup} from "@angular/forms";
+
 @Component({
     selector: 'app-forgot-password',
     templateUrl: './forgot-password.component.html',

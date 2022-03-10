@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {StatisticMovieDTO} from "../dto/statistic/StatisticMovieDTO";
 import {Movie} from "../model/movie/Movie";
 import {Genre} from "../model/movie/Genre";
 
@@ -9,12 +9,18 @@ import {Genre} from "../model/movie/Genre";
   providedIn: 'root'
 })
 export class MovieService {
+  headers = new HttpHeaders(({
+    'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZWhvYW5nbG9uZyIsImV4cCI6MTY0NjgxNzQ4MiwiaWF0IjoxNjQ2Mzg1NDgyfQ.wgNJAi4ILFKoacgIlaoDvifZOx6oYZVgeSqa_wBtwXk"
+  }))
+  private readonly STATISTIC_MOVIE_API: string = "http://localhost:8080/api/statistic/movie";
 
-  private readonly API_MOVIE = "http://localhost:8080/api/movie";
+  private readonly API_MOVIE = "http://localhost:8080/api" + "/movie";
 
-  constructor(
-      private http: HttpClient
-  ) {
+  constructor(private http: HttpClient) {
+  }
+
+  public statisticTopMovieByGrossing(): Observable<StatisticMovieDTO[]> {
+    return this.http.get<StatisticMovieDTO[]>(`${this.STATISTIC_MOVIE_API}`, {headers: this.headers});
   }
 
   getAllMovies(): Observable<Array<Movie>> {
@@ -29,3 +35,4 @@ export class MovieService {
     return this.http.get<Array<Movie>>(this.API_MOVIE, {params: new HttpParams().set('name', name).set('genre', genre)})
   }
 }
+

@@ -3,6 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {ListEmployeeComponent} from "../component/user/list-employee/list-employee.component";
 import {AuthGuard} from "../guard/auth.guard";
 import {UpdateEmployeeComponent} from "../component/user/update-employee/update-employee.component";
+import {StatisticUserComponent} from "../component/user/statistic-user/statistic-user.component";
+
 
 const routes: Routes = [
     {
@@ -15,11 +17,17 @@ const routes: Routes = [
         path: "update/:id",
         component: UpdateEmployeeComponent,
         canActivate:[AuthGuard], data: {role: ['ROLE_ADMIN']}
+    },
+    {
+        path: "statistic/user",
+        component: StatisticUserComponent,
+        canActivate: [AuthGuard],
+        data: {role: ['ROLE_ADMIN']}
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 export class UserRoutingModule{}
