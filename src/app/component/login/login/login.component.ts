@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/test-employee']);
                 break;
             case "ROLE_ADMIN":
-                this.router.navigate(['/test-admin']);
+                this.router.navigate(['/statistic/movie']);
                 break;
             default:
                 this.router.navigate(['/forbidden'])
