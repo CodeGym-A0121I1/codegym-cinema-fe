@@ -1,6 +1,7 @@
-/** {*/
-/*    box-sizing: border-box; font-family: 'Poppins', sans-serif;*/
-/*}*/
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
 h2 {
     margin-top: 140px;
@@ -8,9 +9,9 @@ h2 {
     font-weight: 500;
 }
 
-/*thead > tr > th {*/
-/*    text-align: center;*/
-/*}*/
+thead > tr > th {
+    text-align: center;
+}
 
 thead > tr {
     color: #fff;

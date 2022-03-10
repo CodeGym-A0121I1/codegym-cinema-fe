@@ -6,6 +6,8 @@ import {ChangePasswordUserComponent} from './change-password-user/change-passwor
 import {ListEmployeeComponent} from './list-employee/list-employee.component';
 import {UpdateEmployeeComponent} from './update-employee/update-employee.component';
 import {UserRoutingModule} from "../../routing/user-routing.module";
+import { StatisticUserComponent } from './statistic-user/statistic-user.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
     declarations: [
@@ -13,11 +15,13 @@ import {UserRoutingModule} from "../../routing/user-routing.module";
         DetailUserComponent,
         ChangePasswordUserComponent,
         ListEmployeeComponent,
-        UpdateEmployeeComponent
+        UpdateEmployeeComponent,
+        StatisticUserComponent
     ],
     imports: [
         CommonModule,
-        UserRoutingModule
+        UserRoutingModule,
+        NgxPaginationModule,
     ]
 })
 export class UserModule {

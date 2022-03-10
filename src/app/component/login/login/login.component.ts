@@ -104,13 +104,13 @@ export class LoginComponent implements OnInit {
         const role = authoricationResponse.user.account.role;
         switch (role) {
             case "ROLE_USER":
-                this.router.navigate(['/test-user']);
+                this.router.navigate(['/movie']);
                 break;
             case "ROLE_EMPLOYEE":
                 this.router.navigate(['/test-employee']);
                 break;
             case "ROLE_ADMIN":
-                this.router.navigate(['/test-admin']);
+                this.router.navigate(['/statistic/movie']);
                 break;
             default:
                 this.router.navigate(['/forbidden'])
@@ -125,7 +125,7 @@ export class LoginComponent implements OnInit {
                 },
                 (error) => {
                     this.isLoginValid = false;
-                    switch (error.error.status) {
+                    switch (error.error.status) { // error.error.status = 404 or 400
                         case "Username not exists":
                             this.errorUsername = "Tài khoản hoặc mật khẩu sai";
                             this.errorPassword = "";
