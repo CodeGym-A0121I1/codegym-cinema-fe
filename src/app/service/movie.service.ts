@@ -36,5 +36,17 @@ export class MovieService {
   findAllByNameAndGenre(name: string, genre: number): Observable<Array<Movie>> {
     return this.http.get<Array<Movie>>(this.API_MOVIE, {params: new HttpParams().set('name', name).set('genre', genre)})
   }
+
+  getAll():Observable<any[]>{
+    return this.http.get<any[]>(this.API_MOVIE + "/list")
+  }
+
+  deleteMovieById(id: string){
+    return this.http.delete(this.API_MOVIE + "/delete/" + id)
+  }
+
+  getMovieById(id: String){
+    return this.http.get(this.API_MOVIE + "/" + id)
+  }
 }
 

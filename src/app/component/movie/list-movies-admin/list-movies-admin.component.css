@@ -1,0 +1,23 @@
+/** {*/
+/*    box-sizing: border-box; font-family: 'Poppins', sans-serif;*/
+/*}*/
+
+h2 {
+    margin-top: 140px;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/*thead > tr > th {*/
+/*    text-align: center;*/
+/*}*/
+
+thead > tr {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+}
+
+table {
+    margin: 20px 0;
+}
