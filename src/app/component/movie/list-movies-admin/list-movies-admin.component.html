@@ -1,1 +1,94 @@
-<p>list-movies-admin works!</p>
+<!--&lt;!&ndash;&ndash;&gt;-->
+<!--<div class="prs_gallery_main_section_wrapper">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+<!--                <div style="margin-top: -50px; margin-bottom: 10px;" class="hs_kd_six_sec_btn">-->
+<!--                    <ul>-->
+<!--                        <li><a href="#">Thêm phim mới</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <div class="prs_heading_section_wrapper">-->
+<!--                    <h2>Danh Sách Phim</h2>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="portfolio-area ptb-100">-->
+<!--                <div class="container">-->
+<!--                    <div class="portfolio-filter clearfix text-center">-->
+<!--                        <ul class="list-inline" id="filter">-->
+<!--                            <li>-->
+<!--                                <table id="movie-table" class="table table-hover table-responsive text-center">-->
+<!--                                    <thead class="thead-inverse">-->
+<!--                                    <tr>-->
+<!--                                        <th style="text-align: center;">Phim</th>-->
+<!--                                        <th style="text-align: center;">Ngày khởi chiếu</th>-->
+<!--                                        <th style="text-align: center;">Đạo diễn</th>-->
+<!--                                        <th style="text-align: center;">Thời lượng</th>-->
+<!--                                        <th style="text-align: center;">Loại</th>-->
+<!--                                        <th style="text-align: center;"></th>-->
+<!--                                        <th style="text-align: center;"></th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr *ngIf="movieList == null">-->
+<!--                                        <td colspan="7">Hiện không có phim nào!</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr *ngFor="let movie of movieList">-->
+<!--                                        <td>{{movie.name}}</td>-->
+<!--                                        <td>{{movie.openingDay}}</td>-->
+<!--                                        <td >{{convertDirector(movie.directorList)}}-->
+
+<!--                                        </td>-->
+<!--                                        <td>{{movie.duration}}</td>-->
+<!--                                        <td *ngIf="movie.type === '_2D'">2D</td>-->
+<!--                                        <td *ngIf="movie.type === '_3D'">3D</td>-->
+<!--                                        <td *ngIf="movie.type === '_4D'">4D</td>-->
+<!--                                        <td><a href="#"><i class="fa fa-edit"></i></a></td>-->
+<!--                                        <td><a (click)="openDialogDelete(movie)" class="deleteButton"><i class="fa fa-trash"></i></a></td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="container align-items-center">
+    <div class="prs_heading_section_wrapper" style="margin-bottom: 40px">
+        <h2  style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">Danh Sách Phim</h2>
+    </div>
+    <table class="table table-striped table-bordered table-responsive text-center">
+        <thead class="thead-dark">
+        <tr style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+            <th style="text-align: center;">Phim</th>
+            <th style="text-align: center;">Ngày khởi chiếu</th>
+            <th style="text-align: center;">Đạo diễn</th>
+            <th style="text-align: center;">Thời lượng</th>
+            <th style="text-align: center;">Loại</th>
+            <th colspan="2" style="text-align: center;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="movieList == null">
+            <td colspan="7">Hiện không có phim nào!</td>
+        </tr>
+        <tr *ngFor="let movie of movieList">
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{movie.name}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.openingDay}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{convertDirector(movie.directorList)}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.duration}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;" *ngIf="movie.type === '_2D'">2D</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;" *ngIf="movie.type === '_3D'">3D</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;" *ngIf="movie.type === '_4D'">4D</td>
+            <td><a href="#"><i class="fa fa-edit"></i></a></td>
+            <td><a (click)="openDialogDelete(movie)" class="deleteButton"><i class="fa fa-trash"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -9,6 +9,8 @@ import {MovieRoutingModule} from "../../routing/movie-routing.module";
 import {StatisticMovieComponent} from './statistic-movie/statistic-movie.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {ListMovieComponent} from "./list-movie/list-movie.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
     declarations: [
@@ -24,6 +26,8 @@ import {ListMovieComponent} from "./list-movie/list-movie.component";
         CommonModule,
         MovieRoutingModule,
         NgxPaginationModule,
+        MatDialogModule,
+        MatButtonModule,
     ]
 })
 export class MovieModule {
