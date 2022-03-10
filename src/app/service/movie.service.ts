@@ -9,9 +9,11 @@ import {Genre} from "../model/movie/Genre";
   providedIn: 'root'
 })
 export class MovieService {
-  headers = new HttpHeaders(({
-    'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZWhvYW5nbG9uZyIsImV4cCI6MTY0NjgxNzQ4MiwiaWF0IjoxNjQ2Mzg1NDgyfQ.wgNJAi4ILFKoacgIlaoDvifZOx6oYZVgeSqa_wBtwXk"
-  }))
+
+  requestHeader = new HttpHeaders(
+      {"No-Auth": "True"}
+  );
+
   private readonly STATISTIC_MOVIE_API: string = "http://localhost:8080/api/statistic/movie";
 
   private readonly API_MOVIE = "http://localhost:8080/api" + "/movie";
@@ -20,15 +22,15 @@ export class MovieService {
   }
 
   public statisticTopMovieByGrossing(): Observable<StatisticMovieDTO[]> {
-    return this.http.get<StatisticMovieDTO[]>(`${this.STATISTIC_MOVIE_API}`, {headers: this.headers});
+    return this.http.get<StatisticMovieDTO[]>(`${this.STATISTIC_MOVIE_API}`, {headers: this.requestHeader});
   }
 
   getAllMovies(): Observable<Array<Movie>> {
-    return this.http.get<Array<Movie>>(this.API_MOVIE);
+    return this.http.get<Array<Movie>>(this.API_MOVIE, {headers: this.requestHeader});
   }
 
   getAllGenre(): Observable<Array<Genre>> {
-    return this.http.get<Array<Genre>>(this.API_MOVIE + "/genre");
+    return this.http.get<Array<Genre>>(this.API_MOVIE + "/genre", {headers: this.requestHeader});
   }
 
   findAllByNameAndGenre(name: string, genre: number): Observable<Array<Movie>> {
