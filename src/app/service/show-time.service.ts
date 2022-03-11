@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ShowTime} from "../model/booking/ShowTime";
-import {Seat} from "../model/Seat";
+import {Seat} from "../model/theater/Seat";
+
 
 @Injectable({
   providedIn: 'root'
