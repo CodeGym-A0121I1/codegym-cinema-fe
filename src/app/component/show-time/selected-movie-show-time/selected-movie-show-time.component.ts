@@ -37,6 +37,7 @@ errors:boolean=false;
                 loop = new Date(Date.now());
                 break
             }
+            this.startDate=loop;
             while (loop <= end) {
                 this.listDates.push(loop)
                 let newDate = loop.setDate(loop.getDate() + 1);

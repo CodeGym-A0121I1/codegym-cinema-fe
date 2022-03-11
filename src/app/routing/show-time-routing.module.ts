@@ -6,7 +6,7 @@ import {
 import {SelectedSeatComponent} from "../component/show-time/selected-seat/selected-seat.component";
 
 const routes: Routes = [
-    { path: "selectedMovie", component: SelectedMovieShowTimeComponent  },
+    { path: "selectedMovie/:id", component: SelectedMovieShowTimeComponent  },
     { path: "selectedSeat", component: SelectedSeatComponent  }
 ];
 
