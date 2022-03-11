@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ShowTimeService} from "../../../service/show-time.service";
 import {MovieDTO} from "../../../dto/showtime/MovieDTO";
-import {Seat} from "../../../model/Seat";
+
 import {SeatMovieDTO} from "../../../dto/showtime/SeatMovieDTO";
+import {Seat} from "../../../model/theater/Seat";
 
 @Component({
   selector: 'app-selected-seat',
