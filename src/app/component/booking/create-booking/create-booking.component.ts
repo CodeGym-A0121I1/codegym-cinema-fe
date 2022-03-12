@@ -27,7 +27,6 @@ export class CreateBookingComponent implements OnInit {
 
 
     @Input() seatMovieDTO!: SeatMovieDTO;
-    bookingid: Booking | any;
     ticketid: Ticket | any;
     seatId: Array<Seat> = [];
     id: String | undefined;
@@ -39,6 +38,7 @@ export class CreateBookingComponent implements OnInit {
     showtimemovietheat!: ShowTime;
     totalmoney: number = 0;
     isDisplay1: boolean = false;
+    newBooking!: Booking;
 
     formBooking = new FormGroup(
         {
@@ -111,7 +111,7 @@ export class CreateBookingComponent implements OnInit {
             this.totalmoney += 45000;
         }
         this.bookingservice.getBookingById(this.activatedRoute.snapshot.params['idBooking']).subscribe(data => {
-                this.bookingid = data;
+                this.newBooking = data;
             }
         )
         this.userservice.getById("user").subscribe(datauser => {
@@ -132,29 +132,41 @@ export class CreateBookingComponent implements OnInit {
         this.formBooking.value.showTime.id = this.showtimemovietheat.id.valueOf();
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
-                this.bookingid = data;
+                this.newBooking = data;
             }
         );
     }
 
-    listTicket!: Ticket;
+    listTicket: Ticket[] = [];
+
 
     thanhtoan() {
-        this.formTicket.value.booking = this.bookingid;
+        this.formTicket.value.booking = this.newBooking;
         this.formTicket.value.price = 45000;
         this.formTicket.value.status = false;
-        for (let i = 0; i < this.seatId.length;) {
-            this.formTicket.value.seat = this.seatId[i++];
-            console.log(this.formTicket.value.seat);
-            this.listTicket = (this.formTicket.value);
-            console.log("beds no la");
-            console.log(this.listTicket);
+
+        for (let i = 0; i < this.seatId.length; i++) {
+            console.log("Ghe " + i);
+            console.log(this.seatId[i]);
+            let newTicket: Ticket = {
+                id: "",
+                booking: this.formTicket.value.booking,
+                status: this.formTicket.value.status,
+                seat: this.seatId[i],
+                price: this.formTicket.value.price,
+            };
+            console.log(newTicket)
+            this.listTicket.push(newTicket);
+
             this.ticketservice.createTicket(this.formTicket.value).subscribe(
                 (datatickte) => {
+
                     console.log("this ticket vé được thêm");
                 }
             )
+
         }
+        console.log(this.listTicket);
         // this.listTicket.push(this.formTicket.value);
         // console.log("beds no la");
         // console.log(this.listTicket);

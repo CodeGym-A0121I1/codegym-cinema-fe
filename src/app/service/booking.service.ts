@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from 'rxjs';
+import {Booking} from "../model/booking/Booking";
 
 @Injectable({
     providedIn: 'root'
@@ -20,11 +21,15 @@ export class BookingService {
         return this.httpClient.get(this.UPR_API_DETAIL_BOOKING + '/' + idBooking);
     }
 
-    createBooking(booking: Object) {
-        return this.httpClient.post(this.UPR_API_CREATE_BOOKING, booking);
+    createBooking(booking: Object): Observable<Booking> {
+        return this.httpClient.post<Booking>(this.UPR_API_CREATE_BOOKING, booking);
     }
 
-    updatebooking(idBooking: string): Observable<any> {
-        return this.httpClient.put<any>(this.UPR_API_UPDATE_PAID_BOOKING + '/' + idBooking, null);
+    updatebooking(booking: Booking): Observable<Booking> {
+        return this.httpClient.put<Booking>(this.UPR_API_UPDATE_PAID_BOOKING, booking);
+    }
+
+    updateStatus(idBooking: string): Observable<Booking> {
+        return this.httpClient.put<Booking>(this.UPR_API_UPDATE_PAID_BOOKING  + idBooking + "/status", null);
     }
 }

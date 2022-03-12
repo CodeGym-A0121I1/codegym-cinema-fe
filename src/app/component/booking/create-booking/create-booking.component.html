@@ -53,16 +53,16 @@
                                     <h3>Thông tin tài khoản đặt vé</h3><br>
                                     <ul>
                                         <li><span class="dtts1">Họ tên</span> <span
-                                                class="dtts2">{{user.fullName}}</span>
+                                                class="dtts2">{{user?.fullName}}</span>
                                         </li>
                                         <li><span class="dtts1">Email</span> <span
-                                                class="dtts2">{{user.email}}</span>
+                                                class="dtts2">{{user?.email}}</span>
                                         </li>
                                         <li><span class="dtts1">CMND</span> <span
-                                                class="dtts2">{{user.idCard}}</span>
+                                                class="dtts2">{{user?.idCard}}</span>
                                         </li>
                                         <li><span class="dtts1">Số điện thoại</span> <span
-                                                class="dtts2">{{user.phoneNumber}}</span>
+                                                class="dtts2">{{user?.phoneNumber}}</span>
                                         </li>
                                     </ul>
                                     <br>
@@ -117,4 +117,4 @@
     </div>
 </div>
 
-<app-paypal *ngIf="isDisplay1" [price]="totalmoney"></app-paypal>
+<app-paypal *ngIf="isDisplay1" [price]="totalmoney" [booking]="this.newBooking"></app-paypal>
