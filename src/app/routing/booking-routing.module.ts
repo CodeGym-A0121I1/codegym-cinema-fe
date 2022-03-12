@@ -5,8 +5,8 @@ import {PaypalComponent} from "../component/booking/paypal/paypal.component";
 import {AuthGuard} from "../guard/auth.guard";
 
 const routes: Routes = [
-    {path: "create-booking", component: CreateBookingComponent},
-    {path: "paypal", component: PaypalComponent},
+    {path: "create-booking", component: CreateBookingComponent, canActivate: [AuthGuard], data: {role: ['ROLE_USER']}},
+    {path: "paypal", component: PaypalComponent}, // role gì tự phân quyền vào
 ];
 
 @NgModule({

@@ -16,10 +16,10 @@ export class BookingService {
     readonly UPR_API_CREATE_BOOKING = "http://localhost:8080/api/booking/create";
 
     getBookingById(idBooking: String): Observable<any> {
-        return this.httpClient.get(this.UPR_API_DETAIL_BOOKING + '/' + idBooking, {headers: this.requestHeader});
+        return this.httpClient.get(this.UPR_API_DETAIL_BOOKING + '/' + idBooking);
     }
 
     createBooking(booking: Object) {
-        return this.httpClient.post(this.UPR_API_CREATE_BOOKING, booking, {headers: this.requestHeader});
+        return this.httpClient.post(this.UPR_API_CREATE_BOOKING, booking);
     }
 }
