@@ -29,6 +29,7 @@ export class CreateBookingComponent implements OnInit {
     showtimes: Array<ShowTime> = [];
     showtimemovietheat!: ShowTime;
     totalmoney: number = 0;
+    isDisplay1: boolean = false;
 
     formBooking = new FormGroup(
         {
@@ -83,7 +84,6 @@ export class CreateBookingComponent implements OnInit {
                     this.showtimemovietheat = this.showtimes[0];
                     this.showtimemovietheat = this.showtimes[0];
                 }
-                console.log(this.showtimes);
             }
         )
         // @ts-ignore
@@ -100,7 +100,6 @@ export class CreateBookingComponent implements OnInit {
                 this.bookingid = data;
             }
         )
-        console.log(this.bookingid);
         this.userservice.getById("user").subscribe(datauser => {
                 this.user = datauser;
             }
@@ -122,8 +121,6 @@ export class CreateBookingComponent implements OnInit {
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
                 this.bookingid = data;
-                console.log("id moi nhat1")
-                console.log(this.bookingid.id);
             }
         );
         console.log("id moi nhat2")
@@ -131,15 +128,17 @@ export class CreateBookingComponent implements OnInit {
     }
 
     thanhtoan() {
-        console.log("id moi nhat3")
-        console.log(this.bookingid.id);
-        this.bookingservice.getBookingById(this.bookingid.id).subscribe(
-            (data) => {
-                this.bookingid.paid = data;
-                console.log("trang thai");
-                console.log(this.bookingid.paid);
-            }
-        );
-        this.router.navigateByUrl("/paypal");
+        // console.log("id moi nhat3")
+        // console.log(this.bookingid.id);
+        // this.bookingservice.updatebooking(this.bookingid.id).subscribe
+        // (val => console.log(val));
+        // (data) => {
+        // this.bookingid = data;
+        // this.snackbar.open("Cập nhật thành công", "OK", {
+        //     duration: 3000
+        //     })
+        // })
+        this.isDisplay1 = true;
+        // this.router.navigateByUrl("/paypal");
     }
 }

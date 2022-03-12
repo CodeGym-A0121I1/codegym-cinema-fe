@@ -41,6 +41,9 @@ import {NgxPayPalModule} from 'ngx-paypal';
         MatDialogModule,
         NgxPayPalModule,
     ],
+    exports: [
+        FooterComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

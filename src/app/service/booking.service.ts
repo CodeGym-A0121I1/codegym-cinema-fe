@@ -14,12 +14,18 @@ export class BookingService {
     );
     readonly UPR_API_DETAIL_BOOKING = "http://localhost:8080/api/booking"
     readonly UPR_API_CREATE_BOOKING = "http://localhost:8080/api/booking/create";
+    readonly UPR_API_UPDATE_PAID_BOOKING = "http://localhost:8080/api/booking/";
 
-    getBookingById(idBooking: String): Observable<any> {
-        return this.httpClient.get(this.UPR_API_DETAIL_BOOKING + '/' + idBooking, {headers: this.requestHeader});
+    getBookingById(idBooking: string): Observable<any> {
+        return this.httpClient.get(this.UPR_API_DETAIL_BOOKING + '/' + idBooking);
     }
 
     createBooking(booking: Object) {
-        return this.httpClient.post(this.UPR_API_CREATE_BOOKING, booking, {headers: this.requestHeader});
+        return this.httpClient.post(this.UPR_API_CREATE_BOOKING, booking);
+    }
+
+    updatebooking(idBooking: string): Observable<void> {
+        // @ts-ignore
+        return this.httpClient.put<void>(this.UPR_API_UPDATE_PAID_BOOKING + '/' + idBooking);
     }
 }

@@ -26,7 +26,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="st_bt_top_close_btn st_bt_top_close_btn2 float_left"><a href="#"><i class="fa fa-times"></i></a>
                 </div>
-                <div class="st_seatlay_btn float_left"><a  (click)="takeInformationSeat()">Tiếp tục </a>
+                <div class="st_seatlay_btn float_left"><a (click)="takeInformationSeat()">Tiếp tục </a>
                 </div>
             </div>
         </div>
@@ -58,22 +58,19 @@
 
                     <ul *ngFor='let in of counter(movieShow.theater.totalCol) ;let y = index'
                         [ngClass]="(y==5 || y==18)?'st_eco_second_row':''">
-                        <li class="{{checkSeatBooked(nameSeat.value)}}" >
+                        <li class="{{checkSeatBooked(nameSeat.value)}}">
                             <span [hidden]="checkSeatBooked(nameSeat.value)!=''">{{movieShow.price}} VND</span>
-                            <input  type="checkbox" id="{{listLocalSeat[i]}}{{y+1}}" name="cb" #nameSeat
-                                    value="{{listLocalSeat[i]}}{{y+1}}"
-                                    (click)="take(nameSeat.value)" >
+                            <input type="checkbox" id="{{listLocalSeat[i]}}{{y+1}}" name="cb" #nameSeat
+                                   value="{{listLocalSeat[i]}}{{y+1}}"
+                                   (click)="take(nameSeat.value)">
                             <label for="{{listLocalSeat[i]}}{{y+1}}"></label>
                         </li>
                     </ul>
-
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
 
-<app-create-booking *ngIf="isDisplay" [seatMovieDTO]="movieSeatDTO" ></app-create-booking>
+<app-create-booking *ngIf="isDisplay" [seatMovieDTO]="movieSeatDTO"></app-create-booking>
 
