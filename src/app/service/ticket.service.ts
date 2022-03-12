@@ -18,13 +18,9 @@ export class TicketService {
     readonly URL_API_CREATE_TICKET = -"http://localhost:8080/api/ticket/create";
     readonly URL_API_searname = -"http://localhost:8080/api/ticket/searname";
 
-    createTicket(ticket: Ticket) {
+    createTicket(ticket: Object) {
         // @ts-ignore
         return this.httpClient.post(this.URL_API_CREATE_TICKET, ticket)
-    }
-
-    getTicketBookingId(idBooking: String): Observable<any> {
-        return this.httpClient.get(this.URL_API_SHOWTICKET_BOOKINGID + '/' + idBooking, {headers: this.requestHeader});
     }
 
     getAllSeatNameBookedByPriceId(nameseat: string, idbooking: string) {

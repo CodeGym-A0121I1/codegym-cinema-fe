@@ -13,6 +13,7 @@ export class ShowTimeService {
 
     private readonly API_MOVIE = "http://localhost:8080/api/seats/showTime";
     private readonly API_SEAT_BOOKED = "http://localhost:8080/api/seats/booked";
+    private readonly API_MOVIE_THEATER = "http://localhost:8080/api/seats/showmovietheater";
     requestHeader = new HttpHeaders(
         {"No-Auth": "True"}
     );
@@ -24,4 +25,9 @@ export class ShowTimeService {
     getAllSeatBookedByTheaterId(theaterId: string) {
         return this.httpClient.get<Array<Seat>>(this.API_SEAT_BOOKED + "?theaterId=" + theaterId, {headers: this.requestHeader});
     }
+
+    getAllShowTimeByMovieIdanhTheaterId(movieId: string, theaterId: string) {
+        return this.httpClient.get<Array<ShowTime>>(this.API_MOVIE_THEATER + "?MovieId=" + movieId + "&TheaterId=" + theaterId, {headers: this.requestHeader});
+    }
+
 }
