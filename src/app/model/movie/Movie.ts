@@ -1,20 +1,22 @@
+import {Time} from "@angular/common";
+import {TypeMovie} from "./TypeMovie";
 import {Actor} from "./Actor";
 import {Director} from "./Director";
-// @ts-ignore
 import {Producer} from "./Producer";
-
+import {Genre} from "./Genre";
 
 export interface Movie {
     id: string,
     name: string,
-    poster:string,
-    introduction:string;
-    openingDay:Date;
-    endDay:Date;
-    duration:string;
-    type:string,
-    content:string,
-    actor:Actor;
-    director:Director;
-    producer:Producer
+    poster: string,
+    trailer: string,
+    introduction: string,
+    openingDay: Date,
+    endDay: Date,
+    duration: Time,
+    type: TypeMovie,
+    actorList: Array<Actor>,
+    directorList: Array<Director>,
+    producerList: Array<Producer>,
+    genreList: Array<Genre>
 }

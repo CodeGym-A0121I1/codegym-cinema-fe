@@ -1,1 +1,13 @@
-<p>delete-movie works!</p>
+
+<h1 mat-dialog-title>Xác nhận xóa</h1>
+<mat-dialog-content>
+    <h3>Bạn có chắc chắn xóa phim <b>{{movie.name}}</b> ?</h3>
+</mat-dialog-content>
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+        <button mat-raised-button-button mat-dialog-close class="btn btn-primary">Đóng</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button-button (click)="deleteConfirm()" class="btn btn-danger">Xóa</button>
+    </mat-grid-tile>
+</mat-grid-list>

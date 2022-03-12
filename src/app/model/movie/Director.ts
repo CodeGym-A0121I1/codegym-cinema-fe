@@ -1,3 +1,5 @@
 export interface Director {
-    id: string,
-    name: string}
+    id: number,
+    name: string,
+    image: string
+}

@@ -1,7 +1,9 @@
 import {EGender} from "./EGender";
-import {Provider} from "./Provider";
-import {Account} from "./Account";
 import {Booking} from "../booking/Booking";
+// @ts-ignore
+import {Provider} from "./Provider";
+// @ts-ignore
+import {Account} from "./Account";
 
 export interface User {
     id: string;

@@ -1,5 +1,5 @@
 import {Booking} from "./Booking";
-import {Seat} from "../Seat";
+import {Seat} from "../theater/Seat";
 
 export interface Ticket {
     id: string;

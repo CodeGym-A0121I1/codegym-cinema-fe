@@ -6,13 +6,12 @@ import {
 import {SelectedSeatComponent} from "../component/show-time/selected-seat/selected-seat.component";
 
 const routes: Routes = [
-    {path: "selectedMovie/:id", component: SelectedMovieShowTimeComponent},
-    {path: "selectedSeat", component: SelectedSeatComponent}
+    { path: "selectedMovie/:id", component: SelectedMovieShowTimeComponent  },
+    { path: "selectedSeat", component: SelectedSeatComponent  }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class ShowTimeRoutingModule {
-}
+export class ShowTimeRoutingModule{}
