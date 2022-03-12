@@ -16,8 +16,8 @@ export class BookingService {
     constructor(private httpClient: HttpClient) {
     }
 
-    getAll(): Observable<Array<Booking>> {
-        return this.httpClient.get<Array<Booking>>(this.URL_BOOKING, {headers: this.requestHeader});
+    getBooking(): Observable<Array<Booking>> {
+        return this.httpClient.get<Array<Booking>>(this.URL_BOOKING + "/list");
     }
 
     getById(id: string): Observable<Booking> {
