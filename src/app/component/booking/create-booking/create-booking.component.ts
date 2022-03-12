@@ -10,6 +10,13 @@ import {User} from "../../../model/user/User";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ShowTimeService} from "../../../service/show-time.service";
 import {ShowTime} from "../../../model/booking/ShowTime";
+import {TicketService} from "../../../service/ticket.service";
+import {Ticket} from "../../../model/booking/Ticket";
+import {Seat} from "../../../model/Seat";
+import {signOut} from "@angular/fire/auth";
+
+class List<T> {
+}
 
 @Component({
     selector: 'app-create-booking',
@@ -21,6 +28,8 @@ export class CreateBookingComponent implements OnInit {
 
     @Input() seatMovieDTO!: SeatMovieDTO;
     bookingid: Booking | any;
+    ticketid: Ticket | any;
+    seatId: Array<Seat> = [];
     id: String | undefined;
     listUser: Array<string> = ['A', 'B', 'C', 'D', 'E'];
     listseatUserBooked: string[] = [];
@@ -66,6 +75,7 @@ export class CreateBookingComponent implements OnInit {
 
     constructor(
         private bookingservice: BookingService,
+        private ticketservice: TicketService,
         private activatedRoute: ActivatedRoute,
         private snackBar: MatSnackBar,
         private router: Router,
@@ -86,16 +96,20 @@ export class CreateBookingComponent implements OnInit {
                 }
             }
         )
+        for (let i = 0; i < this.seatMovieDTO.listSeat.length; i++) {
+            this.ticketservice.getSeatByName(this.seatMovieDTO.listSeat[i]).subscribe(
+                (dateseat) => {
+                    this.seatId.push(dateseat);
+                }
+            )
+        }
         // @ts-ignore
         this.seatMovieDTO.dateStart = "2022-03-03";
-        console.log(this.seatMovieDTO.dateStart);
-        // @ts-ignore
         // @ts-ignore
         this.iduser = this.authservice.getIdUser();
         for (let i = 0; i < this.seatMovieDTO.listSeat.length; i++) {
             this.totalmoney += 45000;
         }
-        console.log(this.totalmoney);
         this.bookingservice.getBookingById(this.activatedRoute.snapshot.params['idBooking']).subscribe(data => {
                 this.bookingid = data;
             }
@@ -104,7 +118,6 @@ export class CreateBookingComponent implements OnInit {
                 this.user = datauser;
             }
         )
-        console.log(this.user);
     }
 
     test: boolean = true;
@@ -117,28 +130,44 @@ export class CreateBookingComponent implements OnInit {
         this.formBooking.value.paid = false;
         this.formBooking.value.totalPrice = this.totalmoney;
         this.formBooking.value.showTime.id = this.showtimemovietheat.id.valueOf();
-        console.log(this.formBooking.value);
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
                 this.bookingid = data;
             }
         );
-        console.log("id moi nhat2")
-        console.log(this.bookingid.id);
     }
 
+    listTicket!: Ticket;
+
     thanhtoan() {
-        // console.log("id moi nhat3")
-        // console.log(this.bookingid.id);
-        // this.bookingservice.updatebooking(this.bookingid.id).subscribe
-        // (val => console.log(val));
-        // (data) => {
-        // this.bookingid = data;
-        // this.snackbar.open("Cập nhật thành công", "OK", {
-        //     duration: 3000
+        this.formTicket.value.booking = this.bookingid;
+        this.formTicket.value.price = 45000;
+        this.formTicket.value.status = false;
+        for (let i = 0; i < this.seatId.length;) {
+            this.formTicket.value.seat = this.seatId[i++];
+            console.log(this.formTicket.value.seat);
+            this.listTicket = (this.formTicket.value);
+            console.log("beds no la");
+            console.log(this.listTicket);
+            this.ticketservice.createTicket(this.formTicket.value).subscribe(
+                (datatickte) => {
+                    console.log("this ticket vé được thêm");
+                }
+            )
+        }
+        // this.listTicket.push(this.formTicket.value);
+        // console.log("beds no la");
+        // console.log(this.listTicket);
+
+        // }
+        // this.bookingservice.updatebooking(this.bookingid.id).subscribe((data) => {
+        //     this.bookingid = data;
+        //     this.snackbar.open("Cập nhật thành công", "OK", {
+        //         duration: 3000
         //     })
         // })
         this.isDisplay1 = true;
-        // this.router.navigateByUrl("/paypal");
     }
+
+    // }
 }

@@ -97,15 +97,17 @@
                                 <p>Chỗ ngồi</p>
                             </div>
                             <div class="st_dtts_sb_ul float_left">
-                                <ul style="display: inline">
-                                    <li *ngFor="let seat of  seatMovieDTO.listSeat">{{seat}}
-                                        <br> <span> Giá. 45.000đ</span>
-                                    </li>
-                                </ul>
+                                <table>
+                                    <tr *ngFor="let searts of  seatMovieDTO.listSeat">
+                                        <td class="col-sm-3">{{searts}} </td>
+                                        <td class="col-sm-3"></td>
+                                        <td class="col-sm-4">Giá. 45.000đ</td>
+                                    </tr>
+                                </table>
                             </div>
                             <div class="st_dtts_sb_h2 float_left">
                                 <h4>Trạng thái hiện tại <span>Chưa thanh toán</span></h4>
-                                <h5>Số tiền phải trả<span>{{totalmoney}}đ</span></h5>
+                                <h4>Số tiền phải trả : <span>{{totalmoney}}đ</span></h4>
                             </div>
                         </div>
                     </div>

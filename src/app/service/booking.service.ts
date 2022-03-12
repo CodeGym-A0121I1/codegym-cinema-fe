@@ -24,8 +24,7 @@ export class BookingService {
         return this.httpClient.post(this.UPR_API_CREATE_BOOKING, booking);
     }
 
-    updatebooking(idBooking: string): Observable<void> {
-        // @ts-ignore
-        return this.httpClient.put<void>(this.UPR_API_UPDATE_PAID_BOOKING + '/' + idBooking);
+    updatebooking(idBooking: string): Observable<any> {
+        return this.httpClient.put<any>(this.UPR_API_UPDATE_PAID_BOOKING + '/' + idBooking, null);
     }
 }
