@@ -5,6 +5,10 @@ import {AdminComponent} from "../component/login/admin/admin.component";
 import {AuthGuard} from "../guard/auth.guard";
 import {UserComponent} from "../component/login/user/user.component";
 import {EmployeeComponent} from "../component/login/employee/employee.component";
+import {
+    SelectedMovieShowTimeComponent
+} from "../component/show-time/selected-movie-show-time/selected-movie-show-time.component";
+import {SelectedSeatComponent} from "../component/show-time/selected-seat/selected-seat.component";
 
 const routes: Routes = [
     {path: "login", component: LoginComponent},

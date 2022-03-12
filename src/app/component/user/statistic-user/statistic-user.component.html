@@ -1,0 +1,32 @@
+<div class="container align-items-center">
+    <h2 class="text-center">Thống kê thành viên</h2>
+    <table class="table table-striped table-bordered table-responsive text-center">
+        <thead class="thead-dark">
+        <tr>
+            <th>Mã thành viên</th>
+            <th>Tên thành viên</th>
+            <th>Số lượng vé</th>
+            <th>Tổng tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="topListUser == null">
+            <td colspan="4">Hiện chưa thống kê thành viên nào.</td>
+        </tr>
+        <tr *ngFor="let user of topListUser | paginate: {itemsPerPage: 1, currentPage: currentPage, totalItems: totalPages}">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.quantity}}</td>
+            <td>{{user.totalPrice}}VNĐ</td>
+        </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="text-right"
+                         (pageChange)="currentPage = $event"
+                         previousLabel="Trước"
+                         nextLabel="Sau"
+                         [autoHide]="true">
+    </pagination-controls>
+</div>
+
+

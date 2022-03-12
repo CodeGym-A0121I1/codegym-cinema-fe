@@ -16,7 +16,7 @@ export interface Movie {
     duration: Time,
     type: TypeMovie,
     actorList: Array<Actor>,
-    director: Director,
-    producer: Producer,
+    directorList: Array<Director>,
+    producerList: Array<Producer>,
     genreList: Array<Genre>
 }

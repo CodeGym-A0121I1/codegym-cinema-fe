@@ -1,7 +1,9 @@
 import {Time} from "@angular/common";
-import {Booking} from "./Booking";
 import {Movie} from "../movie/Movie";
+import {Booking} from "./Booking";
 import {Theater} from "../theater/Theater";
+
+
 
 export interface ShowTime {
     id: string;
