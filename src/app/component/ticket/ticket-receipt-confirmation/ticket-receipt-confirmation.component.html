@@ -1,15 +1,12 @@
-<div *ngIf="!booking" class="container text-center alert-danger" style="margin-top: 25%">Hiện không có dữ liệu nào phù
-    hợp!
-</div>
 <div *ngIf="booking" class="container" style="margin-top: 10%">
     <h1 class="text-center font-weight-bold" *ngIf="!checkStatus">XÁC NHẬN NHẬN VÉ</h1>
     <h1 class="text-center font-weight-bold" *ngIf="checkStatus">THÔNG TIN ĐẶT VÉ</h1>
     <hr>
     <table class="container">
         <tr>
-            <td>
-                <img src="{{booking.showTime.movie.poster}}"
-                     class="img-circle img">
+            <td class="col-lg-5">
+                <img style="width: 350px; height: 350px" src="https://tse1.mm.bing.net/th?id=OIP.Wds-PDrIxUDUi7Qu9jA-WQHaE1&pid=Api&P=0&w=274&h=179"
+                     class="img-circle">
             </td>
             <td>
                 <div class="margin">
