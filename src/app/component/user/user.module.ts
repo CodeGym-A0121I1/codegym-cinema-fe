@@ -6,10 +6,15 @@ import {ChangePasswordUserComponent} from './change-password-user/change-passwor
 import {ListEmployeeComponent} from './list-employee/list-employee.component';
 import {UpdateEmployeeComponent} from './update-employee/update-employee.component';
 import {UserRoutingModule} from "../../routing/user-routing.module";
+
 import { ListMemberComponent } from './list-member/list-member.component';
 import { UpdateMemberComponent } from './update-member/update-member.component';
 import {ReactiveFormsModule} from "@angular/forms";
+
+
+
 import {NgxPaginationModule} from "ngx-pagination";
+import { StatisticUserComponent } from './statistic-user/statistic-user.component';
 
 @NgModule({
     declarations: [
@@ -18,14 +23,21 @@ import {NgxPaginationModule} from "ngx-pagination";
         ChangePasswordUserComponent,
         ListEmployeeComponent,
         UpdateEmployeeComponent,
+
         ListMemberComponent,
-        UpdateMemberComponent
+        UpdateMemberComponent,
+
+        StatisticUserComponent
+
     ],
     imports: [
         CommonModule,
         UserRoutingModule,
+
         ReactiveFormsModule,
         NgxPaginationModule
+
+
     ]
 })
 export class UserModule {

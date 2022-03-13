@@ -37,10 +37,12 @@ export class LoginComponent implements OnInit {
                 private matDialog: MatDialog) {
     }
 
+
     formLogin = new FormGroup({
         username: new FormControl("", Validators.required),
         password: new FormControl("", Validators.required)
     });
+
 
     ngOnInit(): void {
         if (this.authService.getToken() !== null) {
@@ -48,9 +50,11 @@ export class LoginComponent implements OnInit {
         }
     }
 
+
     public loginWithGoogle() {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
             (data) => {
+                console.log(data)
                 this.token.token = data.idToken;
                 this.loginService.loginWithGoogle(this.token).subscribe(
                     (authoricationResponse) => {
@@ -100,13 +104,13 @@ export class LoginComponent implements OnInit {
         const role = authoricationResponse.user.account.role;
         switch (role) {
             case "ROLE_USER":
-                this.router.navigate(['/test-user']);
+                this.router.navigate(['/movie']);
                 break;
             case "ROLE_EMPLOYEE":
                 this.router.navigate(['/test-employee']);
                 break;
             case "ROLE_ADMIN":
-                this.router.navigate(['/test-admin']);
+                this.router.navigate(['/statistic/movie']);
                 break;
             default:
                 this.router.navigate(['/forbidden'])
@@ -121,19 +125,19 @@ export class LoginComponent implements OnInit {
                 },
                 (error) => {
                     this.isLoginValid = false;
-                    switch (error.error.status) {
+                    switch (error.error.status) { // error.error.status = 404 or 400
                         case "Username not exists":
-                            this.errorUsername = "Tài khoản của bạn không tồn tại";
+                            this.errorUsername = "Tài khoản hoặc mật khẩu sai";
                             this.errorPassword = "";
                             break;
                         case "Account locked":
                             this.errorUsername = "Tài khoản của bạn đã bị khóa";
                             this.errorPassword = "";
                             break;
-                        case "Wrong password":
-                            this.errorPassword = "Mật khẩu sai";
-                            this.errorUsername = "";
-                            break;
+                        // case "Wrong password":
+                        //     this.errorPassword = "Mật khẩu sai";
+                        //     this.errorUsername = "";
+                        //     break;
                         default:
                             console.log(error)
                             this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {
@@ -149,9 +153,6 @@ export class LoginComponent implements OnInit {
     }
 
     forgotPassword() {
-        // gửi request username về be rồi nhận mã đăng nhập từ mail (set time cho mã = 60s)
-        // sử dụng dialog + cho đồng hồ đếm ngược 60s mã hết hạn
-        // Chức năng chưa hoàn thiện
         this.matDialog.open(ForgotPasswordComponent);
     }
 
