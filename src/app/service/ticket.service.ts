@@ -32,9 +32,6 @@ export class TicketService {
         // @ts-ignore
         return this.httpClient.put<void>(this.ARL_TICKET + "/" + id);
     }
-    //createTicket(ticket: any): Observable<boolean> {
-    //         return this.httpClient.post<boolean>(this.URL_API_CREATE_TICKET, ticket);
-    //     }
     getAllSeatNameBookedByPriceId(nameseat: string, idbooking: string) {
         return this.httpClient.get<Array<Ticket>>(this.URL_API_searname + "?nameseat=" + nameseat + "?idbooking=" + idbooking, {headers: this.requestHeader});
     }

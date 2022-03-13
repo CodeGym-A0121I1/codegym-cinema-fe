@@ -1,14 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CreateBookingComponent} from './create-booking/create-booking.component';
-import {DetailBookingComponent} from './detail-booking/detail-booking.component';
 import {ListBookingComponent} from './list-booking/list-booking.component';
 import {BookingRoutingModule} from "../../routing/booking-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {PaypalComponent } from './paypal/paypal.component';
 import {NgxPayPalModule} from "ngx-paypal";
 import {NgxPaginationModule} from "ngx-pagination";
-import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -24,7 +22,7 @@ import {ReactiveFormsModule} from "@angular/forms";
         CommonModule,
         BookingRoutingModule,
         NgxPaginationModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
         BookingRoutingModule,
         ReactiveFormsModule,
         NgxPayPalModule

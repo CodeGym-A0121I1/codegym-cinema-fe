@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
-import {ListMovieComponent} from './component/display/list-movie/list-movie.component';
 import {NavbarComponent} from './component/display/navbar/navbar.component';
 import {FooterComponent} from './component/display/footer/footer.component';
 import {AppRoutingModule} from './routing/app-routing.module';
@@ -26,7 +25,6 @@ import {NgxPayPalModule} from 'ngx-paypal';
 @NgModule({
     declarations: [
         AppComponent,
-        ListMovieComponent,
         NavbarComponent,
         FooterComponent,
         ForbiddenComponent

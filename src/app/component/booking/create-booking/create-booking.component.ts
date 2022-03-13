@@ -3,7 +3,6 @@ import {BookingService} from "../../../service/booking.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ActivatedRoute, Router} from '@angular/router';
 import {Booking} from "../../../model/booking/Booking";
-import {SeatMovieDTO} from "../../../dto/showtime/SeatMovieDTO";
 import {AuthService} from "../../../service/auth.service";
 import {UserService} from "../../../service/user.service";
 import {User} from "../../../model/user/User";
@@ -12,11 +11,9 @@ import {ShowTimeService} from "../../../service/show-time.service";
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {TicketService} from "../../../service/ticket.service";
 import {Ticket} from "../../../model/booking/Ticket";
-import {Seat} from "../../../model/Seat";
 import {signOut} from "@angular/fire/auth";
-
-class List<T> {
-}
+import {SeatMovieDTO} from "../../../dto/showTime/SeatMovieDTO";
+import {Seat} from "../../../model/theater/Seat";
 
 @Component({
     selector: 'app-create-booking',
@@ -24,7 +21,6 @@ class List<T> {
     styleUrls: ['./create-booking.component.css']
 })
 export class CreateBookingComponent implements OnInit {
-
 
     @Input() seatMovieDTO!: SeatMovieDTO;
     ticketid: Ticket | any;
@@ -39,6 +35,7 @@ export class CreateBookingComponent implements OnInit {
     totalmoney: number = 0;
     isDisplay1: boolean = false;
     newBooking!: Booking;
+    quantitys: number = 0;
 
     formBooking = new FormGroup(
         {
@@ -55,6 +52,7 @@ export class CreateBookingComponent implements OnInit {
                     id: new FormControl()
                 }
             ),
+            quantity: new FormControl('', Validators.required)
         }
     )
     formTicket = new FormGroup(
@@ -104,11 +102,10 @@ export class CreateBookingComponent implements OnInit {
             )
         }
         // @ts-ignore
-        this.seatMovieDTO.dateStart = "2022-03-03";
-        // @ts-ignore
         this.iduser = this.authservice.getIdUser();
         for (let i = 0; i < this.seatMovieDTO.listSeat.length; i++) {
             this.totalmoney += 45000;
+            this.quantitys += 1;
         }
         this.bookingservice.getBookingById(this.activatedRoute.snapshot.params['idBooking']).subscribe(data => {
                 this.newBooking = data;
@@ -126,10 +123,11 @@ export class CreateBookingComponent implements OnInit {
         this.test = false;
         this.formBooking.value.user.id = this.authservice.getIdUser();
         this.formBooking.value.date = this.seatMovieDTO.dateStart;
-        this.formBooking.value.time = this.seatMovieDTO.timeStart.slice(0, -3);
+        this.formBooking.value.time = this.seatMovieDTO.timeStart;
         this.formBooking.value.paid = false;
         this.formBooking.value.totalPrice = this.totalmoney;
         this.formBooking.value.showTime.id = this.showtimemovietheat.id.valueOf();
+        this.formBooking.value.quantity = this.quantitys;
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
                 this.newBooking = data;
@@ -139,15 +137,11 @@ export class CreateBookingComponent implements OnInit {
 
     listTicket: Ticket[] = [];
 
-
     thanhtoan() {
         this.formTicket.value.booking = this.newBooking;
         this.formTicket.value.price = 45000;
         this.formTicket.value.status = false;
-
         for (let i = 0; i < this.seatId.length; i++) {
-            console.log("Ghe " + i);
-            console.log(this.seatId[i]);
             let newTicket: Ticket = {
                 id: "",
                 booking: this.formTicket.value.booking,
@@ -155,31 +149,13 @@ export class CreateBookingComponent implements OnInit {
                 seat: this.seatId[i],
                 price: this.formTicket.value.price,
             };
-            console.log(newTicket)
             this.listTicket.push(newTicket);
-
-            this.ticketservice.createTicket(this.formTicket.value).subscribe(
+            this.ticketservice.createTicket(this.listTicket).subscribe(
                 (datatickte) => {
-
                     console.log("this ticket vé được thêm");
                 }
             )
-
         }
-        console.log(this.listTicket);
-        // this.listTicket.push(this.formTicket.value);
-        // console.log("beds no la");
-        // console.log(this.listTicket);
-
-        // }
-        // this.bookingservice.updatebooking(this.bookingid.id).subscribe((data) => {
-        //     this.bookingid = data;
-        //     this.snackbar.open("Cập nhật thành công", "OK", {
-        //         duration: 3000
-        //     })
-        // })
         this.isDisplay1 = true;
     }
-
-    // }
 }

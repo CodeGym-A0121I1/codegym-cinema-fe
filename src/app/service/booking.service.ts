@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Booking} from "../model/booking/Booking";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class BookingService {
     readonly URL_BOOKING = "http://localhost:8080/api/booking";
@@ -22,12 +22,7 @@ export class BookingService {
     getById(id: string): Observable<Booking> {
         return this.httpClient.get<Booking>(this.URL_BOOKING + "/" + id);
     }
-    constructor(private httpClient: HttpClient) {
-    }
 
-    requestHeader = new HttpHeaders(
-        {"No-Auth": "True"}
-    );
     readonly UPR_API_DETAIL_BOOKING = "http://localhost:8080/api/booking"
     readonly UPR_API_CREATE_BOOKING = "http://localhost:8080/api/booking/create";
     readonly UPR_API_UPDATE_PAID_BOOKING = "http://localhost:8080/api/booking/";
@@ -47,11 +42,12 @@ export class BookingService {
     totalMoney(id: string): Observable<number> {
         return this.httpClient.get<number>(this.URL_BOOKING + "/total-money/" + id);
     }
+
     updatebooking(booking: Booking): Observable<Booking> {
         return this.httpClient.put<Booking>(this.UPR_API_UPDATE_PAID_BOOKING, booking);
     }
 
     updateStatus(idBooking: string): Observable<Booking> {
-        return this.httpClient.put<Booking>(this.UPR_API_UPDATE_PAID_BOOKING  + idBooking + "/status", null);
+        return this.httpClient.put<Booking>(this.UPR_API_UPDATE_PAID_BOOKING + idBooking + "/status", null);
     }
 }

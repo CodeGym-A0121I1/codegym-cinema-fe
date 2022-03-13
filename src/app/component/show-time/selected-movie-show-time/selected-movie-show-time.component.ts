@@ -1,10 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ShowTime} from "../../../model/booking/ShowTime";
-import {MovieDTO} from "../../../dto/showtime/MovieDTO";
 import {ShowTimeService} from "../../../service/show-time.service";
 import {ActivatedRoute} from "@angular/router";
 import {Time} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MovieDTO} from "../../../dto/showTime/MovieDTO";
 
 @Component({
     selector: 'app-selected-movie-show-time',
