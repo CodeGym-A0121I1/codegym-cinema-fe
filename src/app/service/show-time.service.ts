@@ -12,8 +12,8 @@ export class ShowTimeService {
     constructor(private httpClient: HttpClient) {
     }
 
-    private readonly API_MOVIE = "http://localhost:8080/api/seats/showTime";
-    private readonly API_SEAT_BOOKED = "http://localhost:8080/api/seats/booked";
+    private readonly API_MOVIE = "http://localhost:8080/api/showTime";
+    private readonly API_SEAT_BOOKED = "http://localhost:8080/api/showTime/booked";
     private readonly API_MOVIE_THEATER = "http://localhost:8080/api/seats/showmovietheater";
     requestHeader = new HttpHeaders(
         {"No-Auth": "True"}
