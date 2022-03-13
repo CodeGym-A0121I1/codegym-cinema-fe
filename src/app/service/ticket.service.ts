@@ -16,7 +16,7 @@ export class TicketService {
     }
 
     readonly URL_API_SHOWTICKET_BOOKINGID = "http://localhost:8080/api/ticket"
-    readonly URL_API_CREATE_TICKET = "http://localhost:8080/api/ticket/create";
+    readonly URL_API_CREATE_TICKET = "http://localhost:8080/api/ticket";
     readonly URL_API_searname = "http://localhost:8080/api/ticket/searname";
     readonly URL_API_findById = "http://localhost:8080/api/ticket/seat"
 

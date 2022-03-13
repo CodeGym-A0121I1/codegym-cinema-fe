@@ -11,7 +11,6 @@ import {ShowTimeService} from "../../../service/show-time.service";
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {TicketService} from "../../../service/ticket.service";
 import {Ticket} from "../../../model/booking/Ticket";
-import {signOut} from "@angular/fire/auth";
 import {SeatMovieDTO} from "../../../dto/showTime/SeatMovieDTO";
 import {Seat} from "../../../model/theater/Seat";
 
@@ -28,7 +27,7 @@ export class CreateBookingComponent implements OnInit {
     id: String | undefined;
     listUser: Array<string> = ['A', 'B', 'C', 'D', 'E'];
     listseatUserBooked: string[] = [];
-    iduser!: string;
+    iduser: string;
     user!: User;
     showtimes: Array<ShowTime> = [];
     showtimemovietheat!: ShowTime;
@@ -80,7 +79,6 @@ export class CreateBookingComponent implements OnInit {
         public authservice: AuthService,
         private userservice: UserService,
         private showtime: ShowTimeService,
-        private snackbar: MatSnackBar,
     ) {
     }
 
@@ -107,10 +105,6 @@ export class CreateBookingComponent implements OnInit {
             this.totalmoney += 45000;
             this.quantitys += 1;
         }
-        this.bookingservice.getBookingById(this.activatedRoute.snapshot.params['idBooking']).subscribe(data => {
-                this.newBooking = data;
-            }
-        )
         this.userservice.getById("user").subscribe(datauser => {
                 this.user = datauser;
             }
@@ -147,7 +141,6 @@ export class CreateBookingComponent implements OnInit {
 
                 this.ticketservice.createTicket(this.listTicket).subscribe(
                     (datatickte) => {
-                        console.log("this ticket vé được thêm");
                     }
                 )
             }

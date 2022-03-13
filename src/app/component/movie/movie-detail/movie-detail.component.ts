@@ -15,47 +15,38 @@ enableProdMode();
     styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
+    isDisplay: boolean = false;
+    movie: Movie | any;
+    directors: string = "";
+    producers: string = "";
+    MovieId!: string;
 
-    movieid: Movie | any;
-    id_movie: string | any;
-    showmovieid?: Array<ShowTime>;
-
-
-    constructor(
-        private movieService: MovieService,
-        private showtimeService: ShowTimeService,
-        private bookingservice: BookingService,
-        private auth: AuthService,
-        private activatedRoute: ActivatedRoute,
-        private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute,
+                private movieService: MovieService,
+                private bookingservice: BookingService,
+                private auth: AuthService,
+                private router: Router) {
     }
 
     ngOnInit(): void {
-        this.activatedRoute.paramMap.subscribe(
-            (paramap) => {
-                this.id_movie = paramap.get("idMovie");
-                this.movieService.getById(this.id_movie).subscribe(data => {
-                        this.movieid = data;
-                        console.log(this.movieid);
-                    }
-                )
-                this.showtimeService.getAllShowTimeByMovieId(this.id_movie).subscribe(
-                    datas => {
-                        this.showmovieid = datas;
-                        console.log(this.showmovieid);
-                    }
-                )
+        this.movieService.getById(this.activatedRoute.snapshot.params["idMovie"]).subscribe(
+            data => {
+                this.movie = data;
+                for (const director of this.movie?.directorList) {
+                    this.directors += director.name + ", ";
+                }
+                for (const producer of this.movie?.producerList) {
+                    this.producers += producer.name + ", ";
+                }
+                this.MovieId = this.movie.id;
             }
         )
     }
 
     test() {
+        this.MovieId = this.movie.id;
         if (this.auth.isLoggedIn()) {
-            this.bookingservice.getBookingById("M2").subscribe(
-                (data) => {
-                    console.log(data);
-                },
-            );
+            this.isDisplay = true;
         } else {
             this.router.navigate(["/login"]);
         }

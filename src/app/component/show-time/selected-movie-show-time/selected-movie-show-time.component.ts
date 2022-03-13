@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {ShowTimeService} from "../../../service/show-time.service";
 import {ActivatedRoute} from "@angular/router";
@@ -18,8 +18,9 @@ export class SelectedMovieShowTimeComponent implements OnInit {
     startDate?: Date;
     startTime?: Time;
     isDisplay = false;
-errors:boolean=false;
+    errors: boolean = false;
     movieDTOTG!: any;
+    @Input() MovieId!: string;
 
     constructor(private showTimeSevice: ShowTimeService, private activeRoute: ActivatedRoute, private matSnackBar: MatSnackBar,) {
     }
@@ -27,7 +28,7 @@ errors:boolean=false;
     @Output() movieDTo: EventEmitter<MovieDTO> = new EventEmitter();
 
     ngOnInit(): void {
-        this.showTimeSevice.getAllShowTimeByMovieId(this.activeRoute.snapshot.params["id"]).subscribe(data => {
+        this.showTimeSevice.getAllShowTimeByMovieId(this.MovieId).subscribe(data => {
             const start = new Date(data[0].startDate);
             const end = new Date(data[0].movie.endDay);
 
@@ -37,7 +38,7 @@ errors:boolean=false;
                 loop = new Date(Date.now());
                 break
             }
-            this.startDate=loop;
+            this.startDate = loop;
             while (loop <= end) {
                 this.listDates.push(loop)
                 let newDate = loop.setDate(loop.getDate() + 1);
@@ -45,7 +46,7 @@ errors:boolean=false;
             }
             this.countDate = this.listDates.length;
         }, error => {
-            this.errors=true;
+            this.errors = true;
         });
     }
 

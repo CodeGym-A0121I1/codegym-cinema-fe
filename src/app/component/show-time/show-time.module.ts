@@ -10,6 +10,9 @@ import {BookingModule} from "../booking/booking.module";
         SelectedMovieShowTimeComponent,
         SelectedSeatComponent
     ],
+    exports: [
+        SelectedMovieShowTimeComponent
+    ],
     imports: [
         CommonModule,
         ShowTimeRoutingModule,

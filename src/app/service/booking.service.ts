@@ -24,7 +24,7 @@ export class BookingService {
     }
 
     readonly UPR_API_DETAIL_BOOKING = "http://localhost:8080/api/booking"
-    readonly UPR_API_CREATE_BOOKING = "http://localhost:8080/api/booking/create";
+    readonly UPR_API_CREATE_BOOKING = "http://localhost:8080/api/booking";
     readonly UPR_API_UPDATE_PAID_BOOKING = "http://localhost:8080/api/booking/";
 
     getBookingById(idBooking: string): Observable<any> {
