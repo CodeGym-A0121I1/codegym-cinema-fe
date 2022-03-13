@@ -14,7 +14,6 @@ export class PaypalComponent implements OnInit {
     public payPalConfig?: IPayPalConfig;
     @Input() price!: number;
     @Input() booking!: Booking;
-    price1: number = 0.3;
     test!: boolean;
 
     constructor(private router: Router,
@@ -36,7 +35,7 @@ export class PaypalComponent implements OnInit {
                     {
                         amount: {
                             currency_code: 'EUR',
-                            value: this.price1,
+                            value: this.price,
                         },
                     }
                 ]
@@ -58,7 +57,6 @@ export class PaypalComponent implements OnInit {
                         this.router.navigateByUrl("/");
                     }
                 )
-
             },
             onCancel: (data, actions) => {
                 this.snackBar.open("Giao dịch của quý khách không hoàn thành", "Thoát", {
