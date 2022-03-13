@@ -9,6 +9,7 @@ import {UserRoutingModule} from "../../routing/user-routing.module";
 import { ListMemberComponent } from './list-member/list-member.component';
 import { UpdateMemberComponent } from './update-member/update-member.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     imports: [
         CommonModule,
         UserRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxPaginationModule
     ]
 })
 export class UserModule {
