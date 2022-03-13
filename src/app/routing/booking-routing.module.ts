@@ -5,8 +5,8 @@ import {TicketReceiptConfirmationComponent} from "../component/ticket/ticket-rec
 import {AuthGuard} from "../guard/auth.guard";
 
 const routes: Routes = [
-    {path: "booking", component: ListBookingComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN','ROLE_EMPLOYEE', 'ROLE_USER']}},
-    {path: "booking/:idBooking", component: TicketReceiptConfirmationComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN','ROLE_EMPLOYEE']}}
+    {path: "management/booking", component: ListBookingComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN','ROLE_EMPLOYEE']}},
+    {path: "management/booking/:idBooking", component: TicketReceiptConfirmationComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN','ROLE_EMPLOYEE']}}
 ];
 
 @NgModule({

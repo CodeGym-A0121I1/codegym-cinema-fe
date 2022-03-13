@@ -11,7 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     styleUrls: ['./list-booking.component.css']
 })
 export class ListBookingComponent implements OnInit {
-    bookingList: Array<Booking> | any = [];
+    bookingList: Array<Booking>;
     p: number | any;
     checkPagination = true;
 
@@ -37,6 +37,7 @@ export class ListBookingComponent implements OnInit {
     });
 
     searchBooking(search: string) {
+        console.log(search)
         this.bookingService.getBySearch(search).subscribe(
             (data) => {
                 this.bookingList = data;
