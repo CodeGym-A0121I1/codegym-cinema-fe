@@ -1,6 +1,4 @@
-<div *ngIf="bookingList.length==0" class="container text-center alert-danger" style="margin-top: 25%">
-</div>
-<div *ngIf="bookingList.length!=0" class="container" style="margin-top: 10%">
+<div class="container" style="margin-top: 10%">
     <h1 class="text-center font-weight-bold">DANH SÁCH ĐẶT VÉ</h1>
     <div class="table-responsive">
         <div class="title_right">
@@ -19,7 +17,7 @@
                 </form>
             </div>
         </div>
-        <table class="table table-striped jambo_table bulk_action" *ngIf="bookingList != null">
+        <table class="table table-striped able-bordered jambo_table bulk_action">
             <thead class="thead-dark">
             <tr class="headings">
                 <th class="text-center" scope="column-title">Mã đặt vé</th>
@@ -32,16 +30,16 @@
                 <th class="text-center" scope="column-title"></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="bookingList != null">
             <tr class="even pointer" *ngFor="let booking of bookingList | paginate :{itemsPerPage:10 ,currentPage : p}">
-                <th>{{booking.id}}</th>
-                <td>{{booking.user.id}}</td>
-                <td>{{booking.user.fullName}}</td>
-                <td class="text-right">{{booking.user.idCard}}</td>
-                <td class="text-right">{{booking.user.phoneNumber}}</td>
-                <td>{{booking.showTime.movie.name}}</td>
-                <td class="text-right">{{booking.showTime.startDate | date:'dd-MM-yyyy' + " " + booking.showTime.startTime}}</td>
-                <td class="text-center">
+                <th class="vertical-align">{{booking.id}}</th>
+                <td class="vertical-align">{{booking.user.id}}</td>
+                <td class="vertical-align">{{booking.user.fullName}}</td>
+                <td class="text-right vertical-align">{{booking.user.idCard}}</td>
+                <td class="text-right vertical-align">{{booking.user.phoneNumber}}</td>
+                <td class="vertical-align">{{booking.showTime.movie.name}}</td>
+                <td class="text-right vertical-align">{{booking.showTime.startDate | date:'dd-MM-yyyy' + " " + booking.showTime.startTime}}</td>
+                <td class="text-center vertical-align">
                     <a class="btn text-light text" style="background: #26B99A; color: white"
                        [routerLink]="[booking.id]">Nhận vé</a>
                 </td>
