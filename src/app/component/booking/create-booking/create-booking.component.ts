@@ -131,6 +131,25 @@ export class CreateBookingComponent implements OnInit {
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
                 this.newBooking = data;
+                this.formTicket.value.booking = this.newBooking;
+                this.formTicket.value.price = 45000;
+                this.formTicket.value.status = false;
+                for (let i = 0; i < this.seatId.length; i++) {
+                    let newTicket: Ticket = {
+                        id: "",
+                        booking: this.formTicket.value.booking,
+                        status: this.formTicket.value.status,
+                        seat: this.seatId[i],
+                        price: this.formTicket.value.price,
+                    };
+                    this.listTicket.push(newTicket);
+                }
+
+                this.ticketservice.createTicket(this.listTicket).subscribe(
+                    (datatickte) => {
+                        console.log("this ticket vé được thêm");
+                    }
+                )
             }
         );
     }
@@ -138,24 +157,6 @@ export class CreateBookingComponent implements OnInit {
     listTicket: Ticket[] = [];
 
     thanhtoan() {
-        this.formTicket.value.booking = this.newBooking;
-        this.formTicket.value.price = 45000;
-        this.formTicket.value.status = false;
-        for (let i = 0; i < this.seatId.length; i++) {
-            let newTicket: Ticket = {
-                id: "",
-                booking: this.formTicket.value.booking,
-                status: this.formTicket.value.status,
-                seat: this.seatId[i],
-                price: this.formTicket.value.price,
-            };
-            this.listTicket.push(newTicket);
-            this.ticketservice.createTicket(this.listTicket).subscribe(
-                (datatickte) => {
-                    console.log("this ticket vé được thêm");
-                }
-            )
-        }
         this.isDisplay1 = true;
     }
 }

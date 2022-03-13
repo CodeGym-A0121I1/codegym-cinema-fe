@@ -20,7 +20,7 @@ export class TicketService {
     readonly URL_API_searname = "http://localhost:8080/api/ticket/searname";
     readonly URL_API_findById = "http://localhost:8080/api/ticket/seat"
 
-    createTicket(ticket: Object) {
+    createTicket(ticket: Array<Ticket>) {
         return this.httpClient.post(this.URL_API_CREATE_TICKET, ticket)
     }
 
