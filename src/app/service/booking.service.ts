@@ -16,7 +16,7 @@ export class BookingService {
     }
 
     getBooking(): Observable<Array<Booking>> {
-        return this.httpClient.get<Array<Booking>>(this.URL_BOOKING + "/list");
+        return this.httpClient.get<Array<Booking>>(this.URL_BOOKING + "/status/false");
     }
 
     getById(id: string): Observable<Booking> {

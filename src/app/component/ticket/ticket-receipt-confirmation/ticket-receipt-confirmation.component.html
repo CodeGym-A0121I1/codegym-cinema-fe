@@ -5,7 +5,7 @@
     <table class="container">
         <tr>
             <td class="col-lg-5">
-                <img style="width: 350px; height: 350px" src="https://tse1.mm.bing.net/th?id=OIP.Wds-PDrIxUDUi7Qu9jA-WQHaE1&pid=Api&P=0&w=274&h=179"
+                <img style="width: 350px; height: 350px" [src]="booking.showTime.movie.poster"
                      class="img-circle">
             </td>
             <td>
@@ -14,7 +14,7 @@
                     <table class="table table-hover">
                         <tr>
                             <th scope="col">Ngày chiếu</th>
-                            <td scope="col">{{booking.showTime.startDate}}</td>
+                            <td scope="col">{{booking.showTime.startDate | date: 'dd-MM-yyy'}}</td>
                         </tr>
                         <tr>
                             <th scope="col">Giờ chiếu</th>
@@ -22,12 +22,6 @@
                         </tr>
                         <tr>
                             <th scope="col">Ghế</th>
-                            <td scope="col">
-                                <span *ngFor="let ticket of ticketList">{{ticket.seat.name}}<br></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Giá</th>
                             <td scope="col">
                                 <span *ngFor="let ticket of ticketList">{{ticket.seat.name}}
                                     : {{ticket.price | currency: "VND"}}<br></span>
@@ -37,10 +31,8 @@
                             <th scope="col">Tổng cộng</th>
                             <td scope="col">{{totalMoney | currency: "VND"}}</td>
                         </tr>
-                    </table>
-                    <hr>
-                    <h2>Thông tin thành viên</h2>
-                    <table class="table table-hover">
+                        <hr>
+                        <h2>Thông tin thành viên</h2>
                         <tr>
                             <th scope="col-4">Mã thành viên</th>
                             <td scope="col-3">{{booking.user.id}}</td>
@@ -63,6 +55,10 @@
                             style="background: #26B99A; color: white;"
                             (click)="ticketReceipt(booking.id)">Xác nhận nhận vé
                     </button>
+                    <a *ngIf="checkStatus" type="button" class="btn text-light"
+                       style="background: #26B99A; color: white;"
+                       [href]="['management/booking']">Quay lại
+                    </a>
                 </div>
             </td>
         </tr>

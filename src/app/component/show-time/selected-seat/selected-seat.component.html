@@ -16,55 +16,55 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="st_seatlay_btn float_left"><a  (click)="takeInformationSeat()" style="cursor: pointer">Tiếp tục </a>
-                    <div class="st_seatlay_btn float_left"><a  (click)="takeInformationSeat()" style="cursor: pointer">Tiếp tục </a>
+                        <div class="st_seatlay_btn float_left"><a  (click)="takeInformationSeat()" style="cursor: pointer">Tiếp tục </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- st top header Start -->
+        <!-- st seat Layout Start -->
+        <div class="st_seatlayout_main_wrapper float_left"*ngIf="!isDisplay">
+            <div class="container container_seat">
+                <div class="st_seat_lay_heading float_left">
+                    <h3>Rạp CGV</h3>
+                </div>
+                <div class="st_seat_full_container">
+                    <div class="st_seat_lay_economy_wrapper float_left">
+                        <div class="screen">
+                            <img src="../../assets/images/content/screen.png">
+                        </div>
+
+                    </div>
+                    <div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
+                        <div class="st_seat_lay_economy_heading float_left">
+                            <h3>Đường đi</h3>
+                        </div>
+                        <div class="st_seat_lay_row float_left"
+                             *ngFor='let in of counter(movieShow.theater.totalRow) ;let i = index'>
+                            <ul>
+                                <li class="st_seat_heading_row">{{listLocalSeat[i]}}</li>
+                            </ul>
+
+                            <ul *ngFor='let in of counter(movieShow.theater.totalCol) ;let y = index'
+                                [ngClass]="(y==5 || y==18)?'st_eco_second_row':''">
+                                <li class="{{checkSeatBooked(nameSeat.value)}}" >
+                                    <span [hidden]="checkSeatBooked(nameSeat.value)!=''">{{movieShow.price}} VND</span>
+                                    <input  type="checkbox" id="{{listLocalSeat[i]}}{{y+1}}" name="cb" #nameSeat
+                                            value="{{listLocalSeat[i]}}{{y+1}}"
+                                            (click)="take(nameSeat.value)" >
+                                    <label for="{{listLocalSeat[i]}}{{y+1}}"></label>
+                                </li>
+                            </ul>
+
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- st top header Start -->
-    <!-- st seat Layout Start -->
-    <div class="st_seatlayout_main_wrapper float_left"*ngIf="!isDisplay">
-        <div class="container container_seat">
-            <div class="st_seat_lay_heading float_left">
-                <h3>Rạp CGV</h3>
-            </div>
-            <div class="st_seat_full_container">
-                <div class="st_seat_lay_economy_wrapper float_left">
-                    <div class="screen">
-                        <img src="../../assets/images/content/screen.png">
-                    </div>
-
-                </div>
-                <div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
-                    <div class="st_seat_lay_economy_heading float_left">
-                        <h3>Đường đi</h3>
-                    </div>
-                    <div class="st_seat_lay_row float_left"
-                         *ngFor='let in of counter(movieShow.theater.totalRow) ;let i = index'>
-                        <ul>
-                            <li class="st_seat_heading_row">{{listLocalSeat[i]}}</li>
-                        </ul>
-
-                        <ul *ngFor='let in of counter(movieShow.theater.totalCol) ;let y = index'
-                            [ngClass]="(y==5 || y==18)?'st_eco_second_row':''">
-                            <li class="{{checkSeatBooked(nameSeat.value)}}" >
-                                <span [hidden]="checkSeatBooked(nameSeat.value)!=''">{{movieShow.price}} VND</span>
-                                <input  type="checkbox" id="{{listLocalSeat[i]}}{{y+1}}" name="cb" #nameSeat
-                                        value="{{listLocalSeat[i]}}{{y+1}}"
-                                        (click)="take(nameSeat.value)" >
-                                <label for="{{listLocalSeat[i]}}{{y+1}}"></label>
-                            </li>
-                        </ul>
-
-                    </div>
 
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<app-create-booking *ngIf="isDisplay" [seatMovieDTO]="movieSeatDTO"></app-create-booking>
+    <app-create-booking *ngIf="isDisplay" [seatMovieDTO]="movieSeatDTO"></app-create-booking>
