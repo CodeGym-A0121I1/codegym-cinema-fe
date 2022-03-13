@@ -1,0 +1,59 @@
+<div *ngIf="bookingList.length==0" class="container text-center alert-danger" style="margin-top: 25%">
+</div>
+<div *ngIf="bookingList.length!=0" class="container" style="margin-top: 10%">
+    <h1 class="text-center font-weight-bold">DANH SÁCH ĐẶT VÉ</h1>
+    <div class="table-responsive">
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-left top_search">
+                <form [formGroup]="searchForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control text" formControlName="search" placeholder="Tìm kiếm"
+                               #search>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default text-danger text" type="button"
+                                    (click)="searchBooking(search.value)">Tìm kiếm!</button>
+                        </span>
+                    </div>
+                    <small class="form-text text-muted text-danger"
+                           *ngIf="searchForm.get('search')?.invalid && searchForm.get('search')?.touched">Độ dài nhỏ hơn 100 ký tự!</small>
+                </form>
+            </div>
+        </div>
+        <table class="table table-striped jambo_table bulk_action" *ngIf="bookingList != null">
+            <thead class="thead-dark">
+            <tr class="headings">
+                <th class="text-center" scope="column-title">Mã đặt vé</th>
+                <th class="text-center" scope="column-title">Mã thành viên</th>
+                <th class="text-center" scope="column-title">Họ tên</th>
+                <th class="text-center" scope="column-title">CMND</th>
+                <th class="text-center" scope="column-title">Số điện thoại</th>
+                <th class="text-center" scope="column-title">Phim</th>
+                <th class="text-center" scope="column-title">Xuất chiếu</th>
+                <th class="text-center" scope="column-title"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="even pointer" *ngFor="let booking of bookingList | paginate :{itemsPerPage:10 ,currentPage : p}">
+                <th>{{booking.id}}</th>
+                <td>{{booking.user.id}}</td>
+                <td>{{booking.user.fullName}}</td>
+                <td class="text-right">{{booking.user.idCard}}</td>
+                <td class="text-right">{{booking.user.phoneNumber}}</td>
+                <td>{{booking.showTime.movie.name}}</td>
+                <td class="text-right">{{booking.showTime.startDate | date:'dd-MM-yyyy' + " " + booking.showTime.startTime}}</td>
+                <td class="text-center">
+                    <a class="btn text-light text" style="background: #26B99A; color: white"
+                       [routerLink]="[booking.id]">Nhận vé</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--        Pagination-->
+    <pagination-controls class="text-right text" (pageChange)="p = $event"
+                         previousLabel="Trước"
+                         nextLabel="Sau"
+                         [autoHide]="true">
+    </pagination-controls>
+</div>
+

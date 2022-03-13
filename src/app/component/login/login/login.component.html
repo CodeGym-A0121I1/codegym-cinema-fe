@@ -1,0 +1,66 @@
+<div class="container media-login">
+    <form [formGroup]="formLogin" (ngSubmit)="login()">
+
+        <div class="st_pop_form_heading_wrapper float_left">
+            <br>
+            <h3>Đăng nhập</h3>
+        </div>
+        <div class="st_profile_input float_left">
+
+            <label style="color: blue">Tên đăng nhập:</label>
+            <input type="text" formControlName="username" #elementUsername
+                   (change)="checkValidUsernameAuto(elementUsername.value)">
+            <div *ngIf="formLogin.get('username')?.hasError('required') && (formLogin.get('username')?.touched || isLoginValid) ; then thenUsername else elseUsername"></div>
+            <ng-template #thenUsername>
+                <small style="color: red">Vui lòng điền tên đăng nhập</small>
+            </ng-template>
+            <ng-template #elseUsername>
+                <small *ngIf="errorUsername ; else elseErrorUsername" style="color: red">{{errorUsername}}</small>
+                <ng-template #elseErrorUsername><small style="color: white">.</small></ng-template>
+            </ng-template>
+            <!--            <ng-template #elseErrorUsername><small style="color: white">.</small></ng-template>-->
+
+        </div>
+        <div class="st_profile_input float_left">
+            <label style="color: blue">Mật khẩu</label>
+            <input type="password" formControlName="password" id="password" #elementPassword
+                   (change)="checkValidPassword(elementPassword.value)">
+            <div *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.touched || isLoginValid) ; then thenPassword else elsePassword"></div>
+            <ng-template #thenPassword>
+                <small style="color: red">Vui lòng điền mật khẩu</small>
+            </ng-template>
+            <ng-template #elsePassword>
+                <small *ngIf="errorPassword ; else elseErrorPassord" style="color: red">{{errorPassword}}</small>
+                <ng-template #elseErrorPassord><small style="color: white">.</small></ng-template>
+            </ng-template>
+        </div>
+
+
+        <input class="cursor-pointer" type="checkbox" id="vehicle1" name="vehicle1" value="true" #element
+               (click)="rememberMeLogin()">
+        <label class="cursor-pointer" for="vehicle1" style="margin-left: 5px">Lưu đăng nhập</label>
+
+        <div class="button-submit">
+            <button type="submit" class="btn btn-link btn-lg btn-block login" style="text-decoration: none">Đăng nhập</button>
+        </div>
+
+    </form>
+    <div class="st_form_pop_or_btn float_left">
+        <h4 style="width: 50px">Khác</h4>
+    </div>
+    <div class="st_form_pop_facebook_btn float_left cursor-pointer"><a (click)="loginWithFacebook()">FACEBOOK</a>
+    </div>
+    <div class="st_form_pop_gmail_btn float_left cursor-pointer"><a (click)="loginWithGoogle()">GOOGLE</a>
+    </div>
+
+    <div class="st_form_pop_signin_btn float_left">
+        <h4>Bạn chưa có tài khoản?
+            <a href="#">Đăng ký</a>
+        </h4>
+    </div>
+
+    <div style="text-align: center">
+       <p class="cursor-pointer forgot-password" (click)="forgotPassword()">Quên mật khẩu?</p>
+    </div>
+
+</div>

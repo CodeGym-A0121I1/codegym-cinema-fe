@@ -1,0 +1,64 @@
+<div *ngIf="!isDisplay">
+    <div class="prs_ms_trailer_vid_main_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_heading_section_wrapper">
+                        <h2>Movie Trailer</h2>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
+                    <div>
+                        <iframe src="https://www.youtube.com/embed/W7qWa52k-nE"
+                                width="1140" height="600" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
+                    <div class="prs_ms_trailer_slider_main_wrapper" style="display: flex !important;">
+                        <div class="prs_ms_trailer_slider_left_wrapper" style="width: 30% !important;">
+                            <img src="assets/images/content/movie_single/vid_slider_img.jpg"
+                                 [style.height.px]="right.offsetHeight" alt="vp_img"
+                                 style="width: 100%; object-fit: cover;border-top-left-radius: 10px;  border-bottom-left: 10px;">
+                        </div>
+                        <div class="prs_ms_trailer_slider_right_wrapper" style="width: 70% !important;" #right>
+                            <h1 style="text-transform: uppercase;text-align: center;font-size: xx-large; margin: -20px 0 40px 0;">
+                                {{movie?.name}}
+                            </h1>
+                            <ul>
+                                <li>Đạo diễn: <span>{{directors}}</span></li>
+                                <li>Nhà sản xuất: <span>{{producers}}</span></li>
+                                <li>Diễn viên: <span
+                                        *ngFor="let actor of movie.actorList; let i = index">{{actor.name + (i < movie.actorList.length - 1 ? ', ' : '')}}</span>
+                                </li>
+                                <li>Thể loại: <span
+                                        *ngFor="let genre of movie.genreList; let i = index">{{genre.name}}{{i < movie.genreList.length - 1 ? ', ' : '' }}</span>
+                                </li>
+                                <li>Khởi chiếu: <span>{{movie.openingDay | date: "dd-MM-yyyy"}}</span></li>
+                                <li>Thời lượng: <span>{{movie.duration}} phút</span></li>
+                                <li>Loại: <span>{{movie.type}}</span></li>
+                                <br>
+                                <br>
+                                <button type="button" (click)="test()" class="btn btn-danger text-center">Mua vé
+                                </button>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="prs_syn_main_section_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_syn_cont_wrapper">
+                        <h3>Tóm tắt</h3>
+                        <p>{{movie.content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-selected-movie-show-time *ngIf="isDisplay" [MovieId]="MovieId">
+</app-selected-movie-show-time>

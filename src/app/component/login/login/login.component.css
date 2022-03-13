@@ -1,0 +1,29 @@
+.login {
+    border: 1px;
+    transition-duration: 0.4s;
+    background-color: #aba6a6;
+}
+
+.login:hover {
+    background-color: #f73e00;
+    color: white;
+}
+
+.forgot-password:hover{
+    color: #00A8FF;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.media-login{
+    width: 500px;
+}
+
+@media screen and (max-width: 530px) {
+    .media-login {
+        width: 80%;
+    }
+}
+

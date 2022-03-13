@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ng" type="NodeJSConfigurationType" singleton="false" nameIsGenerated="true" path-to-js-file="ng" working-dir="$PROJECT_DIR$/node_modules/@angular/cli/bin">
+    <method v="2" />
+  </configuration>
+</component>
