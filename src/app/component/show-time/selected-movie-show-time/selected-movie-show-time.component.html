@@ -42,12 +42,9 @@
 
                                                         <li *ngFor="let movieTime of listMovies">	<span>
 															<h4>{{movieTime.price}} VND</h4>
-                                                            <!--															<input type="hidden" id="showTime" value="{{this.convertTime(movieTime.startTime)}}">-->
-                                                            <!--															<input type="hidden" id="showTime" value="{{movieTime.startTime}}">-->
 															</span>
-                                                            <!--                                                        <a (click)="takeTime(this.convertTime(movieTime.startTime))" id="{{movieTime.id}}">{{this.convertTime(movieTime.startTime)}}</a>-->
                                                             <a (click)="takeTime(movieTime.startTime)"
-                                                               id="{{movieTime.id}}">{{movieTime.startTime}}</a>
+                                                              style="cursor: pointer" id="{{movieTime.id}}">{{movieTime.startTime}}</a>
                                                         </li>
 
                                                     </ul>
@@ -78,7 +75,6 @@
                                                         <a (click)="takeTime(movieTime.startTime)"
                                                            id="{{movieTime.id}}">{{movieTime.startTime}}</a>
                                                     </li>
-
                                                 </ul>
                                             </div>
 

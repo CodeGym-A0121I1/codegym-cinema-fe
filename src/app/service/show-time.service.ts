@@ -10,8 +10,8 @@ import {Seat} from "../model/theater/Seat";
 export class ShowTimeService {
 
   constructor(private httpClient:HttpClient) { }
-  private readonly API_MOVIE = "http://localhost:8080/api/seats/showTime";
-  private readonly API_SEAT_BOOKED = "http://localhost:8080/api/seats/booked";
+  private readonly API_MOVIE = "http://localhost:8080/api/showTime/";
+  private readonly API_SEAT_BOOKED = "http://localhost:8080/api/showTime/booked";
 
   getAllShowTimeByMovieId(movieId:string){
     return this.httpClient.get<Array<ShowTime>>(this.API_MOVIE+"?MovieId="+movieId);
