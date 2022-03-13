@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ShowTimeService} from "../../../service/show-time.service";
-import {MovieDTO} from "../../../dto/showtime/MovieDTO";
 
-import {SeatMovieDTO} from "../../../dto/showtime/SeatMovieDTO";
 import {Seat} from "../../../model/theater/Seat";
+import {MovieDTO} from "../../../dto/showTime/MovieDTO";
+import {SeatMovieDTO} from "../../../dto/showTime/SeatMovieDTO";
 
 @Component({
   selector: 'app-selected-seat',
@@ -22,6 +22,7 @@ export class SelectedSeatComponent implements OnInit {
   listseatUserBooked: string[] = [];
   movieSeatDTO!:SeatMovieDTO;
   isDisplay:boolean=false;
+  isDisplay1:boolean=false;
 
   ngOnInit(): void {
     this.showservice.getAllSeatBookedByTheaterId(this.movieShow.theater.id).subscribe(data => {
@@ -78,11 +79,11 @@ export class SelectedSeatComponent implements OnInit {
       price:this.movieShow.price,
       listSeat:this.listseatUserBooked
     }
-
+    this.isDisplay = true;
     console.log(this.movieSeatDTO);
   }
 
   displayShowTime() {
-    this.isDisplay=true;
+    this.isDisplay1=true;
   }
 }

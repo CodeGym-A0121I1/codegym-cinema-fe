@@ -1,94 +1,76 @@
+
+
+
+
+<!--m phải fix được u à-->
 <div class="st_slider_rating_main_wrapper float_left" *ngIf="!isDisplay">
     <div class="container">
         <div class="st_calender_tabs">
-
             <ul class="nav nav-tabs">
-
                 <li *ngIf="errors"><h2 style="color: white">Không có lịch chiếu cho phim này</h2></li>
-                <!--                <li class="active"> <a data-toggle="tab" href="#home"><span>WED</span> <br> 19</a>-->
-                <!--                </li>-->
+
                 <li class="nav-item" *ngFor="let item of listDates; let in= index "
                     [ngClass]="in==0?'active':'nav-item'">
-                    <a data-toggle="tab" href="#menu{{item.getTime()}}" (click)="takeData(item)">
+                    <a data-toggle="tab" href="#home{{in}}" (click)="takeData(item)">
                         <span>{{item |date:'ccc'}}</span>
-                        <br>{{item.getDate() - 1}}-{{item.getMonth() + 1}}</a>
+                        <br>{{item.getDate() }}-{{item.getMonth() + 1}}</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<!--<p style="align-content: center">Phim : {{listMovies[0]?.movie?.name}}</p>-->
-<div class="st_slider_index_sidebar_main_wrapper st_slider_index_sidebar_main_wrapper_booking float_left"
-     *ngIf="!isDisplay">
-    <div class="container" *ngIf="!errors">
+
+
+
+
+<div class="st_slider_index_sidebar_main_wrapper st_slider_index_sidebar_main_wrapper_booking float_left" *ngIf="!isDisplay">
+    <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="st_indx_slider_main_container float_left">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="tab-content">
-                                <div id="home" class="tab-pane active">
-                                    <div class="st_calender_contant_main_wrapper float_left">
-                                        <div class="st_calender_row_cont float_left">
-                                            <div class="st_calender_asc">
-                                                <div class="st_calen_asc_heart"><a href="#"> <i class="fa fa-heart"></i></a>
-                                                </div>
-                                                <div class="st_calen_asc_heart_cont">
-                                                    <h3>{{listMovies[0]?.movie?.name}}</h3>
-                                                </div>
-                                                <div class="st_calen_asc_tecket_time_select">
-                                                    <ul>
-                                                        <li *ngIf="errors"> Không có lịch chiếu cho phim này</li>
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <div class="st_indx_slider_main_container float_left">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="tab-content" >
+                                            <div id="home{{in}}" [ngClass]="in==0?'tab-pane active':'tab-pane'" class="tab-pane" *ngFor="let item of listDates; let in = index ">
+                                                <div class="st_calender_contant_main_wrapper float_left">
+                                                    <div class="st_calender_row_cont float_left">
+                                                        <div class="st_calender_asc">
+                                                            <div class="st_calen_asc_heart"><a href="#"> <i class="fa fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="st_calen_asc_heart_cont">
+                                                                <h3>{{listMovies[0]?.movie?.name}}</h3>
+                                                            </div>
+                                                            <div class="st_calen_asc_tecket_time_select">
+                                                                <ul>
+                                                                    <li *ngIf="errors"> Không có lịch chiếu cho phim này</li>
 
-                                                        <li *ngFor="let movieTime of listMovies">	<span>
+                                                                    <li *ngFor="let movieTime of listMovies">	<span>
 															<h4>{{movieTime.price}} VND</h4>
 															</span>
-                                                            <a (click)="takeTime(movieTime.startTime)"
-                                                              style="cursor: pointer" id="{{movieTime.id}}">{{movieTime.startTime}}</a>
-                                                        </li>
+                                                                        <a (click)="takeTime(movieTime.startTime)"
+                                                                           id="{{movieTime.id}}" style="cursor: pointer">{{movieTime.startTime}}</a>
+                                                                    </li>
 
-                                                    </ul>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="menu{{time.getTime()}}" *ngFor="let time of listDates ;let i =index "
-                                     class="tab-pane fade" [ngClass]="i==0?'tab-pane active':'tab-pane fade'">
-                                    <div class="st_calender_contant_main_wrapper float_left">
-                                        <div class="st_calender_row_cont float_left">
-                                            <div class="st_calender_asc">
-                                                <div class="st_calen_asc_heart"><a href="#"> <i class="fa fa-heart"></i></a>
-                                                </div>
-                                                <div class="st_calen_asc_heart_cont">
-                                                    <h3>{{listMovies[0].movie?.name}}</h3>
-                                                </div>
-                                            </div>
-                                            <div class="st_calen_asc_tecket_time_select">
-                                                <ul>
-                                                    <li *ngIf="errors"> Không có lịch chiếu cho phim này</li>
-                                                    <li *ngFor="let movieTime of listMovies">	<span>
-															<h4>{{movieTime.price}} VND</h4>
-															<input type="hidden" id="showTime"
-                                                                   value="{{movieTime.startTime}}">
-															</span>
-                                                        <a (click)="takeTime(movieTime.startTime)"
-                                                           id="{{movieTime.id}}">{{movieTime.startTime}}</a>
-                                                    </li>
-                                                </ul>
                                             </div>
 
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
-
 <app-selected-seat [movieShow]="movieDTOTG" *ngIf="isDisplay"></app-selected-seat>

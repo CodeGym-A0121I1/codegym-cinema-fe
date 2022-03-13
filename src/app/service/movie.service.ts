@@ -48,5 +48,9 @@ export class MovieService {
   getMovieById(id: String){
     return this.http.get(this.API_MOVIE + "/" + id)
   }
-}
+    readonly URL_API_DETAIL_MOVIE = "http://localhost:8080/api/movie"
 
+    getById(idMovie: string): Observable<any> {
+        return this.http.get(this.URL_API_DETAIL_MOVIE + '/' + idMovie, {headers: this.requestHeader});
+    }
+}

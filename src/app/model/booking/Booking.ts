@@ -12,4 +12,5 @@ export interface Booking {
     time: Time;
     totalPrice: number;
     paid: boolean;
+    quantity: number
 }
