@@ -7,6 +7,7 @@ import {TheaterDTO} from "../dto/movie/TheaterDTO";
 import {Actor} from "../model/movie/Actor";
 import {Director} from "../model/movie/Director";
 import {Producer} from "../model/movie/Producer";
+import {ShowTimeDTO} from "../dto/movie/ShowTimeDTO";
 
 @Injectable({
     providedIn: 'root'
@@ -44,7 +45,11 @@ export class MovieService {
         return this.http.put<MovieDTO>(`${this.API_MOVIE}/edit`+"/" + movie.id, movie);
     }
 
-   public findByIdMovie(id : number) {
-        return this.http.get<any>(this.API_MOVIE+ '/' + id);
+   public findByIdMovie(id : number): Observable<MovieDTO> {
+        return this.http.get<MovieDTO>(this.API_MOVIE+ '/' + id);
+    }
+
+   public getAllShowTimeDTO() : Observable<ShowTimeDTO[]> {
+       return this.http.get<ShowTimeDTO[]>(`${this.API_MOVIE}/all/showtime`);
     }
 }

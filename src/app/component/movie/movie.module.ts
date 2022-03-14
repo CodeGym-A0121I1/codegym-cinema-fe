@@ -11,6 +11,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../../../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import {MatSelectModule} from "@angular/material/select";
         AngularFireStorageModule,
         FormsModule,
         MatSelectModule,
+        MatCheckboxModule,
     ]
 })
 export class MovieModule {
