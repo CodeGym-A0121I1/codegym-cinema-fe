@@ -1,0 +1,117 @@
+<div class="container">
+    <h3 class="text-center">Sửa phòng họp</h3>
+    <form [formGroup]="updateMember" (ngSubmit)="save()">
+        <div class="mt-4 p-3">
+            <div class="form-group row">
+                <label for="username" class="col-sm-2 col-form-label">Tài khoản </label>
+                <div class="col-sm-10">
+                    <input type="text" [readonly]="true" id="username" name="username" formControlName="username"
+                           class="form-control">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fullName" class="col-sm-2 col-form-label">Họ và tên <span
+                       style="color: red" class="required-field">*</span></label>
+                <div class="col-sm-10">
+                    <input type="text" id="fullName" name="fullName" formControlName="fullName" class="form-control"
+                    >
+                    <small class="form-text text-danger"
+                           *ngIf="updateMember.get('fullName')?.hasError('required')  && updateMember.get('fullName')?.touched">
+                        Họ và tên không được để trống
+                    </small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Mật khẩu </label>
+                <div class="col-sm-10">
+                    <input type="password" formControlName="password" class="form-control"
+                    >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dayOfBirth" class="col-sm-2 col-form-label">Ngày sinh <span style="color: red" class="required-field">*</span></label>
+                <div class="col-sm-10">
+                    <input type="date" id="dayOfBirth" name="dayOfBirth" formControlName="dayOfBirth"
+                           class="form-control" >
+                </div>
+                <small class="form-text text-danger"
+                       *ngIf="updateMember.get('dayOfBirth')?.hasError('required')  && updateMember.get('dayOfBirth')?.touched">
+                    Ngày sinh không được để trống
+                </small>
+            </div>
+
+            <div class="form-group row">
+                <label for="gender" class="col-sm-2 col-form-label">Giới tính <span
+                        style="color: red"   class="required-field">*</span></label>
+                <div class="col-sm-10">
+
+                    <select name="gender" id="gender" formControlName="gender" class="form-select form-select-sm" aria-label="Default select example"
+                    >
+
+                        <option [selected]="updateMember.value.gender == 'MALE'" value="MALE">
+                            Nam
+                        </option>
+                        <option [selected]="updateMember.value.gender == 'FEMALE'"
+                                value="FEMALE">Nữ
+                        </option>
+                        <option [selected]="updateMember.value.gender == 'OTHER'" value="OTHER">
+                            Khác
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="address" class="col-sm-2 col-form-label">Địa chỉ <span
+                        style="color: red"    class="required-field">*</span></label>
+                <div class="col-sm-10">
+                    <input type="text" id="address" name="address" formControlName="address"
+                           class="form-control">
+                    <small class="form-text text-danger"
+                           *ngIf="updateMember.get('address')?.hasError('required')  && updateMember.get('address')?.touched">
+                        Địa chỉ không được để trống
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email <span
+                        style="color: red"    class="required-field">*</span></label>
+                <div class="col-sm-10">
+                    <input type="text" id="email" name="email" formControlName="email"
+                           class="form-control">
+                    <small class="form-text text-danger"
+                           *ngIf="updateMember.get('email')?.hasError('required')  && updateMember.get('email')?.touched">
+                        Email không được để trống
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="phoneNumber" class="col-sm-2 col-form-label">SĐT <span
+                        style="color: red"     class="required-field">*</span></label>
+                <div class="col-sm-10">
+                    <input type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
+                           class="form-control">
+                    <small class="form-text text-danger"
+                           *ngIf="updateMember.get('phoneNumber')?.hasError('required')  && updateMember.get('phoneNumber')?.touched">
+                        Số điện thoại không được để trống
+                    </small>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10 text-center">
+                    <button style="margin-right: 200px;" routerLink="/member" type="button" class="btn btn-secondary mr-4" >Trở lại</button>
+                    <button class="btn btn-primary ml-4" type="submit">Sửa</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </form>
+
+</div>

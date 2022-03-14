@@ -139,6 +139,7 @@ export class LoginComponent implements OnInit {
                         //     this.errorUsername = "";
                         //     break;
                         default:
+                            console.log(error)
                             this.matSnackBar.open("Hệ thống đang bảo trì vui lòng đăng nhập lại", "OK", {
                                 panelClass: ['mat-toolbar', 'mat-primary'],
                                 duration: 5000
