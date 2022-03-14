@@ -21,6 +21,7 @@ import {environment} from "../environments/environment";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
 import {ListMovieComponent} from "./list-movie/list-movie.component";
+import {NgxPayPalModule} from "ngx-paypal";
 
 @NgModule({
     declarations: [
@@ -50,7 +51,7 @@ import {ListMovieComponent} from "./list-movie/list-movie.component";
         NgxPayPalModule,
     ],
     exports: [
-        FooterComponent
+        FooterComponent,
         AppRoutingModule
     ],
     bootstrap: [AppComponent]
