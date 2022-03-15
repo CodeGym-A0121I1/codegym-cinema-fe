@@ -190,8 +190,10 @@ export class CreateMovieComponent implements OnInit {
                 const index = actorList.controls
                     .findIndex(x => x.value === actor);
                 actorList.removeAt(index);
+
+                this.actorListError = index < 0 ? false : true;
             }
-            this.actorListError = this.actorList.length < 0 ? false : true;
+
         }
         console.log(this.actorListError)
         console.log(this.actorList.length)

@@ -20,29 +20,29 @@ export class MovieService {
     }
 
     public createMovie(movie: MovieDTO): Observable<boolean> {
-        return this.http.post<boolean>(`${this.API_MOVIE}/create`, movie);
+        return this.http.post<boolean>(`${this.API_MOVIE}`, movie);
     }
 
     public getAllGenre(): Observable<Genre[]> {
-        return this.http.get<Genre[]>(`${this.API_MOVIE}/all/genre`);
+        return this.http.get<Genre[]>(`${this.API_MOVIE}/genre`);
     }
 
     public getAllActor(): Observable<Actor[]> {
-        return this.http.get<Actor[]>(`${this.API_MOVIE}/all/actor`);
+        return this.http.get<Actor[]>(`${this.API_MOVIE}/actor`);
     }
     public getAllDirector(): Observable<Director[]> {
-        return this.http.get<Director[]>(`${this.API_MOVIE}/all/director`);
+        return this.http.get<Director[]>(`${this.API_MOVIE}/director`);
     }
     public getAllProducer(): Observable<Producer[]> {
-        return this.http.get<Producer[]>(`${this.API_MOVIE}/all/producer`);
+        return this.http.get<Producer[]>(`${this.API_MOVIE}/producer`);
     }
 
     public getAllTheaterDTO(): Observable<TheaterDTO[]> {
-        return this.http.get<TheaterDTO[]>(`${this.API_MOVIE}/all/theater`);
+        return this.http.get<TheaterDTO[]>(`${this.API_MOVIE}/theater`);
     }
 
     public editMovie(movie : MovieDTO) :Observable<MovieDTO> {
-        return this.http.put<MovieDTO>(`${this.API_MOVIE}/edit`+"/" + movie.id, movie);
+        return this.http.put<MovieDTO>(`${this.API_MOVIE}`+"/" + movie.id, movie);
     }
 
    public findByIdMovie(id : number): Observable<MovieDTO> {
@@ -50,6 +50,6 @@ export class MovieService {
     }
 
    public getAllShowTimeDTO() : Observable<ShowTimeDTO[]> {
-       return this.http.get<ShowTimeDTO[]>(`${this.API_MOVIE}/all/showtime`);
+       return this.http.get<ShowTimeDTO[]>(`${this.API_MOVIE}/showtime`);
     }
 }
