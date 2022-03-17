@@ -1,10 +1,9 @@
 <!-- prs navigation Start -->
 <div class="prs_navigation_main_wrapper">
     <div class="container-fluid">
-
         <div class="prs_navi_left_main_wrapper">
             <div class="prs_logo_main_wrapper">
-                <a href="index.html">
+                <a routerLink="">
                     <img src="assets/images/header/logo.png" alt="logo"/>
                 </a>
             </div>
@@ -36,7 +35,7 @@
             </div>
         </div>
         <div class="prs_navi_right_main_wrapper">
-            <div class="prs_top_login_btn_wrapper" style="margin-left: 5px">
+            <div class="prs_top_login_btn_wrapper" style="margin-left: 5px;">
                 <div class="prs_animate_btn1">
                     <ul>
                         <li><a *ngIf="! isLoggedIn()" [routerLink]="['/login']" class="button button--tamaya"
@@ -48,7 +47,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="prs_slidebar_wrapper" style="margin-right: 5px">
+            <div *ngIf="isLoggedIn()" class="prs_slidebar_wrapper" style="margin-right: 5px">
                 <button class="second-nav-toggler" type="button" style="color: white; width: auto">
                     {{authService.getFullName()}}
                 </button>

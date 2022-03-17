@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Movie} from "../../../model/movie/Movie";
 import {MovieService} from "../../../service/movie.service";
 import {Genre} from "../../../model/movie/Genre";
@@ -10,7 +10,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     templateUrl: './list-movie.component.html',
     styleUrls: ['./list-movie.component.css']
 })
-export class ListMovieComponent implements OnInit, AfterViewInit {
+export class ListMovieComponent implements OnInit {
 
     movieList: Array<Movie> = [];
     genreList: Array<Genre> = [];
@@ -38,10 +38,6 @@ export class ListMovieComponent implements OnInit, AfterViewInit {
         )
     }
 
-    ngAfterViewInit() {
-
-    }
-
     listAll() {
         if (this.numberShowedMovie >= this.movieList.length) {
             this.numberShowedMovie = 6;
@@ -56,7 +52,9 @@ export class ListMovieComponent implements OnInit, AfterViewInit {
 
     search(value: string) {
         this.movieService.findAllByNameAndGenre(value, this.searchGenre).subscribe(
-            data => this.movieList = data,
+            data => {
+                this.movieList = data
+            },
             error => {
                 this.snackBar.open("Không tìm thấy phim phù hợp")._dismissAfter(3000)
             }

@@ -6,12 +6,12 @@ import {ForbiddenComponent} from "../component/display/forbidden/forbidden.compo
 import {
     SelectedMovieShowTimeComponent
 } from "../component/show-time/selected-movie-show-time/selected-movie-show-time.component";
-import {SelectedSeatComponent} from "../component/show-time/selected-seat/selected-seat.component";
 
 const appRoutes: Routes = [
+    {path: "", redirectTo: "movie", pathMatch: "full"},
     {path: "movie", component: ListMovieComponent},
     {path: "forbidden", component: ForbiddenComponent},
-    { path: "selectedShowTime/:id", component: SelectedMovieShowTimeComponent  },
+    {path: "selectedShowTime/:id", component: SelectedMovieShowTimeComponent},
 
 ];
 

@@ -34,7 +34,10 @@ export class MovieService {
   }
 
   findAllByNameAndGenre(name: string, genre: number): Observable<Array<Movie>> {
-    return this.http.get<Array<Movie>>(this.API_MOVIE, {params: new HttpParams().set('name', name).set('genre', genre)})
+    return this.http.get<Array<Movie>>(this.API_MOVIE, {
+      params: new HttpParams().set('name', name).set('genre', genre),
+      headers: this.requestHeader
+    })
   }
 
   getAll():Observable<any[]>{
