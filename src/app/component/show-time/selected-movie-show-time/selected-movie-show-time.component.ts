@@ -49,6 +49,10 @@ export class SelectedMovieShowTimeComponent implements OnInit {
             }
             console.log(this.listDates)
             this.countDate = this.listDates.length;
+            if(this.listDates.length==0){
+                this.errors=true
+            }
+
         }, error => {
             this.errors = true;
         });
