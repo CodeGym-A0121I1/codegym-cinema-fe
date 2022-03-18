@@ -1,0 +1,31 @@
+li.text-hover {
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.list-sidebars > li {
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.list-sidebars > li.text-hover:hover {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+}
+
+.sidebars-title{
+    color: #333;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+    margin: 0 0 15px;
+}
+
+.sidebars-logout:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}

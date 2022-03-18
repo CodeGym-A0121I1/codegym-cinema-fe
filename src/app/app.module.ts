@@ -7,7 +7,7 @@ import {AppRoutingModule} from './routing/app-routing.module';
 import {RouterModule} from "@angular/router";
 import {LoginModule} from "./component/login/login.module";
 import {HttpClientModule} from "@angular/common/http";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {BookingModule} from "./component/booking/booking.module";
 import {MovieModule} from "./component/movie/movie.module";
@@ -20,7 +20,9 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {environment} from "../environments/environment";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
-import {NgxPayPalModule} from 'ngx-paypal';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatButtonModule} from "@angular/material/button";
+import { SidebarAdminComponent } from './component/display/sidebar-admin/sidebar-admin.component';
 
 @NgModule({
     declarations: [
@@ -46,10 +48,11 @@ import {NgxPayPalModule} from 'ngx-paypal';
         MatSnackBarModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
-        NgxPayPalModule,
+        MatSidenavModule,
+        MatButtonModule,
     ],
     exports: [
-        FooterComponent
+
     ],
     bootstrap: [AppComponent]
 })

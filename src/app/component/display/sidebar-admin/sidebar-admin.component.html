@@ -1,0 +1,44 @@
+<span>
+        <img width="50px" src="http://cdn.onlinewebfonts.com/svg/img_173956.png">
+    </span>
+<span style="margin-left: 40px; font-size: 30px"
+      class="sidebars-title">{{authService.getFullName()}}</span>
+<hr>
+<ul class="list-sidebars">
+    <li>
+        <button mat-button [matMenuTriggerFor]="menu1"><a>QUẢN LÝ PHIM</a></button>
+        <mat-menu #menu1="matMenu">
+            <button mat-menu-item><a href="#">Danh sách phim</a></button>
+            <button mat-menu-item><a href="#">Thêm mới phim</a></button>
+        </mat-menu>
+    </li>
+    <li>
+        <button mat-button [matMenuTriggerFor]="menu2"><a>QUẢN LÝ ĐẶT VÉ</a></button>
+        <mat-menu #menu2="matMenu">
+            <button mat-menu-item><a href="#">Danh sách đặt vé</a></button>
+        </mat-menu>
+    </li>
+    <li>
+        <button mat-button [matMenuTriggerFor]="menu3"><a>QUẢN LÝ NHÂN VIÊN</a></button>
+        <mat-menu #menu3="matMenu">
+            <button mat-menu-item><a href="#">Danh sách nhân viên</a></button>
+        </mat-menu>
+    </li>
+    <li>
+        <button mat-button [matMenuTriggerFor]="menu4"><a>QUẢN LÝ THÀNH VIÊN</a></button>
+        <mat-menu #menu4="matMenu">
+            <button mat-menu-item><a href="#">Danh sách thành viên</a></button>
+        </mat-menu>
+    </li>
+    <li>
+        <button mat-button [matMenuTriggerFor]="menu5"><a>THỐNG KÊ</a></button>
+        <mat-menu #menu5="matMenu">
+            <button mat-menu-item><a href="#">Thống kê phim</a></button>
+            <button mat-menu-item><a href="#">Thống kê thành viên</a></button>
+        </mat-menu>
+    </li>
+</ul>
+<button style="margin-left: 80px" type="button" class="sidebars-logout btn btn-danger" *ngIf="isLoggedIn()"
+        [routerLink]="['/login']"
+        data-text="Đăng xuất" (click)="logout()">
+    <span>Đăng xuất</span></button>

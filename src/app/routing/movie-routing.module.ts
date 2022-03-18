@@ -14,7 +14,7 @@ const routes: Routes = [
         data: {role: ['ROLE_ADMIN']}
     },
     {
-        path: "list-movie",
+        path: "management/movies",
         component: ListMoviesAdminComponent,
         canActivate: [AuthGuard],
         data : {role: ['ROLE_ADMIN']}}

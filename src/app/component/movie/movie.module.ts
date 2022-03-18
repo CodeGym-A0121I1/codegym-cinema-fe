@@ -12,6 +12,10 @@ import {ListMovieComponent} from "./list-movie/list-movie.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {AppModule} from "../../app.module";
+import {SidebarAdminComponent} from "../display/sidebar-admin/sidebar-admin.component";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
     declarations: [
@@ -21,7 +25,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
         EditMovieComponent,
         MovieDetailComponent,
         StatisticMovieComponent,
-        ListMovieComponent
+        ListMovieComponent,
+        SidebarAdminComponent
     ],
     exports: [
         CreateMovieComponent
@@ -33,6 +38,9 @@ import {MatGridListModule} from "@angular/material/grid-list";
         MatDialogModule,
         MatButtonModule,
         MatGridListModule,
+        MatSidenavModule,
+        MatMenuModule,
+
     ]
 })
 export class MovieModule {
