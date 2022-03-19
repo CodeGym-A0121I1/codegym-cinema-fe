@@ -25,7 +25,7 @@ export class UserService {
     }
 
     public getById(idUser: string): Observable<any> {
-        return this.httpClient.get(this.API_USER + '/' + idUser);
+        return this.httpClient.get(this.API_USER + '/member/' + idUser);
     }
 
     public forgotPassword(forgotPassword: ForgotPassword): Observable<Boolean> {

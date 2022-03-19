@@ -14,6 +14,7 @@ export class PaypalComponent implements OnInit {
     public payPalConfig?: IPayPalConfig;
     @Input() price!: number;
     @Input() booking!: Booking;
+    price1: number = 0.3;
     test!: boolean;
 
     constructor(private router: Router,
@@ -35,7 +36,7 @@ export class PaypalComponent implements OnInit {
                     {
                         amount: {
                             currency_code: 'EUR',
-                            value: this.price,
+                            value: this.price1,
                         },
                     }
                 ]
@@ -50,19 +51,18 @@ export class PaypalComponent implements OnInit {
             onClientAuthorization: (data) => {
                 this.bookingService.updateStatus(this.booking.id).subscribe(
                     data => {
-                        this.snackBar.open("Giao dịch của quý khách đã được hoàn thành", "Oke", {
-                            duration: 3000,
-                            panelClass: ['mat-toolbar', 'mat-toolbar']
-                        })
+                        console.log(data),
+                            this.snackBar.open("Giao dịch của quý khách đã được hoàn thành", "Oke", {
+                                duration: 3000,
+                                panelClass: ['mat-toolbar', 'mat-toolbar']
+                            })
                         this.router.navigateByUrl("/");
                     }
                 )
+
             },
             onCancel: (data, actions) => {
-                this.snackBar.open("Giao dịch của quý khách không hoàn thành", "Thoát", {
-                    duration: 3000,
-                    panelClass: ['mat-toolbar', 'mat-toolbar']
-                })
+                alert("Giao dịch của quý khách không hoàn thành");
             },
             onError: err => {
                 alert("Paypal đăng gặp trục trặc mong bản hãy thử lại sau!")

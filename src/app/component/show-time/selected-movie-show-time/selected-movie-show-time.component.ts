@@ -27,7 +27,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
     @Output() movieDTo: EventEmitter<MovieDTO> = new EventEmitter();
 
     ngOnInit(): void {
-        this.showTimeSevice.getAllShowTimeByMovieId(this.activeRoute.snapshot.params["id"]).subscribe(data => {
+        this.showTimeSevice.getAllShowTimeByMovieId(this.MovieId).subscribe(data => {
             const start = new Date(data[0].startDate);
             const end = new Date(data[0].movie.endDay);
             this.listMovies = data;

@@ -11,7 +11,6 @@ import {ShowTimeService} from "../../../service/show-time.service";
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {TicketService} from "../../../service/ticket.service";
 import {Ticket} from "../../../model/booking/Ticket";
-import {signOut} from "@angular/fire/auth";
 import {SeatMovieDTO} from "../../../dto/showTime/SeatMovieDTO";
 import {Seat} from "../../../model/theater/Seat";
 
@@ -105,7 +104,7 @@ export class CreateBookingComponent implements OnInit {
             this.totalmoney += 1;
             this.quantitys += 1;
         }
-        this.userservice.getById("user").subscribe(datauser => {
+        this.userservice.getById(this.iduser).subscribe(datauser => {
                 this.user = datauser;
             }
         )
@@ -114,6 +113,7 @@ export class CreateBookingComponent implements OnInit {
     test: boolean = true;
 
     create() {
+        console.log(this.formBooking.value);
         this.test = false;
         this.formBooking.value.user.id = this.authservice.getIdUser();
         this.formBooking.value.date = this.seatMovieDTO.dateStart;
@@ -138,9 +138,11 @@ export class CreateBookingComponent implements OnInit {
                     };
                     this.listTicket.push(newTicket);
                 }
-
+                console.log("Danh sách vé là ");
+                console.log(this.listTicket);
                 this.ticketservice.createTicket(this.listTicket).subscribe(
                     (datatickte) => {
+                        console.log("Thêm mới thành công!");
                     }
                 )
             }
