@@ -113,14 +113,13 @@ export class CreateBookingComponent implements OnInit {
     test: boolean = true;
 
     create() {
-        console.log(this.formBooking.value);
         this.test = false;
         this.formBooking.value.user.id = this.authservice.getIdUser();
         this.formBooking.value.date = this.seatMovieDTO.dateStart;
         this.formBooking.value.time = this.seatMovieDTO.timeStart;
         this.formBooking.value.paid = false;
         this.formBooking.value.totalPrice = this.totalmoney;
-        this.formBooking.value.showTime.id = this.showtimemovietheat.id.valueOf();
+        this.formBooking.value.showTime.id = this.showtimemovietheat.id;
         this.formBooking.value.quantity = this.quantitys;
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
@@ -138,11 +137,8 @@ export class CreateBookingComponent implements OnInit {
                     };
                     this.listTicket.push(newTicket);
                 }
-                console.log("Danh sách vé là ");
-                console.log(this.listTicket);
                 this.ticketservice.createTicket(this.listTicket).subscribe(
                     (datatickte) => {
-                        console.log("Thêm mới thành công!");
                     }
                 )
             }
