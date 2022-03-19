@@ -11,7 +11,6 @@ import {ShowTimeService} from "../../../service/show-time.service";
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {TicketService} from "../../../service/ticket.service";
 import {Ticket} from "../../../model/booking/Ticket";
-import {signOut} from "@angular/fire/auth";
 import {SeatMovieDTO} from "../../../dto/showTime/SeatMovieDTO";
 import {Seat} from "../../../model/theater/Seat";
 
@@ -21,14 +20,13 @@ import {Seat} from "../../../model/theater/Seat";
     styleUrls: ['./create-booking.component.css']
 })
 export class CreateBookingComponent implements OnInit {
-
     @Input() seatMovieDTO!: SeatMovieDTO;
     ticketid: Ticket | any;
     seatId: Array<Seat> = [];
     id: String | undefined;
     listUser: Array<string> = ['A', 'B', 'C', 'D', 'E'];
     listseatUserBooked: string[] = [];
-    iduser!: string;
+    iduser: string;
     user!: User;
     showtimes: Array<ShowTime> = [];
     showtimemovietheat!: ShowTime;
@@ -80,7 +78,6 @@ export class CreateBookingComponent implements OnInit {
         public authservice: AuthService,
         private userservice: UserService,
         private showtime: ShowTimeService,
-        private snackbar: MatSnackBar,
     ) {
     }
 
@@ -104,14 +101,10 @@ export class CreateBookingComponent implements OnInit {
         // @ts-ignore
         this.iduser = this.authservice.getIdUser();
         for (let i = 0; i < this.seatMovieDTO.listSeat.length; i++) {
-            this.totalmoney += 45000;
+            this.totalmoney += 1;
             this.quantitys += 1;
         }
-        this.bookingservice.getBookingById(this.activatedRoute.snapshot.params['idBooking']).subscribe(data => {
-                this.newBooking = data;
-            }
-        )
-        this.userservice.getById("user").subscribe(datauser => {
+        this.userservice.getById(this.iduser).subscribe(datauser => {
                 this.user = datauser;
             }
         )
@@ -126,7 +119,7 @@ export class CreateBookingComponent implements OnInit {
         this.formBooking.value.time = this.seatMovieDTO.timeStart;
         this.formBooking.value.paid = false;
         this.formBooking.value.totalPrice = this.totalmoney;
-        this.formBooking.value.showTime.id = this.showtimemovietheat.id.valueOf();
+        this.formBooking.value.showTime.id = this.showtimemovietheat.id;
         this.formBooking.value.quantity = this.quantitys;
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
@@ -144,10 +137,8 @@ export class CreateBookingComponent implements OnInit {
                     };
                     this.listTicket.push(newTicket);
                 }
-
                 this.ticketservice.createTicket(this.listTicket).subscribe(
                     (datatickte) => {
-                        console.log("this ticket vé được thêm");
                     }
                 )
             }

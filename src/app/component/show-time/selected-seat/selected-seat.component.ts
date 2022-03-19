@@ -32,7 +32,6 @@ export class SelectedSeatComponent implements OnInit {
           }
         }
     )
-
   }
   checkSeatBooked(str: string) {
     let result = '';

@@ -12,6 +12,7 @@ import {ListMovieComponent} from "./list-movie/list-movie.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {ShowTimeModule} from "../show-time/show-time.module";
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
         MatDialogModule,
         MatButtonModule,
         MatGridListModule,
+        ShowTimeModule,
     ]
 })
 export class MovieModule {

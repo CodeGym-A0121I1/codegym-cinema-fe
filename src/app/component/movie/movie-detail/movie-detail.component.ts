@@ -1,11 +1,11 @@
 import {Component, enableProdMode, OnInit} from '@angular/core';
 import {Movie} from "../../../model/movie/Movie";
-import {ShowTime} from "../../../model/booking/ShowTime";
 import {MovieService} from "../../../service/movie.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ShowTimeService} from "../../../service/show-time.service";
 import {BookingService} from "../../../service/booking.service";
 import {AuthService} from "../../../service/auth.service";
+import {signOut} from "@angular/fire/auth";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 enableProdMode();
 
@@ -15,47 +15,43 @@ enableProdMode();
     styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
+    isDisplay: boolean = false;
+    movie: Movie;
+    directors: string = "";
+    producers: string = "";
+    MovieId!: string;
+    video!: SafeUrl;
 
-    movieid: Movie | any;
-    id_movie: string | any;
-    showmovieid?: Array<ShowTime>;
-
-
-    constructor(
-        private movieService: MovieService,
-        private showtimeService: ShowTimeService,
-        private bookingservice: BookingService,
-        private auth: AuthService,
-        private activatedRoute: ActivatedRoute,
-        private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute,
+                private movieService: MovieService,
+                private bookingservice: BookingService,
+                private auth: AuthService,
+                private sanitizer: DomSanitizer,
+                private router: Router) {
     }
 
     ngOnInit(): void {
-        this.activatedRoute.paramMap.subscribe(
-            (paramap) => {
-                this.id_movie = paramap.get("idMovie");
-                this.movieService.getById(this.id_movie).subscribe(data => {
-                        this.movieid = data;
-                        console.log(this.movieid);
-                    }
-                )
-                this.showtimeService.getAllShowTimeByMovieId(this.id_movie).subscribe(
-                    datas => {
-                        this.showmovieid = datas;
-                        console.log(this.showmovieid);
-                    }
-                )
+        this.movieService.getById(this.activatedRoute.snapshot.params["idMovie"]).subscribe(
+            data => {
+                this.movie = data;
+                this.video = this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailer);
+                for (const director of this.movie?.directorList) {
+                    this.directors += director.name + ", ";
+                }
+                for (const producer of this.movie?.producerList) {
+                    this.producers += producer.name + ", ";
+                }
+                this.MovieId = this.movie.id;
             }
         )
     }
 
     test() {
+        this.movie.trailer;
+        console.log(this.movie.trailer)
+        this.MovieId = this.movie.id;
         if (this.auth.isLoggedIn()) {
-            this.bookingservice.getBookingById("M2").subscribe(
-                (data) => {
-                    console.log(data);
-                },
-            );
+            this.isDisplay = true;
         } else {
             this.router.navigate(["/login"]);
         }
