@@ -56,16 +56,22 @@ export class PaypalComponent implements OnInit {
                                 duration: 3000,
                                 panelClass: ['mat-toolbar', 'mat-toolbar']
                             })
-                        this.router.navigateByUrl("/");
+                        this.router.navigateByUrl("/movie");
                     }
                 )
 
             },
             onCancel: (data, actions) => {
-                alert("Giao dịch của quý khách không hoàn thành");
+                this.snackBar.open("Giao dịch của quý khách không thành công!", "Oke", {
+                    duration: 3000,
+                    panelClass: ['mat-toolbar', 'mat-toolbar']
+                })
             },
             onError: err => {
-                alert("Paypal đăng gặp trục trặc mong bản hãy thử lại sau!")
+                this.snackBar.open("Paypal đăng gặp trục trặc mong bản hãy thử lại sau!", "Oke", {
+                    duration: 3000,
+                    panelClass: ['mat-toolbar', 'mat-toolbar']
+                })
             },
             onClick: (data, actions) => {
             },

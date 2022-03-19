@@ -9,14 +9,13 @@
                 </div>
                 <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
                     <div>
-                        <iframe src="https://www.youtube.com/embed/W7qWa52k-nE"
-                                width="1140" height="600" frameborder="0" allowfullscreen></iframe>
+                        <iframe [src]='video' width="1140" height="600" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="col-lg-12 col-lg-12 col-lg-12 col-lg-12">
                     <div class="prs_ms_trailer_slider_main_wrapper" style="display: flex !important;">
                         <div class="prs_ms_trailer_slider_left_wrapper" style="width: 30% !important;">
-                            <img src="assets/images/content/movie_single/vid_slider_img.jpg"
+                            <img src="{{movie.poster}}"
                                  [style.height.px]="right.offsetHeight" alt="vp_img"
                                  style="width: 100%; object-fit: cover;border-top-left-radius: 10px;  border-bottom-left: 10px;">
                         </div>
@@ -53,7 +52,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="prs_syn_cont_wrapper">
                         <h3>Tóm tắt</h3>
-                        <p>{{movie.content}}</p>
+                        <p>{{movie.introduction}}</p>
                     </div>
                 </div>
             </div>
