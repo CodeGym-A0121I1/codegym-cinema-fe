@@ -8,6 +8,7 @@ import {UpdateEmployeeComponent} from './update-employee/update-employee.compone
 import {UserRoutingModule} from "../../routing/user-routing.module";
 import { StatisticUserComponent } from './statistic-user/statistic-user.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import {NgxPaginationModule} from "ngx-pagination";
         CommonModule,
         UserRoutingModule,
         NgxPaginationModule,
+        ReactiveFormsModule,
     ]
 })
 export class UserModule {

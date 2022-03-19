@@ -9,7 +9,8 @@ import {ForgotPassword} from "../dto/user/ForgotPassword";
 })
 export class UserService {
 
-    API_USER = "http://localhost:8080/api/users"
+    API_USER = "http://localhost:8080/api/users";
+    API_EMPLOYEE = "http://localhost:8080/api/employees";
 
     private readonly STATISTIC_USER_API: string = "http://localhost:8080/api/statistic/user";
 
@@ -18,6 +19,18 @@ export class UserService {
     );
 
     constructor(private httpClient: HttpClient) {
+    }
+
+    getAllEmployee(): Observable<any> {
+        return this.httpClient.get<any>(this.API_EMPLOYEE);
+    }
+
+    getEmployeeById(id: string ): Observable<any> {
+        return this.httpClient.get<any>(this.API_EMPLOYEE + '/' + id);
+    }
+
+    updateEmployee(employee: any): Observable<any> {
+        return this.httpClient.put(this.API_EMPLOYEE, employee);
     }
 
     public generateOtp(username: string): Observable<Boolean> {
