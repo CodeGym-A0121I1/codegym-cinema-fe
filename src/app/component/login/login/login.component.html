@@ -36,8 +36,8 @@
         </div>
 
 
-        <input class="cursor-pointer" type="checkbox" id="vehicle1" name="vehicle1" value="true" #element
-               (click)="rememberMeLogin()">
+        <input class="cursor-pointer" type="checkbox" id="vehicle1" name="vehicle1"
+               (change)="rememberMeLogin($event)">
         <label class="cursor-pointer" for="vehicle1" style="margin-left: 5px">Lưu đăng nhập</label>
 
         <div class="button-submit">
