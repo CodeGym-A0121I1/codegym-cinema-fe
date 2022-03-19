@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {ShowTimeService} from "../../../service/show-time.service";
 import {ActivatedRoute} from "@angular/router";
@@ -20,7 +20,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
     isDisplay = false;
     errors: boolean = false;
     movieDTOTG!: any;
-
+    @Input() MovieId!: string;
     constructor(private showTimeSevice: ShowTimeService, private activeRoute: ActivatedRoute, private matSnackBar: MatSnackBar,) {
     }
 
