@@ -111,13 +111,14 @@
                                         <div class="prs_upcom_movie_box_wrapper">
                                             <div class="prs_upcom_movie_img_box">
                                                 <img [src]="movie.poster ? movie.poster : 'assets/images/movie-night-png.png'"
-                                                     src="" [alt]="movie.name"/>
+                                                     src="" [alt]="movie.name"
+                                                     style="width: 265px; height: 370px; object-fit: cover"/>
                                                 <div class="prs_upcom_movie_img_overlay"></div>
                                                 <div class="prs_upcom_movie_img_btn_wrapper">
                                                     <ul>
                                                         <li><a routerLink="/detail-movie/{{movie.id}}">Chi tiết</a>
                                                         </li>
-                                                        <li><a href="#">Đặt vé</a>
+                                                        <li><a routerLink="/selectedShowTime/{{movie.id}}">Đặt vé</a>
                                                         </li>
                                                     </ul>
                                                 </div>

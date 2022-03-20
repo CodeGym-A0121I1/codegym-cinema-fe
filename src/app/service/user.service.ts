@@ -3,13 +3,15 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {StatisticUserDTO} from "../dto/statistic/StatisticUserDTO";
 import {ForgotPassword} from "../dto/user/ForgotPassword";
+import {User} from "../model/user/User";
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
 
-    API_USER = "http://localhost:8080/api/users"
+    API_USER = "http://localhost:8080/api/users";
+    API_EMPLOYEE = "http://localhost:8080/api/employees";
 
     private readonly STATISTIC_USER_API: string = "http://localhost:8080/api/statistic/user";
 
