@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {StatisticUserDTO} from "../dto/statistic/StatisticUserDTO";
 import {ForgotPassword} from "../dto/user/ForgotPassword";
+import {User} from "../model/user/User";
 
 @Injectable({
     providedIn: 'root'
@@ -34,5 +35,17 @@ export class UserService {
 
     public statisticTopMemberByTotalPrice(): Observable<StatisticUserDTO[]> {
         return this.httpClient.get<StatisticUserDTO[]>(`${this.STATISTIC_USER_API}`);
+    }
+    public getListMember(){
+        return this.httpClient.get(this.API_USER + "/list-member");
+    }
+
+    public getByIdMember(id: string){
+        return this.httpClient.get<any>(this.API_USER + "/member/" + id);
+    }
+
+    public editMember(user: User): Observable<any> {
+
+        return this.httpClient.put(this.API_USER + "/update/" + user.id, user);
     }
 }
