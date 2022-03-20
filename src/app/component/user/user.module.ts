@@ -8,6 +8,8 @@ import {UpdateEmployeeComponent} from './update-employee/update-employee.compone
 import {UserRoutingModule} from "../../routing/user-routing.module";
 import { StatisticUserComponent } from './statistic-user/statistic-user.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import { ListMemberComponent } from './list-member/list-member.component';
+import { UpdateMemberComponent } from './update-member/update-member.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
@@ -17,13 +19,14 @@ import {ReactiveFormsModule} from "@angular/forms";
         ChangePasswordUserComponent,
         ListEmployeeComponent,
         UpdateEmployeeComponent,
-        StatisticUserComponent
+        StatisticUserComponent,
+        ListMemberComponent,
+        UpdateMemberComponent
     ],
     imports: [
         CommonModule,
         UserRoutingModule,
         NgxPaginationModule,
-        UserRoutingModule,
         ReactiveFormsModule
     ]
 })

@@ -5,6 +5,8 @@ import {AuthGuard} from "../guard/auth.guard";
 import {UpdateEmployeeComponent} from "../component/user/update-employee/update-employee.component";
 import {StatisticUserComponent} from "../component/user/statistic-user/statistic-user.component";
 
+import {ListMemberComponent} from "../component/user/list-member/list-member.component";
+import {UpdateMemberComponent} from "../component/user/update-member/update-member.component";
 
 const routes: Routes = [
     {
@@ -23,7 +25,9 @@ const routes: Routes = [
         component: StatisticUserComponent,
         canActivate: [AuthGuard],
         data: {role: ['ROLE_ADMIN']}
-    }
+    },
+    {path: "member", component: ListMemberComponent},
+    {path: "update/:id", component: UpdateMemberComponent}
 ];
 
 @NgModule({
