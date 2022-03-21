@@ -1,0 +1,55 @@
+body
+.form-group .col-form-label:after {
+    color: #dd0000;
+    content: "(*)";
+}
+
+.form-control {
+    margin-left: -60px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+}
+
+.col-2 {
+    margin-left: -60px;
+    margin-top: 10px;
+
+}
+
+#showtime {
+    margin-left: -60px;
+}
+
+.custom-select {
+    margin-left: -60px;
+}
+
+.col-form-label {
+    margin-left: 120px;
+}
+.form-check-label{
+    margin-top: 10px;
+}
+.form-check-input{
+    margin-top: 10px;
+}
+#hidden {
+    visibility: hidden;
+}
+
+.btn-secondary {
+    margin: 10px 50px 10px -40px
+}
+
+#genre11 {
+    margin-left: 315px;
+    margin-top: -8px;
+}
+.genre1{
+    margin-top: 8px;
+}
+
+.genre2{
+    margin-top: 8px;
+}
