@@ -11,6 +11,7 @@ export class ListEmployeeComponent implements OnInit {
 
   employeeList: any;
   p: any;
+  curPage: number;
 
   employeeForm = new FormGroup({
     id: new FormControl(''),
