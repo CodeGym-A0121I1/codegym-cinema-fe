@@ -125,7 +125,7 @@ export class UpdateEmployeeComponent implements OnInit {
           this.dataFake.account.password = this.updateEmployee.value.password;
           console.log(this.updateEmployee.value.password);
         }
-
+        // all
         this.employee = {
           id: this.updateEmployee.value.id,
           fullName: this.updateEmployee.value.fullName,
