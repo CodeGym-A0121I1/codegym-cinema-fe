@@ -3,4 +3,5 @@ export class StatisticUserDTO {
     name: string;
     quantity: number;
     totalPrice: number;
+    accumulatorPoint: number;
 }

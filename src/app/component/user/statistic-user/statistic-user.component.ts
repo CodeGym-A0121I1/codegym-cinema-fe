@@ -10,6 +10,7 @@ import {UserService} from "../../../service/user.service";
 })
 export class StatisticUserComponent implements OnInit {
   topListUser: StatisticUserDTO[];
+  itemsPerPage: number = 10;
   currentPage: number = 1;
   totalPages: any;
 

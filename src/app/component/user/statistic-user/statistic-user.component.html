@@ -7,17 +7,19 @@
             <th>Tên thành viên</th>
             <th>Số lượng vé</th>
             <th>Tổng tiền</th>
+            <th>Điểm tích lũy</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngIf="topListUser == null">
-            <td colspan="4">Hiện chưa thống kê thành viên nào.</td>
+            <td colspan="5">Hiện chưa thống kê thành viên nào.</td>
         </tr>
-        <tr *ngFor="let user of topListUser | paginate: {itemsPerPage: 1, currentPage: currentPage, totalItems: totalPages}">
+        <tr *ngFor="let user of topListUser | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalPages}">
             <td>{{user.id}}</td>
-            <td>{{user.name}}</td>
+            <td>{{user.name | titlecase}}</td>
             <td>{{user.quantity}}</td>
-            <td>{{user.totalPrice}}VNĐ</td>
+            <td>{{user.totalPrice | currency:'':'':'3.0'}}VNĐ</td>
+            <td>{{user.accumulatorPoint}}</td>
         </tr>
         </tbody>
     </table>
