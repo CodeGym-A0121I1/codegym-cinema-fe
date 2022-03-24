@@ -60,13 +60,14 @@
             <div class="col-sm-12 row">
                 <label class="col-2 col-form-label">Diễn viên</label>
                 <div class="col-sm-8">
-                    <mat-select id="actorList" class="custom-select form-control" multiple>
+                    <mat-select class="custom-select form-control" multiple>
                         <mat-option *ngFor="let actor of actorList"
                                     formArrayName="actorList"
                                     (onSelectionChange)="onCheckboxChangeActor($event,actor)">
                             <label class="form-check-label">{{actor.name}}</label>
                         </mat-option>
                     </mat-select>
+
                     <label id="fnHelp" *ngIf="actorListError" class="form-text text-danger">Chưa
                         chọn diễn
                         viên</label>
@@ -156,22 +157,21 @@
 
         <div class="form-group">
             <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Thể loại</label>
-                <div *ngFor="let genre of genreList" formArrayName="genreList">
-                    <div >
-                        <mat-checkbox class="genre1" (change)="onCheckboxChangeGenre($event,genre)">
-                            <label class="genre2">{{genre.name}}</label>
-                        </mat-checkbox>
-                    </div>
+                <label class="col-2 col-form-label theloai">Thể loại</label>
+
+                <div *ngFor="let genre of genreList; let i = index" formArrayName="genreList"
+                     class="theloai-checkbox">
+                    <mat-checkbox class="genre1" (change)="onCheckboxChangeGenre($event,genre)">
+                        <label class="genre2">{{genre.name}}</label>
+                    </mat-checkbox>
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-sm-12 row">
                 <label class="hidden col-2 col-form-label"></label>
-                <div >
-                    <label id="genre11"  *ngIf="genreListError" class="form-text text-danger">Chưa
+                <div>
+                    <label id="genre11" *ngIf="genreListError" class="form-text text-danger">Chưa
                         chọn thể loại
                     </label>
                 </div>
@@ -194,19 +194,17 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-sm-12 row">
-                <label class="col-2 col-form-label">Lịch chiếu</label>
-                <div class="col-sm-8">
-                    <mat-select class="custom-select form-control" multiple>
-                        <mat-option *ngFor="let time of showTimeDTOList"
-                                    formArrayName="showTimeList"
-                                    (onSelectionChange)="onCheckboxChangeTime($event,time)">
-                            <label class="form-check-label">{{time.startTime}}</label></mat-option>
-                    </mat-select>
-                    <label *ngIf="showTimeListError" class="form-text text-danger">Chưa
-                        chọn lịch chiếu
-                    </label>
+        <div formArrayName="showTimeList">
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Lịch chiếu</label>
+                    <div class="col-sm-2">
+                        <button id="addTime" type="submit" (click)="addTime()" class="btn btn-primary">AddTime</button>
+                    </div>
+                    <div class="col-sm-8" *ngFor="let startTime of Time;let i=index">
+                        <input id="time" type="time" class="form-control" [formControlName]="i">
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,7 +223,7 @@
         </div>
 
         <div align="center">
-            <button routerLink="/movie" type="button" class="btn btn-secondary">Quay lại</button>
+            <button [routerLink]="['/list-movie']" type="button" class="btn btn-secondary">Quay lại</button>
             <button type="submit" class="btn btn-primary" [disabled]="formEditMovie.invalid">Chỉnh sửa</button>
         </div>
 

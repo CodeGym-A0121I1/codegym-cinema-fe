@@ -14,7 +14,6 @@ body
 .col-2 {
     margin-left: -60px;
     margin-top: 10px;
-
 }
 
 #showtime {
@@ -28,12 +27,15 @@ body
 .col-form-label {
     margin-left: 120px;
 }
-.form-check-label{
+
+.form-check-label {
     margin-top: 10px;
 }
-.form-check-input{
+
+.form-check-input {
     margin-top: 10px;
 }
+
 #hidden {
     visibility: hidden;
 }
@@ -46,10 +48,27 @@ body
     margin-left: 315px;
     margin-top: -8px;
 }
-.genre1{
+
+.genre1 {
     margin-top: 8px;
 }
 
-.genre2{
+.genre2 {
     margin-top: 8px;
+}
+
+.theloai-checkbox {
+    margin-right: 10px;
+}
+
+.theloai {
+    margin-right: -45px;
+}
+
+#time {
+    margin-left: 240px;
+}
+
+#addTime{
+    margin-top: 13px;
 }
