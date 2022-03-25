@@ -95,7 +95,22 @@ export class UpdateEmployeeComponent implements OnInit {
             fileRef.getDownloadURL().subscribe((url) => {
               this.updateEmployee.patchValue({image: url});
 
-              this.service.updateEmployee(this.updateEmployee.value).subscribe(() => {
+              this.employee = {
+                id: this.updateEmployee.value.id,
+                fullName: this.updateEmployee.value.fullName,
+                email: this.updateEmployee.value.email,
+                phoneNumber: this.updateEmployee.value.phoneNumber,
+                gender: this.updateEmployee.value.gender,
+                dayOfBirth: this.updateEmployee.value.dayOfBirth,
+                address: this.updateEmployee.value.address,
+                idCard: this.updateEmployee.value.idCard,
+                image: this.updateEmployee.value.image,
+                provider: this.updateEmployee.value.provider,
+                account: this.dataFake.account,
+
+              }
+
+              this.service.updateEmployee(this.employee).subscribe(() => {
                 console.log(this.updateEmployee.value)
                 this.snackBar.open("Bạn đã cập nhật thành công", "Ok");
                 this.route.navigateByUrl("/employee");
@@ -110,28 +125,28 @@ export class UpdateEmployeeComponent implements OnInit {
           this.dataFake.account.password = this.updateEmployee.value.password;
           console.log(this.updateEmployee.value.password);
         }
+        // all
+        this.employee = {
+          id: this.updateEmployee.value.id,
+          fullName: this.updateEmployee.value.fullName,
+          email: this.updateEmployee.value.email,
+          phoneNumber: this.updateEmployee.value.phoneNumber,
+          gender: this.updateEmployee.value.gender,
+          dayOfBirth: this.updateEmployee.value.dayOfBirth,
+          address: this.updateEmployee.value.address,
+          idCard: this.updateEmployee.value.idCard,
+          image: this.updateEmployee.value.image,
+          provider: this.updateEmployee.value.provider,
+          account: this.dataFake.account,
 
-      this.employee = {
-        id: this.updateEmployee.value.id,
-        fullName: this.updateEmployee.value.fullName,
-        email: this.updateEmployee.value.email,
-        phoneNumber: this.updateEmployee.value.phoneNumber,
-        gender: this.updateEmployee.value.gender,
-        dayOfBirth: this.updateEmployee.value.dayOfBirth,
-        address: this.updateEmployee.value.address,
-        idCard: this.updateEmployee.value.idCard,
-        image: this.updateEmployee.value.image,
-        provider: this.updateEmployee.value.provider,
-        account: this.dataFake.account,
+        }
+        console.log(this.employee);
+        this.service.updateEmployee(this.employee).subscribe(() => {
+          this.snackBar.open("Bạn đã cập nhật thành công", "Ok");
+          this.route.navigateByUrl("/employee");
 
+        })
       }
-      console.log(this.employee);
-      this.service.updateEmployee(this.employee).subscribe(() => {
-        this.snackBar.open("Bạn đã cập nhật thành công", "Ok");
-        this.route.navigateByUrl("/employee");
-
-      })
-    }
     }
   }
 

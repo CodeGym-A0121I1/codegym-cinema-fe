@@ -15,7 +15,6 @@ export class SelectedSeatComponent implements OnInit {
   constructor(private showservice: ShowTimeService) {
   }
 
-
   @Input() movieShow!: MovieDTO;
   listSeatBooks: Array<Seat>=[];
   listLocalSeat: Array<string> = ['A', 'B', 'C', 'D', 'E'];

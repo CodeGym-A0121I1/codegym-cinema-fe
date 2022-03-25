@@ -22,6 +22,18 @@ export class UserService {
     constructor(private httpClient: HttpClient) {
     }
 
+    getAllEmployee(): Observable<any> {
+        return this.httpClient.get<any>(this.API_EMPLOYEE);
+    }
+
+    getEmployeeById(id: string ): Observable<any> {
+        return this.httpClient.get<any>(this.API_EMPLOYEE + '/' + id);
+    }
+
+    updateEmployee(employee: any): Observable<any> {
+        return this.httpClient.put(this.API_EMPLOYEE, employee);
+    }
+
     public generateOtp(username: string): Observable<Boolean> {
         return this.httpClient.get<Boolean>(this.API_USER + "/account/generate/" + username, {headers: this.requestHeader});
     }
@@ -38,17 +50,6 @@ export class UserService {
         return this.httpClient.get<StatisticUserDTO[]>(`${this.STATISTIC_USER_API}`);
     }
 
-  getAllEmployee(): Observable<any> {
-    return this.httpClient.get<any>(this.API_EMPLOYEE);
-  }
-
-  getEmployeeById(id: string ): Observable<any> {
-    return this.httpClient.get<any>(this.API_EMPLOYEE + '/' + id);
-  }
-
-  updateEmployee(employee: any): Observable<any> {
-    return this.httpClient.put(this.API_EMPLOYEE, employee);
-  }
     public getListMember(){
         return this.httpClient.get(this.API_USER + "/list-member");
     }
