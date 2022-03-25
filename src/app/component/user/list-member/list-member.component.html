@@ -1,8 +1,8 @@
-<div class="container align-items-center">
+<div class="container align-items-center custom">
     <div class="prs_heading_section_wrapper" style="margin-bottom: 40px; margin-top: -100px">
 
     </div>
-    <h2 class="text-center">Danh Sách Phim</h2>
+    <h2 class="text-center">Danh Sách thông tin thành viên</h2>
     <table class="table table-hover table-striped table-bordered table-responsive text-center">
         <thead class="thead-dark">
         <tr style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">
@@ -13,7 +13,8 @@
             <th style="text-align: center;">Ngày sinh</th>
             <th style="text-align: center;">Email</th>
             <th style="text-align: center;">Địa Chỉ</th>
-            <th scope="col">Hủy</th>
+            <th style="text-align: center;">Tên tài khoản</th>
+            <th scope="col">Sửa</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.dayOfBirth | date: 'dd-MM-yyyy'}} </td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.email}} </td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.address}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.account.username}}</td>
             <td>
                 <a [routerLink]="['/edit/',member.id]" class="detailButton">
                     <i style="color: blue" class="fa fa-edit"></i>

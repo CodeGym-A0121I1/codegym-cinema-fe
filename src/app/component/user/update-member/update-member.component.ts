@@ -90,12 +90,12 @@ export class UpdateMemberComponent implements OnInit {
         account:this.account,
       };
       console.log(this.user);
-      // this.service.editMember(this.user).subscribe(
-      //
-      //     () => {
-      //       this.route.navigateByUrl("/member").then(() => this.snackBar.open("sửa thành công")._dismissAfter(3000))
-      //     }
-      // )
+      this.service.editMember(this.user).subscribe(
+
+          () => {
+            this.route.navigateByUrl("/management/member").then(() => this.snackBar.open("sửa thành công")._dismissAfter(3000))
+          }
+      )
     }
   }
 

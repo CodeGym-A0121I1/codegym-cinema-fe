@@ -26,7 +26,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {role: ['ROLE_ADMIN']}
     },
-    {path: "member", component: ListMemberComponent},
+    {path: "management/member", component: ListMemberComponent},
     {path: "edit/:id", component: UpdateMemberComponent}
 ];
 
