@@ -30,6 +30,8 @@ export class SelectedMovieShowTimeComponent implements OnInit {
         this.showTimeSevice.getAllShowTimeByMovieId(this.MovieId).subscribe(data => {
             const start = new Date(data[0].startDate);
             const end = new Date(data[0].movie.endDay);
+            console.log(start)
+            console.log(end)
             this.listMovies = data;
             let loop = new Date(start);
             while (loop < new Date(Date.now())) {
@@ -41,7 +43,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
             loop = new Date(newDateTG);
             this.startDate = loop;
             // console.log(loop)
-            while (loop <= end) {
+            while (loop < end) {
                 // loop.setDate(loop.getDate()-1);
                 this.listDates.push(loop)
                 let newDate = loop.setDate(loop.getDate() + 1);
