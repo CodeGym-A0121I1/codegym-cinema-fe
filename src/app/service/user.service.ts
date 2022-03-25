@@ -22,10 +22,6 @@ export class UserService {
     constructor(private httpClient: HttpClient) {
     }
 
-    getListMember(): Observable<any> {
-        return this.httpClient.get<any>(this.API_USER);
-    }
-
     getAllEmployee(): Observable<any> {
         return this.httpClient.get<any>(this.API_EMPLOYEE);
     }

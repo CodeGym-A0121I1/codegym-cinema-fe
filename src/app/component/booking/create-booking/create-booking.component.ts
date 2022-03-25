@@ -101,7 +101,7 @@ export class CreateBookingComponent implements OnInit {
         // @ts-ignore
         this.iduser = this.authservice.getIdUser();
         for (let i = 0; i < this.seatMovieDTO.listSeat.length; i++) {
-            this.totalmoney += 1;
+            this.totalmoney += 45;
             this.quantitys += 1;
         }
         this.userservice.getById(this.iduser).subscribe(datauser => {

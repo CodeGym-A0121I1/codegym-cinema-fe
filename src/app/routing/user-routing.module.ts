@@ -27,7 +27,7 @@ const routes: Routes = [
         data: {role: ['ROLE_ADMIN']}
     },
     {path: "member", component: ListMemberComponent},
-    {path: "update/:id", component: UpdateMemberComponent}
+    {path: "edit/:id", component: UpdateMemberComponent}
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from "./service/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,19 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'fe';
+
+  constructor(private authService: AuthService) {
+  }
+
+  isAdmin() {
+    return this.authService.getRole() == "ROLE_ADMIN";
+  }
+
+  isEmployee() {
+    return this.authService.getRole() == "ROLE_EMPLOYEE";
+  }
+
+  isMember() {
+    return !this.isAdmin() && !this.isEmployee();
+  }
 }
