@@ -1,2 +1,10 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+
+    <app-navbar></app-navbar>
+
+
+    <router-outlet></router-outlet>
+
+<ng-template [ngIf]="isMember()">
+    <app-footer></app-footer>
+</ng-template>
+

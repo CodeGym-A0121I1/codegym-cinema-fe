@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit {
         const role = authoricationResponse.user.account.role;
         switch (role) {
             case "ROLE_USER":
-                this.router.navigate(['/movie']);
+                this.router.navigate(['/movie']).then(() => window.location.reload());
                 break;
             case "ROLE_EMPLOYEE":
                 this.router.navigate(['/test-employee']);
