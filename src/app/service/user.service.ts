@@ -3,13 +3,15 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {StatisticUserDTO} from "../dto/statistic/StatisticUserDTO";
 import {ForgotPassword} from "../dto/user/ForgotPassword";
+import {User} from "../model/user/User";
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
 
-    API_USER = "http://localhost:8080/api/users"
+    API_USER = "http://localhost:8080/api/users";
+    API_EMPLOYEE = "http://localhost:8080/api/employees";
 
     private readonly STATISTIC_USER_API: string = "http://localhost:8080/api/statistic/user";
 
@@ -20,12 +22,24 @@ export class UserService {
     constructor(private httpClient: HttpClient) {
     }
 
+    getAllEmployee(): Observable<any> {
+        return this.httpClient.get<any>(this.API_EMPLOYEE);
+    }
+
+    getEmployeeById(id: string ): Observable<any> {
+        return this.httpClient.get<any>(this.API_EMPLOYEE + '/' + id);
+    }
+
+    updateEmployee(employee: any): Observable<any> {
+        return this.httpClient.put(this.API_EMPLOYEE, employee);
+    }
+
     public generateOtp(username: string): Observable<Boolean> {
         return this.httpClient.get<Boolean>(this.API_USER + "/account/generate/" + username, {headers: this.requestHeader});
     }
 
     public getById(idUser: string): Observable<any> {
-        return this.httpClient.get(this.API_USER + '/' + idUser);
+        return this.httpClient.get(this.API_USER + '/member/' + idUser);
     }
 
     public forgotPassword(forgotPassword: ForgotPassword): Observable<Boolean> {
@@ -34,5 +48,18 @@ export class UserService {
 
     public statisticTopMemberByTotalPrice(): Observable<StatisticUserDTO[]> {
         return this.httpClient.get<StatisticUserDTO[]>(`${this.STATISTIC_USER_API}`);
+    }
+
+    public getListMember(){
+        return this.httpClient.get(this.API_USER + "/list-member");
+    }
+
+    public getByIdMember(id: string){
+        return this.httpClient.get<any>(this.API_USER + "/member/" + id);
+    }
+
+    public editMember(user: User): Observable<any> {
+
+        return this.httpClient.put(this.API_USER + "/update/" + user.id, user);
     }
 }

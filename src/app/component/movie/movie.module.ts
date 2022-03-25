@@ -16,6 +16,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {AppModule} from "../../app.module";
 import {SidebarAdminComponent} from "../display/sidebar-admin/sidebar-admin.component";
 import {MatMenuModule} from "@angular/material/menu";
+import {ShowTimeModule} from "../show-time/show-time.module";
 
 @NgModule({
     declarations: [
@@ -38,9 +39,7 @@ import {MatMenuModule} from "@angular/material/menu";
         MatDialogModule,
         MatButtonModule,
         MatGridListModule,
-        MatSidenavModule,
-        MatMenuModule,
-
+        ShowTimeModule,
     ]
 })
 export class MovieModule {

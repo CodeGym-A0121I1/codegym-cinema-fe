@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="prs_navi_left_main_wrapper">
             <div class="prs_logo_main_wrapper">
-                <a routerLink="">
+                <a (click)="home()" style="cursor: pointer;">
                     <img src="assets/images/header/logo.png" alt="logo"/>
                 </a>
             </div>
@@ -17,10 +17,10 @@
                         </div>
                         <div class="clearfix"></div>
                         <ul class="dl-menu">
-                            <li class="parent"><a routerLink="/movie">Trang chủ</a></li>
+                            <li class="parent"><a (click)="home()" style="cursor: pointer;">Trang chủ</a></li>
                             <li class="parent"><a href="#">Lịch chiếu</a>
                             </li>
-                            <li class="parent"><a href="#">Phim</a>
+                            <li class="parent"><a (click)="home()" style="cursor: pointer;">Phim</a>
                                 <ul class="lg-submenu" style="z-index: 10">
                                     <li><a href="#">Phim đang chiếu</a></li>
                                     <li><a href="#">Phim sắp chiếu</a></li>

@@ -7,17 +7,8 @@ import {MovieDetailComponent} from "../component/movie/movie-detail/movie-detail
 
 const routes: Routes = [
     {path: "detail-movie/:idMovie", component: MovieDetailComponent},
-    {
-        path: "statistic/movie",
-        component: StatisticMovieComponent,
-        canActivate: [AuthGuard],
-        data: {role: ['ROLE_ADMIN']}
-    },
-    {
-        path: "management/movies",
-        component: ListMoviesAdminComponent,
-        canActivate: [AuthGuard],
-        data : {role: ['ROLE_ADMIN']}}
+    {path: "statistic/movie", component: StatisticMovieComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN']}},
+    {path: "management/movies", component: ListMoviesAdminComponent, canActivate: [AuthGuard], data : {role: ['ROLE_ADMIN']}}
 ];
 
 @NgModule({

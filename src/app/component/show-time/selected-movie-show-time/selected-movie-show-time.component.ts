@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {ShowTimeService} from "../../../service/show-time.service";
 import {ActivatedRoute} from "@angular/router";
@@ -20,16 +20,18 @@ export class SelectedMovieShowTimeComponent implements OnInit {
     isDisplay = false;
     errors: boolean = false;
     movieDTOTG!: any;
-
+    @Input() MovieId!: string;
     constructor(private showTimeSevice: ShowTimeService, private activeRoute: ActivatedRoute, private matSnackBar: MatSnackBar,) {
     }
 
     @Output() movieDTo: EventEmitter<MovieDTO> = new EventEmitter();
 
     ngOnInit(): void {
-        this.showTimeSevice.getAllShowTimeByMovieId(this.activeRoute.snapshot.params["id"]).subscribe(data => {
+        this.showTimeSevice.getAllShowTimeByMovieId(this.MovieId).subscribe(data => {
             const start = new Date(data[0].startDate);
             const end = new Date(data[0].movie.endDay);
+            console.log(start)
+            console.log(end)
             this.listMovies = data;
             let loop = new Date(start);
             while (loop < new Date(Date.now())) {
@@ -41,7 +43,7 @@ export class SelectedMovieShowTimeComponent implements OnInit {
             loop = new Date(newDateTG);
             this.startDate = loop;
             // console.log(loop)
-            while (loop <= end) {
+            while (loop < end) {
                 // loop.setDate(loop.getDate()-1);
                 this.listDates.push(loop)
                 let newDate = loop.setDate(loop.getDate() + 1);
@@ -49,6 +51,10 @@ export class SelectedMovieShowTimeComponent implements OnInit {
             }
             console.log(this.listDates)
             this.countDate = this.listDates.length;
+            if(this.listDates.length==0){
+                this.errors=true
+            }
+
         }, error => {
             this.errors = true;
         });

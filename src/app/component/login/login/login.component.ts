@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
     authoricationRequest: AuthoricationRequest | any;
     authoricationResponse: AuthoricationResponse | any;
-    rememberMe = 0;
+    isRememberMe = false;
     errorUsername: string = "";
     errorPassword: string = "";
     isLoginValid = false;
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.authService.getToken() !== null) {
-            this.router.navigate(['/'])
+            this.router.navigate(['/']).then(() => window.location.reload())
         }
     }
 
@@ -54,10 +54,10 @@ export class LoginComponent implements OnInit {
     public loginWithGoogle() {
         this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
             (data) => {
-                console.log(data)
                 this.token.token = data.idToken;
                 this.loginService.loginWithGoogle(this.token).subscribe(
                     (authoricationResponse) => {
+                        console.log(authoricationResponse)
                         sessionStorage.setItem("token", authoricationResponse.jwt);
                         this.setLoginComplete(authoricationResponse)
                     },
@@ -97,14 +97,14 @@ export class LoginComponent implements OnInit {
     }
 
     public setLoginComplete(authoricationResponse: AuthoricationResponse) {
-        if (this.rememberMe % 2 === 1) {
+        if (this.isRememberMe) {
             this.authService.setLocalStorage(authoricationResponse);
         }
         this.authService.setSessionStorage(authoricationResponse);
         const role = authoricationResponse.user.account.role;
         switch (role) {
             case "ROLE_USER":
-                this.router.navigate(['/movie']);
+                this.router.navigate(['/movie']).then(() => window.location.reload());
                 break;
             case "ROLE_EMPLOYEE":
                 this.router.navigate(['/test-employee']);
@@ -155,8 +155,8 @@ export class LoginComponent implements OnInit {
         this.matDialog.open(ForgotPasswordComponent);
     }
 
-    rememberMeLogin() {
-        this.rememberMe++;
+    rememberMeLogin(event: any) {
+        this.isRememberMe = event.target.checked;
     }
 
     checkValidUsernameAuto(value: string) {

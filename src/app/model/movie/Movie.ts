@@ -10,7 +10,7 @@ export interface Movie {
     name: string,
     poster: string,
     trailer: string,
-    introduction: string,
+    content: string,
     openingDay: Date,
     endDay: Date,
     duration: Time,

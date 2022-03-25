@@ -1,1 +1,71 @@
-<p>list-employee works!</p>
+<h2 class="header">Quản Lý Nhân Viên</h2>
+
+<div class="x_content">
+    <div id="datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid"
+                       aria-describedby="datatable_info">
+                    <thead class="thead-dark">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                            style="width: 190px;">Mã Nhân Viên
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending" style="width: 310px;">Tên Nhân Viên
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Office: activate to sort column ascending" style="width: 143px;">Số CMND
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Age: activate to sort column ascending" style="width: 76px;">Email
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Start date: activate to sort column ascending" style="width: 141px;">Số điện thoại
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Salary: activate to sort column ascending" style="width: 109px;">Địa chỉ
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"
+                            aria-label="Salary: activate to sort column ascending" style="width: 109px;">Chức năng
+                        </th>
+
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+
+
+                    <tr role="row" class="odd" *ngFor="let employee of employeeList |  paginate:{itemsPerPage: 4, currentPage: curPage}">
+                        <td class="sorting_1">{{employee.id}}</td>
+                        <td>{{employee.fullName}}</td>
+                        <td>{{employee.idCard}}</td>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.phoneNumber}}</td>
+                        <td>{{employee.address}}</td>
+                        <td class="edit-user">
+                            <a [routerLink]="'/update/' + employee.id" class="btn btn-warning" style="color: white">Sửa</a>
+                            <a [routerLink]="'delete/' + employee.id" class="btn btn-danger" style="margin-left: 7px; color: white">Xóa</a>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="curPage = $event"
+                                     [directionLinks]=true
+                                     [autoHide]=true
+                                     [responsive]=true
+                                     previousLabel="Previous"
+                                     nextLabel="Next"
+                                     screenReaderPaginationLabel="Pagination"
+                                     screenReaderPageLabel="page"
+                                     screenReaderCurrentLabel="You're on page">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

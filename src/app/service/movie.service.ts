@@ -22,7 +22,7 @@ export class MovieService {
   }
 
   public statisticTopMovieByGrossing(): Observable<StatisticMovieDTO[]> {
-    return this.http.get<StatisticMovieDTO[]>(`${this.STATISTIC_MOVIE_API}`, {headers: this.requestHeader});
+    return this.http.get<StatisticMovieDTO[]>(`${this.STATISTIC_MOVIE_API}`);
   }
 
   getAllMovies(): Observable<Array<Movie>> {
