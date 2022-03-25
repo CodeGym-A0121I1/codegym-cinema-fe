@@ -10,6 +10,7 @@ import {MovieService} from "../../../service/movie.service";
 
 export class StatisticMovieComponent implements OnInit {
   topListMovie: StatisticMovieDTO[];
+  itemsPerPage: number = 10;
   currentPage: number = 1;
   totalPages: any;
 

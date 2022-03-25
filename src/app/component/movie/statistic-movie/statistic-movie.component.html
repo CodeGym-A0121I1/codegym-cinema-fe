@@ -12,10 +12,10 @@
         <tr *ngIf="topListMovie == null">
             <td colspan="3">Hiện chưa thống kê bộ phim nào.</td>
         </tr>
-        <tr *ngFor="let movie of topListMovie | paginate: {itemsPerPage: 1, currentPage: currentPage, totalItems: totalPages}">
+        <tr *ngFor="let movie of topListMovie | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalPages}">
             <td>{{movie.name | titlecase}}</td>
             <td>{{movie.quantity}}</td>
-            <td>{{movie.price}}VNĐ</td>
+            <td>{{movie.price | currency:'':'':'3.0'}}VNĐ</td>
         </tr>
         </tbody>
     </table>
