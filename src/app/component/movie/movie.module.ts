@@ -13,6 +13,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {ShowTimeModule} from "../show-time/show-time.module";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {environment} from "../../../environments/environment";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
     declarations: [
@@ -25,7 +31,8 @@ import {ShowTimeModule} from "../show-time/show-time.module";
         ListMovieComponent
     ],
     exports: [
-        CreateMovieComponent
+        CreateMovieComponent,
+        EditMovieComponent
     ],
     imports: [
         CommonModule,
@@ -35,6 +42,13 @@ import {ShowTimeModule} from "../show-time/show-time.module";
         MatButtonModule,
         MatGridListModule,
         ShowTimeModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        ReactiveFormsModule,
+        MovieRoutingModule,
+        FormsModule,
+        MatSelectModule,
+        MatCheckboxModule,
     ]
 })
 export class MovieModule {
