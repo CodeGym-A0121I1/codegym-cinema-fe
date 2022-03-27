@@ -4,6 +4,13 @@ import {Observable} from "rxjs";
 import {StatisticMovieDTO} from "../dto/statistic/StatisticMovieDTO";
 import {Movie} from "../model/movie/Movie";
 import {Genre} from "../model/movie/Genre";
+import {MovieDTO} from "../dto/movie/MovieDTO";
+import {Actor} from "../model/movie/Actor";
+import {Director} from "../model/movie/Director";
+import {Producer} from "../model/movie/Producer";
+import {TheaterDTO} from "../dto/movie/TheaterDTO";
+import {ShowTimeDTO} from "../dto/movie/ShowTimeDTO";
+
 
 @Injectable({
   providedIn: 'root'
@@ -56,4 +63,38 @@ export class MovieService {
     getById(idMovie: string): Observable<any> {
         return this.http.get(this.URL_API_DETAIL_MOVIE + '/' + idMovie, {headers: this.requestHeader});
     }
+
+  public createMovie(movie: MovieDTO): Observable<boolean> {
+    return this.http.post<boolean>(`${this.API_MOVIE}`, movie);
+  }
+
+  // public getAllGenre(): Observable<Genre[]> {
+  //   return this.http.get<Genre[]>(`${this.API_MOVIE}/genre`);
+  // }
+
+  public getAllActor(): Observable<Actor[]> {
+    return this.http.get<Actor[]>(`${this.API_MOVIE}/actor`);
+  }
+  public getAllDirector(): Observable<Director[]> {
+    return this.http.get<Director[]>(`${this.API_MOVIE}/director`);
+  }
+  public getAllProducer(): Observable<Producer[]> {
+    return this.http.get<Producer[]>(`${this.API_MOVIE}/producer`);
+  }
+
+  public getAllTheaterDTO(): Observable<TheaterDTO[]> {
+    return this.http.get<TheaterDTO[]>(`${this.API_MOVIE}/theater`);
+  }
+
+  public editMovie(movie : MovieDTO) :Observable<MovieDTO> {
+    return this.http.put<MovieDTO>(`${this.API_MOVIE}`, movie);
+  }
+
+  public findByIdMovie(id : number): Observable<MovieDTO> {
+    return this.http.get<MovieDTO>(this.API_MOVIE+ '/' + id);
+  }
+
+  public getAllShowTimeDTO() : Observable<ShowTimeDTO[]> {
+    return this.http.get<ShowTimeDTO[]>(`${this.API_MOVIE}/showtime`);
+  }
 }

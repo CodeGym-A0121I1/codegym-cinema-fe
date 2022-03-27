@@ -1,1 +1,232 @@
-<p>create-movie works!</p>
+<div class="container">
+    <form class="form-group" [formGroup]="formMovie" (ngSubmit)="createMovie()">
+        <h2>Thêm mới phim</h2>
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <div class="col-sm-6">
+                </div>
+
+                <div class="col-sm-6">
+                    <div><img *ngIf="url" [src]="url" class="img-thumbnail" style="width: 200px"></div>
+                    <input type="file" id="img" name="img" (change)="selectFile($event)" formControlName="poster">
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('poster')?.hasError('required')  && formMovie.get('poster')?.touched">
+                        Chưa chọn ảnh.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Tên phim</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="name">
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('name')?.hasError('required')  && formMovie.get('name')?.touched">
+                        Chưa nhập tên phim.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Từ ngày</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" formControlName="openingDay">
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('openingDay')?.hasError('required')  && formMovie.get('openingDay')?.touched">
+                        Chưa nhập ngày.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class=" col-2 col-form-label">Đến ngày</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" formControlName="endDay">
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('endDay')?.hasError('required')  && formMovie.get('endDay')?.touched">
+                        Chưa nhập ngày.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Diễn viên</label>
+                <div class="col-sm-8">
+                    <mat-select id="actorList" class="custom-select form-control" multiple>
+                        <mat-option *ngFor="let actor of actorList"
+                                    formArrayName="actorList"
+                                    (onSelectionChange)="onCheckboxChangeActor($event,actor)">
+                            <label class="form-check-label">{{actor.name}}</label>
+                        </mat-option>
+                    </mat-select>
+                    <label id="fnHelp" *ngIf="actorListError" class="form-text text-danger">Chưa
+                        chọn diễn
+                        viên</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class=" col-2 col-form-label">Hãng phim</label>
+                <div class="col-sm-8">
+                    <mat-select class="custom-select form-control" multiple>
+                        <mat-option *ngFor="let producer of producerList"
+                                    formArrayName="producerList"
+                                    (onSelectionChange)="onCheckboxChangeProducer($event,producer)">
+                            <label class="form-check-label">{{producer.name}}</label></mat-option>
+                    </mat-select>
+                    <label *ngIf="producerListError" class="form-text text-danger">Chưa
+                        chọn hãng phim
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Đạo diễn</label>
+                <div class="col-sm-8">
+                    <mat-select class="custom-select form-control" multiple>
+                        <mat-option *ngFor="let director of directorList"
+                                    formArrayName="directorList"
+                                    (onSelectionChange)="onCheckboxChangeDirector($event,director)">
+                            <label class="form-check-label">{{director.name}}</label></mat-option>
+                    </mat-select>
+                    <label *ngIf="directorListError" class="form-text text-danger">Chưa
+                        chọn đạo diễn
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Thời lượng</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" formControlName="duration">
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('duration')?.hasError('required')  && formMovie.get('duration')?.touched">
+                        Chưa nhập thời lượng phim.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Phiên bản</label>
+                <div class=" form-check form-check-inline">
+                    <input class="form-check-input" type="radio"
+                           value="_2D" formControlName="type">
+                    <label class="form-check-label">2D</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio"
+                           value="_3D" formControlName="type">
+                    <label class="form-check-label">3D</label>
+                </div>
+                <label class="form-text text-danger"
+                       *ngIf="formMovie.get('type')?.hasError('required')  && formMovie.get('type')?.touched">
+                    Chưa chọn phiên bản.
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Trailer</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="trailer">
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('trailer')?.hasError('required')  && formMovie.get('trailer')?.touched">
+                        Chưa nhập trailer phim.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label theloai">Thể loại</label>
+
+                <div *ngFor="let genre of genreList" formArrayName="genreList"
+                     class="theloai-checkbox">
+                    <mat-checkbox class="genre1" (change)="onCheckboxChangeGenre($event,genre)">
+                        <label class="genre2">{{genre.name}}</label>
+                    </mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="hidden col-2 col-form-label"></label>
+                <div>
+                    <label id="genre11" *ngIf="genreListError" class="form-text text-danger">Chưa
+                        chọn thể loại
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Phòng chiếu</label>
+                <div class="col-sm-8">
+                    <mat-select class="custom-select form-control" formControlName="theaterList">
+                        <mat-option *ngFor="let theater of theaterDTOList"
+                                    [value]="theater">{{theater.name}}</mat-option>
+                    </mat-select>
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('theaterList')?.hasError('required')  && formMovie.get('theaterList')?.touched">
+                        Chưa chọn phòng chiếu phim.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div formArrayName="showTimeList">
+            <div class="form-group">
+                <div class="col-sm-12 row">
+                    <label class="col-2 col-form-label">Lịch chiếu</label>
+                    <div class="col-sm-2">
+                        <button id="addTime" type="submit" (click)="addTime()" class="btn btn-primary">AddTime</button>
+                    </div>
+                    <div class="col-sm-8" *ngFor="let startTime of Time;let i=index">
+                        <input id="time" type="time" class="form-control" [formControlName]="i">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12 row">
+                <label class="col-2 col-form-label">Nội dung</label>
+                <div class="col-sm-8">
+                    <textarea type="text" class="form-control" formControlName="content"></textarea>
+                    <label class="form-text text-danger"
+                           *ngIf="formMovie.get('content')?.hasError('required')  && formMovie.get('content')?.touched">
+                        Chưa nhập nội dung phim.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div align="center">
+            <button [routerLink]="['/list-movie']" type="button" class="btn btn-secondary">Quay lại</button>
+            <button type="submit" class="btn btn-primary" [disabled]="formMovie.invalid">Thêm mới</button>
+        </div>
+
+    </form>
+</div>
+
+

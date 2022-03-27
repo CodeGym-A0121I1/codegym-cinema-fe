@@ -5,7 +5,7 @@
     <div class="prs_animate_btn1">
         <ul>
             <li>
-                <a href="#" class="button button--tamaya" data-text="Thêm mới phim"><span style="color: black">Thêm mới phim</span></a>
+                <a [routerLink]="['/movie/create']" class="button button--tamaya" data-text="Thêm mới phim"><span style="color: black">Thêm mới phim</span></a>
             </li>
         </ul>
     </div>
@@ -29,7 +29,7 @@
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;" *ngIf="movie.type === '_2D'">2D</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;" *ngIf="movie.type === '_3D'">3D</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;" *ngIf="movie.type === '_4D'">4D</td>
-            <td><a href="#"><i style="color: blue" class="fa fa-edit"></i></a></td>
+            <td><a [routerLink]="['/movie/edit/' + movie.id]"><i style="color: blue" class="fa fa-edit"></i></a></td>
             <td><a (click)="openDialogDelete(movie)" class="deleteButton"><i style="color: red" class="fa fa-trash"></i></a>
             </td>
         </tr>
