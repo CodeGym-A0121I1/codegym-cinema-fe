@@ -58,7 +58,6 @@ export class PaypalComponent implements OnInit {
                         this.router.navigateByUrl("/movie");
                     }
                 )
-
             },
             onCancel: (data, actions) => {
                 this.snackBar.open("Giao dịch của quý khách không thành công!", "Oke", {
