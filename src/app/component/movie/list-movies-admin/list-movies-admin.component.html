@@ -1,23 +1,9 @@
-<!--start    mat-drawer-container (bắt buộc)-->
-<mat-drawer-container class="example-container">
+<div class="container align-items-center">
+    <div class="prs_heading_section_wrapper" style="margin-bottom: 40px; margin-top: -100px">
+        <h2 style="margin-top: 140px; font-size: 30px; font-weight: 500;">Danh Sách Phim</h2>
+    </div>
 
-    <!--start    mat-drawer (bắt buộc) -->
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <app-sidebar-admin></app-sidebar-admin>
-    </mat-drawer>
-    <!--end    mat-drawer (bắt buộc) -->
-    <!--start    button sidebar (bắt buộc)-->
-    <button type="button" mat-button (click)="drawer.toggle()">
-        <i class="fa fa-bars"></i>
-    </button>
-    <!--end    button sidebar (bắt buộc)-->
-
-    <div class="container align-items-center">
-        <div class="prs_heading_section_wrapper" style="margin-bottom: 40px; margin-top: -100px">
-            <h2 style="margin-top: 140px; font-size: 30px; font-weight: 500;">Danh Sách Phim</h2>
-        </div>
-
-        <input type="text" id="myInput" onkeyup="function myFunction() {
+    <input type="text" id="myInput" onkeyup="function myFunction() {
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById('myInput');
             filter = input.value.toUpperCase();
@@ -37,43 +23,40 @@
             }
             myFunction()" placeholder="Tìm phim..">
 
-        <table id="myTable" class="table table-hover table-striped table-bordered table-responsive text-center">
-            <thead class="thead-dark">
-            <tr style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">
-                <th style="text-align: center;">Phim</th>
-                <th style="text-align: center;">Ngày khởi chiếu</th>
-                <th style="text-align: center;">Đạo diễn</th>
-                <th style="text-align: center;">Thời lượng</th>
-                <th style="text-align: center;">Loại</th>
-                <th colspan="2" style="text-align: center;"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let movie of movieList | paginate:{itemsPerPage:5,currentPage:p}">
-                <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{movie.name}}</td>
-                <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.openingDay}}</td>
-                <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{convertDirector(movie.directorList)}}</td>
-                <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.duration}} phút</td>
-                <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"
-                    *ngIf="movie.type === '_2D'">2D
-                </td>
-                <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"
-                    *ngIf="movie.type === '_3D'">3D
-                </td>
-                <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"
-                    *ngIf="movie.type === '_4D'">4D
-                </td>
-                <td><a href="#"><i style="color: blue" class="fa fa-edit"></i></a></td>
-                <td><a (click)="openDialogDelete(movie)" class="deleteButton"><i style="color: red"
-                                                                                 class="fa fa-trash"></i></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
-                             [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
-                             nextLabel="Sau"></pagination-controls>
-    </div>
-
-</mat-drawer-container>
-<!--end      mat-drawer-container (bắt buộc)-->
+    <table id="myTable" class="table table-hover table-striped table-bordered text-center">
+        <thead class="thead-dark">
+        <tr style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+            <th style="text-align: center;">Phim</th>
+            <th style="text-align: center;">Ngày khởi chiếu</th>
+            <th style="text-align: center;">Đạo diễn</th>
+            <th style="text-align: center;">Thời lượng</th>
+            <th style="text-align: center;">Loại</th>
+            <th colspan="2" style="text-align: center;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let movie of movieList | paginate:{itemsPerPage:5,currentPage:p}">
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{movie.name}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.openingDay}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{convertDirector(movie.directorList)}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.duration}} phút</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"
+                *ngIf="movie.type === '_2D'">2D
+            </td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"
+                *ngIf="movie.type === '_3D'">3D
+            </td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"
+                *ngIf="movie.type === '_4D'">4D
+            </td>
+            <td><a href="#"><i style="color: blue" class="fa fa-edit"></i></a></td>
+            <td><a (click)="openDialogDelete(movie)" class="deleteButton"><i style="color: red"
+                                                                             class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <pagination-controls class="text-right" *ngIf="checkPagination" [directionLinks]=true [autoHide]=true
+                         [responsive]=true (pageChange)="p=$event" previousLabel="Trước"
+                         nextLabel="Sau"></pagination-controls>
+</div>

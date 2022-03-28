@@ -32,12 +32,12 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         EditMovieComponent,
         MovieDetailComponent,
         StatisticMovieComponent,
-        ListMovieComponent,
-        SidebarAdminComponent
+        ListMovieComponent
     ],
     exports: [
         CreateMovieComponent,
-        EditMovieComponent
+        EditMovieComponent,
+        CreateMovieComponent,
     ],
     imports: [
         CommonModule,
@@ -47,6 +47,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         MatButtonModule,
         MatGridListModule,
         ShowTimeModule,
+        MatSidenavModule,
+        MatMenuModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
         ReactiveFormsModule,

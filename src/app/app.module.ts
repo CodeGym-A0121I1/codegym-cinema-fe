@@ -23,13 +23,15 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import { SidebarAdminComponent } from './component/display/sidebar-admin/sidebar-admin.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         FooterComponent,
-        ForbiddenComponent
+        ForbiddenComponent,
+        SidebarAdminComponent
     ],
     imports: [
         BrowserModule,
@@ -50,6 +52,7 @@ import { SidebarAdminComponent } from './component/display/sidebar-admin/sidebar
         AngularFirestoreModule,
         MatSidenavModule,
         MatButtonModule,
+        MatMenuModule,
     ],
     exports: [
 
