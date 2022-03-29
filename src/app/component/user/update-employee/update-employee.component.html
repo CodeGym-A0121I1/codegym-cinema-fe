@@ -8,7 +8,7 @@
             <input type="hidden" formControlName="image" name="image" class="custom-file-input">
         </div>
         <div>
-            <img [src]="updateEmployee.value.image" *ngIf="updateEmployee.value.image" class="img-thumbnail">
+            <img [src]="updateEmployee.value.image" *ngIf="updateEmployee.value.image" class="img-thumbnail" width="300" height="300">
         </div>
     </div>
 
@@ -26,36 +26,86 @@
     <div class="form-group">
         <label for="fullName">Họ Và Tên</label>
         <input type="text" class="form-control" id="fullName" formControlName="fullName">
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('fullName')?.hasError('required')  && updateEmployee.get('fullName')?.touched">
+            Họ và tên không được để trống
+        </small>
     </div>
 
     <div class="form-group">
-        <label for="dayOfBirth">Ngày Sinh</label>
+        <label for="dayOfBirth">Ngày Sinh &nbsp;</label>
         <input type="date" id="dayOfBirth" name="dayOfBirth" formControlName="dayOfBirth">
+
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('dayOfBirth')?.hasError('invalidAge') && updateEmployee.get('dayOfBirth')?.touched">
+            Quá ngày hiện tại
+        </small>
     </div>
 
     <div class="form-group">
-    <label for="gender">Gender</label>
-    <input type="text" class="form-control" id="gender" formControlName="gender">
-</div>
+        <label for="gender">Giới tính &nbsp;</label>
+        <select name="gender" id="gender" formControlName="gender" class="select_gender" aria-label="Default select example">
+
+                <option [selected]="updateEmployee.value.gender == 'MALE'" value="MALE">
+                    Nam
+                </option>
+                <option [selected]="updateEmployee.value.gender == 'FEMALE'"
+                        value="FEMALE">Nữ
+                </option>
+                <option [selected]="updateEmployee.value.gender == 'OTHER'" value="OTHER">
+                    Khác
+                </option>
+            </select>
+
+    </div>
+
 
     <div class="form-group">
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" formControlName="email">
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('email')?.hasError('required')  && updateEmployee.get('email')?.touched">
+            Email không được để trống
+        </small>
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('email')?.hasError('pattern')  && updateEmployee.get('email')?.touched">
+            Email không dúng định dạng
+        </small>
     </div>
 
     <div class="form-group">
         <label for="idCard">CMND</label>
         <input type="text" class="form-control" id="idCard" formControlName="idCard">
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('idCard')?.hasError('required')  && updateEmployee.get('idCard')?.touched">
+            CMND không được để trống
+        </small>
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('idCard')?.hasError('pattern')  && updateEmployee.get('idCard')?.touched">
+            CMND phải 9 số
+        </small>
     </div>
 
     <div class="form-group">
         <label for="phoneNumber">Số Điện Thoại</label>
         <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('phoneNumber')?.hasError('required')  && updateEmployee.get('phoneNumber')?.touched">
+            Số điện thoại không được để trống
+        </small>
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('phoneNumber')?.hasError('pattern') && updateEmployee.get('phoneNumber')?.touched">
+            Số điện thoại không đúng
+        </small>
     </div>
 
     <div class="form-group">
         <label for="address">Địa Chỉ</label>
         <input type="text" class="form-control" id="address" formControlName="address">
+        <small class="form-text text-danger"
+               *ngIf="updateEmployee.get('address')?.hasError('required')  && updateEmployee.get('address')?.touched">
+            Địa chỉ không được để trống
+        </small>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

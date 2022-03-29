@@ -3,12 +3,13 @@ import {UserService} from "../../../service/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs/operators";
 import {formatDate} from "@angular/common";
 import {Employee} from "../../../model/user/Employee";
 import {Account} from "../../../model/user/Account";
+import {Observable, of} from "rxjs";
 
 
 @Component({
@@ -37,19 +38,19 @@ export class UpdateEmployeeComponent implements OnInit {
 
       id: ['',Validators.required],
       fullName: ['',Validators.required],
-      email: ['',Validators.required],
-      phoneNumber: ['',Validators.required],
+      email: ['',[Validators.required, Validators.pattern("^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")]],
+      phoneNumber: ['',[Validators.required, Validators.pattern("^(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})$")]],
       password: [''],
       address: ['',Validators.required],
       username: ['',Validators.required],
-      dayOfBirth:['',Validators.required],
-      idCard:['',Validators.required],
+      dayOfBirth:['',[Validators.required, this.isBeforeToday]],
+      idCard:['',[Validators.required, Validators.pattern("^[0-9]{9}$")]],
       gender: ['', Validators.required],
       image: ['']
     })
 
     this.service.getEmployeeById(this.activatedRoute.snapshot.params['id']).subscribe(data => {
-      console.log(data)
+
       this.dataFake=data;
       this.updateEmployee.setValue({
         id: data.id,
@@ -65,7 +66,7 @@ export class UpdateEmployeeComponent implements OnInit {
         image: data.image
 
       });
-      console.log(this.updateEmployee.value)
+
     })
   }
 
@@ -111,7 +112,7 @@ export class UpdateEmployeeComponent implements OnInit {
               }
 
               this.service.updateEmployee(this.employee).subscribe(() => {
-                console.log(this.updateEmployee.value)
+
                 this.snackBar.open("Bạn đã cập nhật thành công", "Ok");
                 this.route.navigateByUrl("/employee");
               })
@@ -119,7 +120,7 @@ export class UpdateEmployeeComponent implements OnInit {
           })
       ).subscribe();
     } else {
-      console.log(this.updateEmployee.value);
+
       if (this.updateEmployee.valid) {
         if (this.updateEmployee.value.password != '') {
           this.dataFake.account.password = this.updateEmployee.value.password;
@@ -140,7 +141,7 @@ export class UpdateEmployeeComponent implements OnInit {
           account: this.dataFake.account,
 
         }
-        console.log(this.employee);
+
         this.service.updateEmployee(this.employee).subscribe(() => {
           this.snackBar.open("Bạn đã cập nhật thành công", "Ok");
           this.route.navigateByUrl("/employee");
@@ -154,4 +155,10 @@ export class UpdateEmployeeComponent implements OnInit {
     return formatDate(new Date(), 'dd-MM-yyyyhhmmssa', 'en-US');
   }
 
+  isBeforeToday(date: AbstractControl) {
+    if (new Date(date.value) > new Date()) {
+      return {'invalidAge': true}
+    }
+    return [];
+  }
 }
