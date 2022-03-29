@@ -10,7 +10,7 @@ export class AppComponent {
 
   title = 'fe';
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
   }
 
   isAdmin() {
@@ -23,5 +23,14 @@ export class AppComponent {
 
   isMember() {
     return !this.isAdmin() && !this.isEmployee();
+  }
+
+  //sidebar
+  public isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+//sidebar
+  public logout() {
+    this.authService.clear();
   }
 }

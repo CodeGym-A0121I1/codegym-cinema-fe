@@ -23,7 +23,7 @@ export class ListMoviesAdminComponent implements OnInit {
     this.movieService.getAll().subscribe(
         (data:any) => {
           this.movieList = data;
-          if (data.length < 5){
+          if (data.length < 8){
             this.checkPagination = false;
           }
         }

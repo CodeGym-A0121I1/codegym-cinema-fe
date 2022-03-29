@@ -98,10 +98,12 @@
                     <div class="prs_mcc_bro_title_wrapper">
                         <h2>thể loại</h2>
                         <ul>
-                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a (click)="setGenre(0)">Tất cả
+                            <li><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a class="genre-link"
+                                                                                       (click)="setGenre(0)">Tất cả
                                 <span>{{movieList.length}}</span></a>
                             </li>
                             <li *ngFor="let genre of genreList"><i class="fa fa-caret-right"></i> &nbsp;&nbsp;&nbsp;<a
+                                    class="genre-link"
                                     (click)="setGenre(genre.id)">{{genre.name}}<span>{{genre.numberOfMovies}}</span></a>
                             </li>
                         </ul>

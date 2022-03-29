@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let movie of movieList | paginate:{itemsPerPage:5,currentPage:p}">
+        <tr *ngFor="let movie of movieList | paginate:{itemsPerPage:8,currentPage:p}">
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{movie.name}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.openingDay}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{convertDirector(movie.directorList)}}</td>
@@ -49,7 +49,7 @@
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"
                 *ngIf="movie.type === '_4D'">4D
             </td>
-            <td><a href="#"><i style="color: blue" class="fa fa-edit"></i></a></td>
+            <td><a><i style="color: blue" class="fa fa-edit"></i></a></td>
             <td><a (click)="openDialogDelete(movie)" class="deleteButton"><i style="color: red"
                                                                              class="fa fa-trash"></i></a>
             </td>
