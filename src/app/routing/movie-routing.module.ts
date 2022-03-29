@@ -12,7 +12,7 @@ const routes: Routes = [
     {path: "movie/edit/:id", component: EditMovieComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN']}},
     {path: "detail-movie/:idMovie", component: MovieDetailComponent},
     {path: "statistic/movie", component: StatisticMovieComponent, canActivate: [AuthGuard], data: {role: ['ROLE_ADMIN']}},
-    {path: "list-movie", component: ListMoviesAdminComponent, canActivate: [AuthGuard], data : {role: ['ROLE_ADMIN']}}
+    {path: "management/movie", component: ListMoviesAdminComponent, canActivate: [AuthGuard], data : {role: ['ROLE_ADMIN']}}
 ];
 
 @NgModule({

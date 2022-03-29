@@ -12,6 +12,10 @@ import {ListMovieComponent} from "./list-movie/list-movie.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {AppModule} from "../../app.module";
+import {SidebarAdminComponent} from "../display/sidebar-admin/sidebar-admin.component";
+import {MatMenuModule} from "@angular/material/menu";
 import {ShowTimeModule} from "../show-time/show-time.module";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
@@ -32,7 +36,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     ],
     exports: [
         CreateMovieComponent,
-        EditMovieComponent
+        EditMovieComponent,
+        CreateMovieComponent,
     ],
     imports: [
         CommonModule,
@@ -42,6 +47,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         MatButtonModule,
         MatGridListModule,
         ShowTimeModule,
+        MatSidenavModule,
+        MatMenuModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
         ReactiveFormsModule,

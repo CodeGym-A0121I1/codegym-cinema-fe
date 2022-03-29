@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MovieService} from "../../../service/movie.service";
 import {Movie} from "../../../model/movie/Movie";
-import {TypeMovie} from "../../../model/movie/TypeMovie";
 import {Director} from "../../../model/movie/Director";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DeleteMovieComponent} from "../delete-movie/delete-movie.component";
