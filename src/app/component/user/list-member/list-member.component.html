@@ -13,12 +13,13 @@
             <th style="text-align: center;">Ngày sinh</th>
             <th style="text-align: center;">Email</th>
             <th style="text-align: center;">Địa Chỉ</th>
+            <th style="text-align: center;">Giới tính</th>
             <th style="text-align: center;">Tên tài khoản</th>
             <th scope="col">Sửa</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let member of memberList | paginate:{itemsPerPage:5,currentPage:p}, let i = index ">
+        <tr *ngFor="let member of memberList | paginate:{itemsPerPage:1,currentPage:p}, let i = index ">
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{i + 1}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{member.fullName}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.idCard}}</td>
@@ -26,6 +27,7 @@
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.dayOfBirth | date: 'dd-MM-yyyy'}} </td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.email}} </td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.address}}</td>
+            <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{convertGender(member.gender)}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.account.username}}</td>
             <td>
                 <a [routerLink]="['/edit/',member.id]" class="detailButton">

@@ -1,5 +1,5 @@
 <div class="container">
-    <h3 class="text-center">Sửa phòng họp</h3>
+    <h2 class="text-center">Sửa Thông Tin Thành Viên</h2>
     <form [formGroup]="updateMember" (ngSubmit)="save()">
         <div class="mt-4 p-3">
             <div class="form-group row">
@@ -30,10 +30,11 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="dayOfBirth" class="col-sm-2 col-form-label">Ngày sinh <span style="color: red" class="required-field">*</span></label>
+                <label for="dayOfBirth" class="col-sm-2 col-form-label">Ngày sinh <span style="color: red"
+                                                                                        class="required-field">*</span></label>
                 <div class="col-sm-10">
                     <input type="date" id="dayOfBirth" name="dayOfBirth" formControlName="dayOfBirth"
-                           class="form-control" >
+                           class="form-control">
                 </div>
                 <small class="form-text text-danger"
                        *ngIf="updateMember.get('dayOfBirth')?.hasError('required')  && updateMember.get('dayOfBirth')?.touched">
@@ -43,10 +44,11 @@
 
             <div class="form-group row">
                 <label for="gender" class="col-sm-2 col-form-label">Giới tính <span
-                        style="color: red"   class="required-field">*</span></label>
+                        style="color: red" class="required-field">*</span></label>
                 <div class="col-sm-10">
 
-                    <select name="gender" id="gender" formControlName="gender" class="form-select form-select-sm" aria-label="Default select example"
+                    <select name="gender" id="gender" formControlName="gender" class="form-select form-select-sm"
+                            aria-label="Default select example"
                     >
 
                         <option [selected]="updateMember.value.gender == 'MALE'" value="MALE">
@@ -64,7 +66,7 @@
 
             <div class="form-group row">
                 <label for="address" class="col-sm-2 col-form-label">Địa chỉ <span
-                        style="color: red"    class="required-field">*</span></label>
+                        style="color: red" class="required-field">*</span></label>
                 <div class="col-sm-10">
                     <input type="text" id="address" name="address" formControlName="address"
                            class="form-control">
@@ -77,26 +79,36 @@
 
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">Email <span
-                        style="color: red"    class="required-field">*</span></label>
+                        style="color: red" class="required-field">*</span></label>
                 <div class="col-sm-10">
                     <input type="email" id="email" name="email" formControlName="email"
-                           class="form-control">
+                           class="form-control" required [pattern]="emailPattern">
                     <small class="form-text text-danger"
                            *ngIf="updateMember.get('email')?.hasError('required')  && updateMember.get('email')?.touched">
                         Email không được để trống
                     </small>
+                    <small class="form-text text-danger"
+                           *ngIf="updateMember.get('email')?.hasError('pattern')  && updateMember.get('email')?.touched">
+                        Email không đúng định dạng
+                    </small>
+
+
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="phoneNumber" class="col-sm-2 col-form-label">SĐT <span
-                        style="color: red"     class="required-field">*</span></label>
+                        style="color: red" class="required-field">*</span></label>
                 <div class="col-sm-10">
                     <input type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
-                           class="form-control">
+                           class="form-control" required [pattern]="phoneNumber">
                     <small class="form-text text-danger"
                            *ngIf="updateMember.get('phoneNumber')?.hasError('required')  && updateMember.get('phoneNumber')?.touched">
                         Số điện thoại không được để trống
+                    </small>
+                    <small class="form-text text-danger"
+                           *ngIf="updateMember.get('phoneNumber')?.hasError('pattern')  && updateMember.get('phoneNumber')?.touched">
+                        Số điện thoại sai định dạng hoặc quá ngắn/dài
                     </small>
                 </div>
             </div>
@@ -104,7 +116,9 @@
             <div class="row mt-5">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-10 text-center">
-                    <button style="margin-right: 200px;" routerLink="management/member" type="button" class="btn btn-secondary mr-4" >Trở lại</button>
+                    <button style="margin-right: 200px;" routerLink="/management/member" type="button"
+                            class="btn btn-secondary mr-4">Trở lại
+                    </button>
                     <button class="btn btn-primary ml-4" type="submit">Sửa</button>
                 </div>
             </div>

@@ -16,6 +16,12 @@ export class ListMemberComponent implements OnInit {
   checkPagination = true;
   p: number| any;
 
+
+  public mySentences: Array<any> = [
+    {id: 'MALE', text: 'Nam'},
+    {id: 'FEMALE', text: 'Nữ'},
+    {id: 'OTHER', text: ' Khác'},
+  ];
   constructor(private userService: UserService,
               private activatedRoute:ActivatedRoute,
               private matDialog:MatDialog,
@@ -28,5 +34,15 @@ export class ListMemberComponent implements OnInit {
       console.log(data);
     })
   }
+  convertGender(gender: string){
+    let genderVn : string = '';
+    for (const s of this.mySentences) {
+      if (s.id == gender){
+        genderVn = s.text;
 
+      }
+
+    }
+    return genderVn;
+  }
 }
