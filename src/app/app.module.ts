@@ -21,6 +21,7 @@ import {environment} from "../environments/environment";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {NgxPaginationModule} from "ngx-pagination";
 import {NgxPayPalModule} from 'ngx-paypal';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -47,7 +48,7 @@ import {NgxPayPalModule} from 'ngx-paypal';
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
         NgxPayPalModule,
-    ],
+    ],  providers: [ DatePipe],
     exports: [
         FooterComponent
     ],
