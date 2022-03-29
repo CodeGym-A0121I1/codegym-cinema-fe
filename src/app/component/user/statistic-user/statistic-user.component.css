@@ -22,3 +22,7 @@ thead > tr {
 table {
     margin: 20px 0;
 }
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background: #343a40;
+}
