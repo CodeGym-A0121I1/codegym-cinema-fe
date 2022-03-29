@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let movie of movieList | paginate:{itemsPerPage:5,currentPage:p}">
+        <tr *ngFor="let movie of movieList | paginate:{itemsPerPage:8,currentPage:p}">
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{movie.name}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{movie.openingDay}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{convertDirector(movie.directorList)}}</td>

@@ -1,11 +1,102 @@
+<ng-template [ngIf]="isMember()" [ngIfElse]="sideBar">
+    <app-navbar></app-navbar>
 
-<!--    <app-navbar></app-navbar>-->
+    <div style="min-height: 929px !important;">
+        <router-outlet></router-outlet>
+    </div>
 
-    <app-sidebar-admin></app-sidebar-admin>
-
-    <router-outlet></router-outlet>
-
-<ng-template [ngIf]="isMember()">
     <app-footer></app-footer>
 </ng-template>
 
+<ng-template #sideBar>
+    <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+            <span>
+                <img style="margin: 10px 0 0 10px" width="40px" src="http://cdn.onlinewebfonts.com/svg/img_173956.png">
+            </span>
+            <span style="margin: 40px 0 0 40px; font-size: 20px" class="sidebars-title">
+                {{authService.getFullName()}}
+            </span>
+            <hr>
+            <ul class="list-sidebars">
+                <li>
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    QUẢN LÝ PHIM
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <button mat-button><a [routerLink]="['management/movie']">Danh sách phim</a></button>
+                            <br>
+                            <button mat-button><a [routerLink]="['movie/create']">Thêm mới phim</a></button>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </li>
+                <li>
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    QUẢN LÝ ĐẶT VÉ
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <button mat-button><a [routerLink]="['booking']">Danh sách đặt vé</a></button>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </li>
+                <li>
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    QUẢN LÝ NHÂN VIÊN
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <button mat-button><a [routerLink]="['employee']">Danh sách nhân viên</a></button>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </li>
+                <li>
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    QUẢN LÝ THÀNH VIÊN
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <button mat-button><a [routerLink]="['member']">Danh sách thành viên</a></button>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </li>
+                <li>
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    THỐNG KÊ
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <button mat-button><a [routerLink]="['statistic/movie']">Thống kê phim</a></button>
+                            <br>
+                            <button mat-button><a [routerLink]="['statistic/user']">Thống kê thành viên</a></button>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </li>
+            </ul>
+            <button style="margin: 10px 0 0 80px" type="button" class="sidebars-logout btn btn-danger" *ngIf="isLoggedIn()"
+                    [routerLink]="['/login']"
+                    data-text="Đăng xuất" (click)="logout()">
+                <span>Đăng xuất</span></button>
+
+        </mat-drawer>
+
+        <div class="example-sidenav-content">
+
+            <button type="button" mat-button (click)="drawer.toggle()">
+                <i class="fa fa-bars"></i>
+            </button>
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-container>
+</ng-template>
