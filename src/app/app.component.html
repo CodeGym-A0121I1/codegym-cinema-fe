@@ -1,9 +1,12 @@
+<app-navbar *ngIf="isMember() else sideBar"></app-navbar>
 
-<!--    <app-navbar></app-navbar>-->
-
+<ng-template #sideBar>
     <app-sidebar-admin></app-sidebar-admin>
+</ng-template>
 
+<div style=" min-height: 83.5vh">
     <router-outlet></router-outlet>
+</div>
 
 <ng-template [ngIf]="isMember()">
     <app-footer></app-footer>

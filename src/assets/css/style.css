@@ -4159,9 +4159,9 @@ body.active #mobile-nav {
 	margin-left:0;
 }
 .prs_mcc_bro_title_wrapper{
-	float:left;
-	width:100%;
-	padding-top:60px;
+	float: left;
+	width: 100%;
+	padding-top: 20px;
 }
 .prs_mcc_bro_title_wrapper h2{
 	font-size:20px;

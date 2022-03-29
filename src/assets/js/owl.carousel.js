@@ -2838,14 +2838,14 @@
 			settings = this._core.settings;
 
 		// create DOM structure for relative navigation
-		this._controls.$relative = (settings.navContainer ? $(settings.navContainer)
-			: $('<div>').addClass(settings.navContainerClass).appendTo(this.$element)).addClass('disabled');
+		// this._controls.$relative = (settings.navContainer ? $(settings.navContainer)
+		// 	: $('<div>').addClass(settings.navContainerClass).appendTo(this.$element)).addClass('disabled');
 
 		this._controls.$previous = $('<' + settings.navElement + '>')
 			.addClass(settings.navClass[0])
 			.html(settings.navText[0])
 			.prependTo(this._controls.$relative)
-			.on('click', $.proxy(function(e) {
+			.on('click', $.proxy(function (e) {
 				this.prev(settings.navSpeed);
 			}, this));
 		this._controls.$next = $('<' + settings.navElement + '>')
@@ -2951,7 +2951,7 @@
 			index = this._core.relative(this._core.current()),
 			loop = settings.loop || settings.rewind;
 
-		this._controls.$relative.toggleClass('disabled', !settings.nav || disabled);
+		// this._controls.$relative.toggleClass('disabled', !settings.nav || disabled);
 
 		if (settings.nav) {
 			this._controls.$previous.toggleClass('disabled', !loop && index <= this._core.minimum(true));

@@ -3,6 +3,7 @@ import {Movie} from "../../../model/movie/Movie";
 import {MovieService} from "../../../service/movie.service";
 import {Genre} from "../../../model/movie/Genre";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {FormControl} from "@angular/forms";
 
 
 @Component({
@@ -14,9 +15,12 @@ export class ListMovieComponent implements OnInit {
 
     movieList: Array<Movie> = [];
     genreList: Array<Genre> = [];
-    searchGenre: number = 0;
+    filteredMovie: Array<Movie> = [];
+    currentGenre: number = 0;
 
-    numberShowedMovie: number = 6;
+    numberShowedMovie: number = 8;
+
+    searchCtrl = new FormControl();
 
     constructor(
         private movieService: MovieService,
@@ -28,6 +32,7 @@ export class ListMovieComponent implements OnInit {
         this.movieService.getAllMovies().subscribe(
             data => {
                 this.movieList = data
+                this.filteredMovie = data;
             }
         )
 
@@ -36,28 +41,45 @@ export class ListMovieComponent implements OnInit {
                 this.genreList = data
             }
         )
+
+        this.searchCtrl.valueChanges.subscribe(
+            (name: string) => (this.search(name))
+        )
     }
 
     listAll() {
         if (this.numberShowedMovie >= this.movieList.length) {
-            this.numberShowedMovie = 6;
+            this.numberShowedMovie = 8;
         } else {
-            this.numberShowedMovie += 6;
+            this.numberShowedMovie += 8;
         }
     }
 
-    setSearchGenre(id: number) {
-        this.searchGenre = id;
+    search(value: string) {
+        let id = this.currentGenre
+        if (id !== 0) {
+            this.filteredMovie = this.movieList.filter(
+                function (movie) {
+                    for (const genre of movie.genreList) {
+                        if (genre.id === id) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            )
+        } else {
+            this.filteredMovie = this.movieList;
+        }
+        this.filteredMovie = this.filteredMovie.filter(movie => movie.name.toLowerCase().includes(value.toLowerCase()))
+        if (this.filteredMovie.length == 0) {
+            // this.snackBar.open("Không tìm thấy phim phù hợp", "OK")._dismissAfter(2000);
+            this.filteredMovie = this.movieList;
+        }
     }
 
-    search(value: string) {
-        this.movieService.findAllByNameAndGenre(value, this.searchGenre).subscribe(
-            data => {
-                this.movieList = data
-            },
-            error => {
-                this.snackBar.open("Không tìm thấy phim phù hợp")._dismissAfter(3000)
-            }
-        )
+    setGenre(id: number) {
+        this.currentGenre = id;
+        this.search(this.searchCtrl.value)
     }
 }
