@@ -1,0 +1,30 @@
+li.text-hover {
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.list-sidebars > li {
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+
+.sidebars-title{
+    color: #333;
+    line-height: 22px;
+    font-weight: bold;
+    margin: 0 0 15px;
+}
+
+.sidebars-logout:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.content {
+    min-height: calc(100vh - 72px);
+}

@@ -24,6 +24,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import { SidebarAdminComponent } from './component/display/sidebar-admin/sidebar-admin.component';
 import {MatMenuModule} from "@angular/material/menu";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import {MatMenuModule} from "@angular/material/menu";
         MatSidenavModule,
         MatButtonModule,
         MatMenuModule,
+        MatExpansionModule,
     ],
     exports: [
 
