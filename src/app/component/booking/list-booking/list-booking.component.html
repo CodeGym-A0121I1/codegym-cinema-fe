@@ -30,7 +30,7 @@
                 <th class="text-center" scope="column-title"></th>
             </tr>
             </thead>
-            <tbody *ngIf="bookingList != null">
+            <tbody *ngIf="bookingList != null; else emptyBody">
             <tr class="even pointer" *ngFor="let booking of bookingList | paginate :{itemsPerPage:10 ,currentPage : p}">
                 <th class="vertical-align">{{booking.id}}</th>
                 <td class="vertical-align">{{booking.user.id}}</td>
@@ -45,6 +45,14 @@
                 </td>
             </tr>
             </tbody>
+            <ng-template #emptyBody>
+                <tbody>
+                <tr>
+                    <td colspan="8" class="text-center">Hiện chưa có vé được đặt</td>
+                </tr>
+                </tbody>
+            </ng-template>
+
         </table>
     </div>
     <!--        Pagination-->
