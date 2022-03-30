@@ -21,3 +21,17 @@
 .col-sm-6 {
     margin-left: 80px;
 }
+
+thead > tr {
+    color: #FFFFFF;
+    background-color: #343a40;
+    border-color: #454d55;
+}
+
+thead > tr > th {
+    text-align: center;
+}
+
+table {
+    vertical-align: middle;
+}
