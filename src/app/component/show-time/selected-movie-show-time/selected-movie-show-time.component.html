@@ -43,7 +43,7 @@
                                                                 <ul>
                                                                     <li *ngIf="errors"> Không có lịch chiếu cho phim này</li>
 
-                                                                    <li *ngFor="let movieTime of listMovies">	<span>
+                                                                    <li *ngFor="let movieTime of thisHours">	<span>
 															<h4>{{movieTime.price}} VND</h4>
 															</span>
                                                                         <a (click)="takeTime(movieTime.startTime)"

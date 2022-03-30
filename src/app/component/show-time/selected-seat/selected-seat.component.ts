@@ -4,6 +4,7 @@ import {ShowTimeService} from "../../../service/show-time.service";
 import {Seat} from "../../../model/theater/Seat";
 import {MovieDTO} from "../../../dto/showTime/MovieDTO";
 import {SeatMovieDTO} from "../../../dto/showTime/SeatMovieDTO";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-selected-seat',
@@ -12,7 +13,7 @@ import {SeatMovieDTO} from "../../../dto/showTime/SeatMovieDTO";
 })
 export class SelectedSeatComponent implements OnInit {
 
-  constructor(private showservice: ShowTimeService) {
+  constructor(private showservice: ShowTimeService,private  datepipe:DatePipe) {
   }
 
   @Input() movieShow!: MovieDTO;
@@ -24,8 +25,12 @@ export class SelectedSeatComponent implements OnInit {
   isDisplay1:boolean=false;
 
   ngOnInit(): void {
-    this.showservice.getAllSeatBookedByTheaterId(this.movieShow.theater.id).subscribe(data => {
+
+    let day:string | null ='';
+    day= this.datepipe.transform(this.movieShow.dateStart,"yyyy-MM-dd");
+    this.showservice.getAllSeatBookedByTheaterId(this.movieShow.theater.id,this.movieShow.timeSelected,this.movieShow.movie.id,day).subscribe(data => {
           this.listSeatBooks = data;
+
           for (let i = 0; i < this.listSeatBooks.length; i++) {
             this.listseatUserBooked.push(this.listSeatBooks[i].name);
           }

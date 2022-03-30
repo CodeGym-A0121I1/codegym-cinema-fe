@@ -7,7 +7,7 @@ import {AppRoutingModule} from './routing/app-routing.module';
 import {RouterModule} from "@angular/router";
 import {LoginModule} from "./component/login/login.module";
 import {HttpClientModule} from "@angular/common/http";
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {BookingModule} from "./component/booking/booking.module";
 import {MovieModule} from "./component/movie/movie.module";
@@ -25,14 +25,15 @@ import {MatButtonModule} from "@angular/material/button";
 import { SidebarAdminComponent } from './component/display/sidebar-admin/sidebar-admin.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {NgxPayPalModule} from 'ngx-paypal';
+import {DatePipe} from "@angular/common";
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         FooterComponent,
-        ForbiddenComponent,
-        SidebarAdminComponent
+        ForbiddenComponent
     ],
     imports: [
         BrowserModule,
@@ -55,9 +56,10 @@ import {MatExpansionModule} from "@angular/material/expansion";
         MatButtonModule,
         MatMenuModule,
         MatExpansionModule,
-    ],
+        NgxPayPalModule,
+    ],  providers: [ DatePipe],
     exports: [
-
+        FooterComponent
     ],
     bootstrap: [AppComponent]
 })

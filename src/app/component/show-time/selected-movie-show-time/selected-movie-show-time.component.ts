@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ShowTime} from "../../../model/booking/ShowTime";
 import {ShowTimeService} from "../../../service/show-time.service";
 import {ActivatedRoute} from "@angular/router";
-import {Time} from "@angular/common";
+import {DatePipe, Time} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MovieDTO} from "../../../dto/showTime/MovieDTO";
 
@@ -20,18 +20,21 @@ export class SelectedMovieShowTimeComponent implements OnInit {
     isDisplay = false;
     errors: boolean = false;
     movieDTOTG!: any;
+    thisHours: Array<ShowTime> = []
     @Input() MovieId!: string;
-    constructor(private showTimeSevice: ShowTimeService, private activeRoute: ActivatedRoute, private matSnackBar: MatSnackBar,) {
+
+    constructor(private showTimeSevice: ShowTimeService, private activeRoute: ActivatedRoute, private matSnackBar: MatSnackBar, private datepipe: DatePipe) {
     }
 
     @Output() movieDTo: EventEmitter<MovieDTO> = new EventEmitter();
 
     ngOnInit(): void {
+        if (this.MovieId == null) {
+            this.MovieId = this.activeRoute.snapshot.params['id'];
+        }
         this.showTimeSevice.getAllShowTimeByMovieId(this.MovieId).subscribe(data => {
-            const start = new Date(data[0].startDate);
+            const start = new Date(data[0].movie.openingDay);
             const end = new Date(data[0].movie.endDay);
-            console.log(start)
-            console.log(end)
             this.listMovies = data;
             let loop = new Date(start);
             while (loop < new Date(Date.now())) {
@@ -42,26 +45,39 @@ export class SelectedMovieShowTimeComponent implements OnInit {
             let newDateTG = this.startDate?.setDate(this.startDate?.getDate() - 1);
             loop = new Date(newDateTG);
             this.startDate = loop;
-            // console.log(loop)
+
             while (loop < end) {
-                // loop.setDate(loop.getDate()-1);
                 this.listDates.push(loop)
-                let newDate = loop.setDate(loop.getDate() + 1);
+                let dateTG = loop;
+                let newDate = dateTG.setDate(loop.getDate() + 1);
                 loop = new Date(newDate);
             }
-            console.log(this.listDates)
+            this.listDates.pop();
             this.countDate = this.listDates.length;
-            if(this.listDates.length==0){
-                this.errors=true
+            if (this.listDates.length == 0) {
+                this.errors = true
             }
+            let day: string | null = '';
+            day = this.datepipe.transform(this.listDates[0], "yyyy-MM-dd");
+            this.showTimeSevice.getAllShowTimeByMovieIdAndDateStart(this.MovieId, day).subscribe(data => {
+                this.thisHours = data
+            })
 
         }, error => {
             this.errors = true;
         });
+
     }
 
 
     takeData(item: Date) {
+
+
+        let day: string | null = '';
+        day = this.datepipe.transform(item, "yyyy-MM-dd");
+        this.showTimeSevice.getAllShowTimeByMovieIdAndDateStart(this.MovieId, day).subscribe(data => {
+            this.thisHours = data
+        })
         this.startDate = item;
     }
 
@@ -79,5 +95,4 @@ export class SelectedMovieShowTimeComponent implements OnInit {
         this.movieDTo.emit(movieDTOTG1);
         this.isDisplay = true
     }
-
 }
