@@ -108,5 +108,9 @@
         </small>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group">
+        <button [routerLink]="['/employee']" class="btn btn-secondary">Trở về</button>
+        <button id="update"  type="submit" class="btn btn-primary" [disabled]="updateEmployee.invalid">Cập nhật</button>
+    </div>
+
 </form>

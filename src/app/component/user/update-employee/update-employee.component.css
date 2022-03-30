@@ -11,10 +11,22 @@
     width: 50%;
 }
 
-.btn-primary {
-    margin-left: 700px;
-}
+/*.btn-primary {*/
+/*    margin-left: 700px;*/
+/*}*/
 
 .img-thumbnail {
     border-radius: 8px;
+}
+
+#update {
+    margin-left: 5px;
+}
+
+ :host ::ng-deep .nice-select{
+    display: none !important;
+}
+
+.select_gender{
+    display: inline-block !important;
 }

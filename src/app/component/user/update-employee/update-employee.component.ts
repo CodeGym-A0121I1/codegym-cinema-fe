@@ -39,7 +39,7 @@ export class UpdateEmployeeComponent implements OnInit {
       id: ['',Validators.required],
       fullName: ['',Validators.required],
       email: ['',[Validators.required, Validators.pattern("^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")]],
-      phoneNumber: ['',[Validators.required, Validators.pattern("^(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})$")]],
+      phoneNumber: ['',[Validators.required, Validators.pattern("^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$")]],
       password: [''],
       address: ['',Validators.required],
       username: ['',Validators.required],
@@ -88,38 +88,43 @@ export class UpdateEmployeeComponent implements OnInit {
 
 
   save() {
-    if (this.isChange) {
-      const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
-      const fileRef = this.storage.ref(nameImg);
-      this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
-          finalize(() => {
-            fileRef.getDownloadURL().subscribe((url) => {
-              this.updateEmployee.patchValue({image: url});
+    if (this.updateEmployee.invalid) {
 
-              this.employee = {
-                id: this.updateEmployee.value.id,
-                fullName: this.updateEmployee.value.fullName,
-                email: this.updateEmployee.value.email,
-                phoneNumber: this.updateEmployee.value.phoneNumber,
-                gender: this.updateEmployee.value.gender,
-                dayOfBirth: this.updateEmployee.value.dayOfBirth,
-                address: this.updateEmployee.value.address,
-                idCard: this.updateEmployee.value.idCard,
-                image: this.updateEmployee.value.image,
-                provider: this.updateEmployee.value.provider,
-                account: this.dataFake.account,
 
-              }
+      if (this.isChange) {
+        const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
+        const fileRef = this.storage.ref(nameImg);
+        this.storage.upload(nameImg, this.selectedImage).snapshotChanges().pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe((url) => {
+                this.updateEmployee.patchValue({image: url});
 
-              this.service.updateEmployee(this.employee).subscribe(() => {
+                this.employee = {
+                  id: this.updateEmployee.value.id,
+                  fullName: this.updateEmployee.value.fullName,
+                  email: this.updateEmployee.value.email,
+                  phoneNumber: this.updateEmployee.value.phoneNumber,
+                  gender: this.updateEmployee.value.gender,
+                  dayOfBirth: this.updateEmployee.value.dayOfBirth,
+                  address: this.updateEmployee.value.address,
+                  idCard: this.updateEmployee.value.idCard,
+                  image: this.updateEmployee.value.image,
+                  provider: this.updateEmployee.value.provider,
+                  account: this.dataFake.account,
 
-                this.snackBar.open("Bạn đã cập nhật thành công", "Ok");
-                this.route.navigateByUrl("/employee");
-              })
-            });
-          })
-      ).subscribe();
-    } else {
+                }
+
+                this.service.updateEmployee(this.employee).subscribe(() => {
+
+                  this.snackBar.open("Bạn đã cập nhật thành công", "Ok");
+                  this.route.navigateByUrl("/employee");
+                })
+              });
+            })
+        ).subscribe();
+      }
+    }
+    else {
 
       if (this.updateEmployee.valid) {
         if (this.updateEmployee.value.password != '') {
@@ -160,5 +165,9 @@ export class UpdateEmployeeComponent implements OnInit {
       return {'invalidAge': true}
     }
     return [];
+  }
+
+  check() {
+
   }
 }
