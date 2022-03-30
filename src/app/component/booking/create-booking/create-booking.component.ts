@@ -21,11 +21,8 @@ import {Seat} from "../../../model/theater/Seat";
 })
 export class CreateBookingComponent implements OnInit {
     @Input() seatMovieDTO!: SeatMovieDTO;
-    ticketid: Ticket | any;
     seatId: Array<Seat> = [];
     id: String | undefined;
-    listUser: Array<string> = ['A', 'B', 'C', 'D', 'E'];
-    listseatUserBooked: string[] = [];
     iduser: string;
     user!: User;
     showtimes: Array<ShowTime> = [];
@@ -33,11 +30,8 @@ export class CreateBookingComponent implements OnInit {
     totalmoney: number = 0;
     isDisplay1: boolean = false;
     newBooking!: Booking;
-    quantitys: number = 0;
-
     formBooking = new FormGroup(
         {
-            date: new FormControl('', Validators.required),
             id: new FormControl('', Validators.required),
             paid: new FormControl('', Validators.required),
             showTime: new FormGroup({
@@ -50,7 +44,6 @@ export class CreateBookingComponent implements OnInit {
                     id: new FormControl()
                 }
             ),
-            quantity: new FormControl('', Validators.required)
         }
     )
     formTicket = new FormGroup(
@@ -101,8 +94,7 @@ export class CreateBookingComponent implements OnInit {
         // @ts-ignore
         this.iduser = this.authservice.getIdUser();
         for (let i = 0; i < this.seatMovieDTO.listSeat.length; i++) {
-            this.totalmoney += 45;
-            this.quantitys += 1;
+            this.totalmoney += 45000;
         }
         this.userservice.getById(this.iduser).subscribe(datauser => {
                 this.user = datauser;
@@ -113,14 +105,13 @@ export class CreateBookingComponent implements OnInit {
     test: boolean = true;
 
     create() {
+        var today = new Date();
         this.test = false;
         this.formBooking.value.user.id = this.authservice.getIdUser();
-        this.formBooking.value.date = this.seatMovieDTO.dateStart;
-        this.formBooking.value.time = this.seatMovieDTO.timeStart;
+        this.formBooking.value.time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
         this.formBooking.value.paid = false;
         this.formBooking.value.totalPrice = this.totalmoney;
         this.formBooking.value.showTime.id = this.showtimemovietheat.id;
-        this.formBooking.value.quantity = this.quantitys;
         this.bookingservice.createBooking(this.formBooking.value).subscribe(
             (data) => {
                 this.newBooking = data;
