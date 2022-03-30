@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ShowTime} from "../model/booking/ShowTime";
 import {Seat} from "../model/theater/Seat";
 import {Time} from "@angular/common";
-import {log} from "util";
 
 
 @Injectable({
@@ -31,7 +30,7 @@ export class ShowTimeService {
     return this.httpClient.get<Array<Seat>>(this.API_SEAT_BOOKED + "?theaterId=" + theaterId+"&timeShowTime="+time+"&movieId="+movieId+"&date="+date, {headers: this.requestHeader});
   }
   getAllShowTimeByMovieIdanhTheaterId(movieId: string, theaterId: string) {
-    return this.httpClient.get<Array<ShowTime>>(this.API_MOVIE_THEATER + "?MovieId=" + movieId + "&TheaterId=" + theaterId, {headers: this.requestHeader});
+    return this.httpClient.get<Array<ShowTime>>(this.API_MOVIE_THEATER + "?MovieId=" + movieId + "&TheaterId=" + theaterId);
   }
 
   getAllShowTimeByMovieIdAndDateStart(movieId: string, date: string | null) {

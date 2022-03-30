@@ -87,7 +87,6 @@ export class CreateBookingComponent implements OnInit {
                 this.showtimes = dateshowtime;
                 for (let i = 0; i < this.showtimes.length; i++) {
                     this.showtimemovietheat = this.showtimes[0];
-                    this.showtimemovietheat = this.showtimes[0];
                 }
             }
         )

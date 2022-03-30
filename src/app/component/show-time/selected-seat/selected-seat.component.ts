@@ -83,7 +83,6 @@ export class SelectedSeatComponent implements OnInit {
       listSeat:this.listseatUserBooked
     }
     this.isDisplay = true;
-    console.log(this.movieSeatDTO);
   }
 
   displayShowTime() {
