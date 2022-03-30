@@ -15,7 +15,8 @@
         <tr *ngFor="let movie of topListMovie | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalPages}">
             <td>{{movie.name | titlecase}}</td>
             <td>{{movie.quantity}}</td>
-            <td>{{movie.price | currency:'':'':'3.0'}}VNĐ</td>
+            <td *ngIf="movie.price == 0">{{0}}VND</td>
+            <td *ngIf="movie.price != 0">{{movie.price | currency:'':'':'1.2-2'}}VNĐ</td>
         </tr>
         </tbody>
     </table>
