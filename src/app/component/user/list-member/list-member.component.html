@@ -3,7 +3,7 @@
 
     </div>
     <h2 class="text-center">Danh Sách thông tin thành viên</h2>
-    <table class="table table-hover table-striped table-bordered table-responsive text-center">
+    <table class="table table-striped table-bordered table-responsive text-center">
         <thead class="thead-dark">
         <tr style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">
             <th style="text-align: center;">STT</th>
@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let member of memberList | paginate:{itemsPerPage:1,currentPage:p}, let i = index ">
+        <tr *ngFor="let member of memberList | paginate:{itemsPerPage:2,currentPage:p}, let i = index ">
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{i + 1}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;"> {{member.fullName}}</td>
             <td style="box-sizing: border-box; font-family: 'Poppins', sans-serif;">{{member.idCard}}</td>
