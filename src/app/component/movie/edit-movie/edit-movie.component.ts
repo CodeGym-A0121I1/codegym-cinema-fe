@@ -63,7 +63,6 @@ export class EditMovieComponent implements OnInit {
     });
 
     ngOnInit(): void {
-
         this.movieService.getAllGenre().subscribe(
             (data) => {
                 this.genreList = data;
@@ -82,7 +81,8 @@ export class EditMovieComponent implements OnInit {
 
                                                 this.movieService.findByIdMovie(this.route.snapshot.params["id"]).subscribe((data) => {
                                                     console.log(data)
-                                                    this.formEditMovie.setValue({
+                                                    setTimeout(() =>{
+                                                        this.formEditMovie.setValue({
                                                         id: data.id,
                                                         name: data.name,
                                                         poster: data.poster,
@@ -94,13 +94,16 @@ export class EditMovieComponent implements OnInit {
                                                         type: data.type,
                                                         genreList: data.genreList,
                                                         actorList: data.actorList,
+                                                        // actorList: data.actorList.filter(actor => Number(actor['id'] === actor.id)),
                                                         directorList: data.directorList,
                                                         producerList: data.producerList,
                                                         showTimeList: data.showTimeList ?? null,
                                                         theaterList: data.theaterList ?? null,
-                                                    });
+                                                         });
+                                                    }, );
                                                     this.url = this.formEditMovie.get('poster')!.value;
-
+                                                    // this.formEditMovie.controls['actorList'].setValue(this.actorList)
+                                                    // this.formEditMovie.updateValueAndValidity()
                                                 });
                                             }
                                         );
@@ -119,16 +122,17 @@ export class EditMovieComponent implements OnInit {
         if (!this.formEditMovie.invalid) {
             this.movieService.editMovie(this.formEditMovie.value).subscribe(
                 () => {
-                    this.router.navigateByUrl("list-movie").then(() => this.matSnackBar.open("Cập nhật thành công")._dismissAfter(3000))
+                    this.router.navigateByUrl("list-movie").then(() => this.matSnackBar.open("Cập nhật phim thành công")._dismissAfter(3000))
                 }
             );
         }
     }
-
+    get genreList1() {
+        return (<FormArray>this.formEditMovie.get('genreList')).controls;
+    }
     addTime() {
         const time = new FormControl();
         (<FormArray>this.formEditMovie.get('showTimeList')).push(time);
-        console.log(time)
     }
 
     get Time() {
@@ -169,7 +173,6 @@ export class EditMovieComponent implements OnInit {
     onCheckboxChangeActor(event: MatOptionSelectionChange, actor: any) {
         const actorList = (this.formEditMovie.controls.actorList as FormArray);
         if (event.source.selected) {
-            console.log(event.source.value)
             {
                 actorList.push(new FormControl(actor));
             }
